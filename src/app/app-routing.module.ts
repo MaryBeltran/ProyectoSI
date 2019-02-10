@@ -9,6 +9,7 @@ import { RecomendadoComponent } from './recomendado/recomendado.component';
 import { FavoritosComponent } from './favoritos/favoritos.component';
 import { ProductoComponent } from './productos/producto/producto.component';
 import { ListaproductosComponent } from './productos/listaproductos/listaproductos.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
 
@@ -24,6 +25,7 @@ children:[
 {path: 'favoritos',component: FavoritosComponent},
 {path: 'productos/producto',component: ProductoComponent},
 {path: 'productos/listaproductos',component: ListaproductosComponent},
+{path: 'login',component: LoginComponent},
 
 ],
 

@@ -16,6 +16,7 @@ import { CarritoComponent } from './carrito/carrito.component';
 import { AjustesComponent } from './ajustes/ajustes.component';
 import { RecomendadoComponent } from './recomendado/recomendado.component';
 import { FavoritosComponent } from './favoritos/favoritos.component';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -36,6 +37,7 @@ import { FavoritosComponent } from './favoritos/favoritos.component';
     AjustesComponent,
     RecomendadoComponent,
     FavoritosComponent,
+    LoginComponent,
    
   ],
   imports: [
