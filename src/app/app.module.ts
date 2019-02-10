@@ -10,9 +10,13 @@ import { FooterComponent } from './footer/footer.component';
 import { PromocionesComponent } from './promociones/promociones.component';
 import {RouterModule, Routes} from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { ListaComponent } from './lista/lista.component';
 import { ListaproductosComponent } from './productos/listaproductos/listaproductos.component';
 import { ProductoComponent } from './productos/producto/producto.component';
+import { CarritoComponent } from './carrito/carrito.component';
+import { AjustesComponent } from './ajustes/ajustes.component';
+import { RecomendadoComponent } from './recomendado/recomendado.component';
+import { FavoritosComponent } from './favoritos/favoritos.component';
+
 
 
 
@@ -25,9 +29,14 @@ import { ProductoComponent } from './productos/producto/producto.component';
     FooterComponent,
     PromocionesComponent,
     HomeComponent,
-    ListaComponent,
+  
     ListaproductosComponent,
-    ProductoComponent
+    ProductoComponent,
+    CarritoComponent,
+    AjustesComponent,
+    RecomendadoComponent,
+    FavoritosComponent,
+   
   ],
   imports: [
     NgbModule.forRoot(),
