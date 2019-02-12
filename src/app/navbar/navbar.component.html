@@ -9,11 +9,22 @@
   <a routerLink="" class="seleccionado">Inicio</a>
   <div class="search-container">
     <form action="/action_page.php">
-      <input type="text" placeholder="Search.." name="search">
+      <input type="text" placeholder="Buscar.." name="search">
       <button type="submit"><i class="fa fa-search"></i></button>
     </form>
   </div>
-  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+  <a href="javascript:void(0);" class="icon" onclick="menuresponsive()">
     <i class="fa fa-bars"></i>
   </a>
 </div>
+
+<script>
+ function menuresponsive() {
+      var x = document.getElementById("BarraNav");
+      if (x.className === "BarraNav") {
+        x.className += " responsive";
+      } else {
+        x.className = "BarraNav";
+      }
+    }
+</script>

@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecomendadoComponent implements OnInit {
 
-  constructor() { }
+  constructor() { 
+
+    
+  }
+
 
   ngOnInit() {
+   
   }
+
+ 
 
 }
