@@ -1,50 +1,19 @@
-
-<a class="btn btn-primary float-right sticky-top m-1 boton" href="#">Acceder</a>
- 
-
-    <ul class=" lista sticky-top  justify-content-center col-md-10 col-lg-10 col-xl-10 ">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="BarraNav" id="BarraNav">
   
-        <li>
-            <a class="float-left sticky-top lead font-italic Italica m-2 nav-link elemento "  ><img src="../assets/imagenes/mandarina2-px.png" class="float-left m-1"> </a>
-    
-           </li>
-      <li>
-        
-        <input type="text" class="form-control" placeholder="Buscar">
-       </li>
-        <li>
-         <button type="submit" class="btn  naranja">Buscar</button>
-        </li>
-        
-    
-        <li class=" nav-item color">
-          <a class="nav-link elemento " routerLink="/home">Inicio </a>
-        </li>
-        <li class="nav-item color">
-          <a class="nav-link elemento" routerLink="/promociones">Promociones</a>
-        </li>
-        <li class="nav-item color ">
-          <a class="nav-link elemento" routerLink="/favoritos">Favoritos</a>
-        </li>
-
-        <li class="nav-item">
-    
-          <a class="nav-link elemento"  routerLink="/carrito"> Add<img src="../assets/imagenes/carrito.png"></a> 
-            
-          </li>
-
-          <li class="nav-item color ">
-            <a class="nav-link elemento" routerLink="/ajustes"> Ajustes </a>
-          </li>
-
-          
-        
-      </ul>       
-
-           
-
-
-
-
-
-
+  <a routerLink="/usuario">Usuario</a>
+  <a routerLink="/carrito">Carrito</a>
+  <a routerLink="/promociones">Promociones</a>
+  <a routerLink="/recomendados">Recomendados</a>
+  <a routerLink="/productos">Productos</a>
+  <a routerLink="" class="seleccionado">Inicio</a>
+  <div class="search-container">
+    <form action="/action_page.php">
+      <input type="text" placeholder="Search.." name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
