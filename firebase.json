@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/miapp",
+    "public": "dist/proyectoSi",
     "ignore": [
       "firebase.json",
       "**/.*",
