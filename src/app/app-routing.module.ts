@@ -10,6 +10,9 @@ import { FavoritosComponent } from './favoritos/favoritos.component';
 import { ProductoComponent } from './productos/producto/producto.component';
 import { ListaproductosComponent } from './productos/listaproductos/listaproductos.component';
 import { LoginComponent } from './login/login.component';
+import { AjustesUsuarioComponent } from './Views/ajustes-usuario/ajustes-usuario.component';
+import { AjustesAdministradorComponent } from './Views/ajustes-administrador/ajustes-administrador.component';
+import { AdminComponent } from './Views/admin/admin.component';
 
 const routes: Routes = [
 
@@ -28,6 +31,9 @@ children:[
       {path: 'listaproductos',component: ListaproductosComponent},
   ]},
 {path: 'login',component: LoginComponent},
+{path: 'ajustes-usuario', component: AjustesUsuarioComponent},
+{path: 'ajustes-administrador', component: AjustesAdministradorComponent},
+{path: 'admin', component: AdminComponent},
 
 ],
 
