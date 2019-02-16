@@ -20,6 +20,7 @@ import { LoginComponent } from './login/login.component';
 import { AjustesUsuarioComponent } from './Views/ajustes-usuario/ajustes-usuario.component';
 import { AjustesAdministradorComponent } from './Views/ajustes-administrador/ajustes-administrador.component';
 import { AdminComponent } from './Views/admin/admin.component';
+import { Navbar2Component } from './navbar2/navbar2.component';
 
 
 
@@ -44,6 +45,7 @@ import { AdminComponent } from './Views/admin/admin.component';
     AjustesUsuarioComponent,
     AjustesAdministradorComponent,
     AdminComponent,
+    Navbar2Component,
    
   ],
   imports: [

@@ -1,0 +1,110 @@
+.BarraNav2 {
+    overflow: hidden;
+    background-color: #f47820;
+    height: 40px;
+    padding: 0;
+    margin:0;
+    text-align: center;
+    
+  }
+  
+  .BarraNav2 a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 5px 40px 40px;
+    text-decoration: none;
+    font-size: 17px;
+    padding-bottom: 10px !important;
+  }
+  
+
+  .BarraNav2 a:hover {
+    color: #9fbc31;
+  }
+  
+  
+  .BarraNav2 .icon {
+    display: none;
+  }
+  
+  
+  @media screen and (max-width: 650px) {
+    .BarraNav2 a {display: none;}
+    .BarraNav2 a.icon {
+      
+      display: block;
+      
+    }
+  }
+  
+  @media screen and (max-width: 650px) {
+    .BarraNav2.responsive {position: relative;}
+    .BarraNav2.responsive .icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+      
+    }
+    .BarraNav2.responsive a {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+  }
+  
+  .logo{
+    float: left;
+    padding-left: 10px;
+    
+  }
+
+
+
+
+  .expandible {
+    float: left;
+    overflow: hidden;
+  }
+  
+  .expandible .expan {
+    font-size: 17px;  
+    border: none;
+    outline: none;
+    color: white;
+    padding: 5px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+  }
+  
+  .BarraNav2 a:hover, .expandible:hover .expan {
+    background-color: #f47820;
+  }
+  
+  .contenido-expan {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .contenido-expan a {
+    float: none;
+    color: #f47820;
+    padding: 10px 16px 0px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    text-align: left;
+  }
+  
+  .contenido-expan a:hover {
+    background-color: #ddd;
+  }
+  
+  .expandible:hover .contenido-expan {
+    display: block;
+  }
