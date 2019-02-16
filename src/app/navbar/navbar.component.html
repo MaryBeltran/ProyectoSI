@@ -6,7 +6,7 @@
   <a routerLink="/promociones">Promociones</a>
   <a routerLink="/recomendados">Recomendados</a>
   <a routerLink="/productos">Productos</a>
-  <a routerLink="/home" class="seleccionado">Inicio</a>
+  <a routerLink="/home">Inicio</a>
   <img src="../assets/imagenes/mandarina-px.png" class="logo" routerLink="/home">
   <div class="search-container">
     <form action="/action_page.php">
@@ -20,7 +20,7 @@
     <i class="fa fa-bars"></i>
   </a>
   <script>
-    function myFunction() {
+    function menuresponsive() {
       var x = document.getElementById("BarraNave");
       if (x.className === "BarraNav") {
         x.className += " responsive";
