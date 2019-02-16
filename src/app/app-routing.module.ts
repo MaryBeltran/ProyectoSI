@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { PromocionesComponent } from './promociones/promociones.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { Navbar2Component } from './navbar2/navbar2.component';
 import { AjustesComponent } from './ajustes/ajustes.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { RecomendadoComponent } from './recomendado/recomendado.component';
