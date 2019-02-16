@@ -5,16 +5,12 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './navbar2.component.html',
   styleUrls: ['./navbar2.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class Navbar2Component implements OnInit {
 
-  constructor() { 
-    
-  }
+  constructor() { }
 
   ngOnInit() {
-    
   }
-  
   menuresponsive() {
     var x = document.getElementById("BarraNave");
     if (x.className === "BarraNav") {
@@ -23,4 +19,6 @@ export class NavbarComponent implements OnInit {
       x.className = "BarraNav";
     }
   }
+
+  
 }
