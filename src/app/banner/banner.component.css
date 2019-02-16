@@ -1,0 +1,15 @@
+.fondo {
+    width: 100%;
+    height: auto;
+  
+    background-color: rgba(204, 200, 197, 0.712);
+margin: 0 auto;
+display: flex;
+}
+#imagen {
+    display: block;
+    margin: auto;
+    width: 100%;
+    max-width: 1200px;
+    min-width: 500px;
+}
