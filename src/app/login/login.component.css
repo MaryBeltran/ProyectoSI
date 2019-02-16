@@ -1,0 +1,55 @@
+#Contenedor{
+	width: 400px;
+	margin: 50px auto;
+	background-color: rgb(255, 254, 254);
+        border: 1px solid #f47820 ;
+	height: 540px;
+	border-radius:8px;
+    padding: 0px 9px 0px 9px;
+   
+    
+}
+ 
+.imagen {
+    max-width: 300px;
+    max-height: 300px;
+}
+
+.icono span{
+      background: #A8A6A6;
+      padding: 20px;
+      border-radius: 120px;
+}
+
+.icono{
+     margin-top: 10px;
+     margin-bottom:10px; 
+     color: #FFF;
+     font-size: 50px;
+     text-align: center;
+}
+
+.opcioncontra{
+	text-align: center;
+	margin-top: 20px;
+	font-size: 14px;
+}
+
+#ingresar{
+    background: #f47820 !important;
+    border-color: #FFF !important;
+}
+ 
+
+@media only screen and (max-width:320px){
+#Contenedor{
+	width: 100%;
+	height: auto;
+	margin: 0px;
+}
+}
+ 
+
+@media only screen and (max-width:240px){
+	
+}

@@ -1,0 +1,9 @@
+.columna{
+    column-count: 4;
+  }
+  p{
+    text-align: center;
+    background: orange;
+    color: white;
+    font-size: 32px;
+  }
