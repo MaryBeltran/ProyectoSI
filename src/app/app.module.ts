@@ -18,9 +18,6 @@ import { RecomendadoComponent } from './recomendado/recomendado.component';
 import { FavoritosComponent } from './favoritos/favoritos.component';
 import { LoginComponent } from './login/login.component';
 import { environment } from '../environments/environment';
-import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-
 
 
 
@@ -47,8 +44,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     NgbModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase, 'ProyectoSI'),
-    AngularFirestoreModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
