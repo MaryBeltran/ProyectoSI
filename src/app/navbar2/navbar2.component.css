@@ -1,0 +1,98 @@
+.BarraNav {
+    overflow: hidden;
+    background-color: white;
+  }
+  
+  .BarraNav a {
+    float: right;
+    display: block;
+    color: #f47820;
+    text-align: center;
+    padding: 14px 17px;
+    text-decoration: none;
+    font-size: 17px;
+    padding-top: 25px !important;
+    padding-bottom: 30px !important;
+  
+  }
+  
+  .BarraNav a:hover {
+    background-color: #f47820;
+    color: white;
+  }
+  
+  .seleccionado {
+    background-color: #f47820;
+    color: white !important;
+  }
+  
+  .BarraNav .icon {
+    display: none;
+  }
+  .BarraNav .search-container {
+    
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 10px;
+  }
+  
+  .BarraNav input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+    border-radius: 20px 0px 0px 20px;
+    border: 1px solid lightgray;
+    width: 50%;
+  }
+  
+  .BarraNav .search-container button {
+    float: center;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+    border-radius: 0px 20px 20px 0px;
+  }
+  
+  .BarraNav .search-container button:hover {
+    background: #ccc;
+  }
+  @media screen and (max-width: 700px) {
+    .BarraNav a {display: none;}
+    .BarraNav a.icon {
+      float: right;
+      display: block;
+      padding-right: 48%;
+      
+    }
+    .BarraNav a:hover {
+      background-color: white;
+      color: #9fbc31;
+    }
+  }
+  
+  @media screen and (max-width: 700px) {
+    .BarraNav.responsive {position: relative;}
+    .BarraNav.responsive .icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+      
+    }
+    .BarraNav.responsive a {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+  }
+  
+  .logo{
+    float: left;
+    padding-left: 10px;
+    
+  }
