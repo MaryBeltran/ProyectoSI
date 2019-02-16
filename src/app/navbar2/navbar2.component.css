@@ -65,6 +65,7 @@
   .expandible {
     float: left;
     overflow: hidden;
+    padding-left: 5%;
   }
   
   .expandible .expan {
