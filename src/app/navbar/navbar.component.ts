@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor() { 
+    
+  }
 
   ngOnInit() {
+    
   }
   
+  menuresponsive() {
+    var x = document.getElementById("BarraNave");
+    if (x.className === "BarraNav") {
+      x.className += " responsive";
+    } else {
+      x.className = "BarraNav";
+    }
+  }
 }
