@@ -1,0 +1,43 @@
+#tabla{
+   
+    padding: 20x 20x 20x 20x;
+   
+}
+
+.elemento{
+   
+    color: black;
+    background-color: white;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+    width: 150px;
+    height: 150px;
+    font-size:20px;
+    display: flex;
+    align-items: center;
+    text-align:center;
+    justify-content: center;
+    text-decoration:none;
+    
+    
+    box-shadow: 2px 2px 2px 2px rgba(202, 198, 198, 0.2);
+
+}
+
+.icono{
+    color: #f47820;
+    
+}
+.icono :hover{
+    color: black;
+   
+    cursor: pointer;
+    
+}
+
+.elemento :hover{
+    color: black;
+    cursor: pointer;
+    font-size:25px;
+}
+
