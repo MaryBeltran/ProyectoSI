@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
+
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProductosComponent } from './productos/productos.component';
 import { FooterComponent } from './footer/footer.component';
@@ -17,6 +18,7 @@ import { AjustesComponent } from './ajustes/ajustes.component';
 import { RecomendadoComponent } from './recomendado/recomendado.component';
 import { FavoritosComponent } from './favoritos/favoritos.component';
 import { LoginComponent } from './login/login.component';
+import { environment } from '../environments/environment';
 import { AjustesUsuarioComponent } from './Views/ajustes-usuario/ajustes-usuario.component';
 import { AjustesAdministradorComponent } from './Views/ajustes-administrador/ajustes-administrador.component';
 import { AdminComponent } from './Views/admin/admin.component';
@@ -32,6 +34,7 @@ import { B2AdminComponent } from './Component/b2-admin/b2-admin.component';
   declarations: [
     AppComponent,
     NavbarComponent,
+    Navbar2Component,
     ProductosComponent,
     FooterComponent,
     PromocionesComponent,
@@ -55,8 +58,8 @@ import { B2AdminComponent } from './Component/b2-admin/b2-admin.component';
   imports: [
     NgbModule.forRoot(),
     BrowserModule,
-    AppRoutingModule
-   
+    AppRoutingModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

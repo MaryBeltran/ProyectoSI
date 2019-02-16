@@ -65,6 +65,7 @@
   .expandible {
     float: left;
     overflow: hidden;
+    padding-left: 5%;
   }
   
   .expandible .expan {
@@ -73,6 +74,10 @@
     outline: none;
     color: white;
     padding: 5px 16px;
+
+    padding-left: 15px;
+
+
     background-color: inherit;
     font-family: inherit;
     margin: 0;
@@ -107,4 +112,8 @@
   
   .expandible:hover .contenido-expan {
     display: block;
+
   }
+
+  
+
