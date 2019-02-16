@@ -21,6 +21,8 @@ import { AjustesUsuarioComponent } from './Views/ajustes-usuario/ajustes-usuario
 import { AjustesAdministradorComponent } from './Views/ajustes-administrador/ajustes-administrador.component';
 import { AdminComponent } from './Views/admin/admin.component';
 import { Navbar2Component } from './navbar2/navbar2.component';
+import { B1AdminComponent } from './Component/b1-admin/b1-admin.component';
+import { B2AdminComponent } from './Component/b2-admin/b2-admin.component';
 
 
 
@@ -46,6 +48,8 @@ import { Navbar2Component } from './navbar2/navbar2.component';
     AjustesAdministradorComponent,
     AdminComponent,
     Navbar2Component,
+    B1AdminComponent,
+    B2AdminComponent,
    
   ],
   imports: [
