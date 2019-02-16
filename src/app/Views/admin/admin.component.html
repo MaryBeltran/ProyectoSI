@@ -21,16 +21,24 @@
   <div class="container">
       <div class="row">
           <div class="col-8 container-bg">
-              <h1 style=" font-family: 'OptimusPrinceps'; color: rgb(0, 0, 0); text-align: center">Bienvenido otra vez, {{getName()}}</h1>
+              <h1 style=" font-family: 'OptimusPrinceps'; color: rgb(0, 0, 0); text-align: center">Bienvenido otra vez, </h1>
               <img src="assets/imagenes/mandarina-m.png" width="350px" height="400px" style="margin-bottom: 40px" data-toggle="modal" data-target="#exampleModalCenter">
           </div>
           <div class="col-1"></div>
           <div class="col-6 container-bg2">
-            <img src="assets/pencil.png" width="100px" height="100px" (click)="open(content1)" Style="cursor: pointer; margin-left: 80px">
+            <img src="assets/pencil.png" width="100px" height="100px"  Style="cursor: pointer; margin-left: 80px">
             <h5 style=" font-family: 'OptimusPrinceps'; color: white; text-align: center">Administrar Usuarios</h5>
-            <img src="assets/!.png" width="100px" height="100px" (click)="open(content2)" Style="cursor: pointer; margin-left: 80px">
+            <img src="assets/!.png" width="100px" height="100px"  Style="cursor: pointer; margin-left: 80px">
             <h5 style=" font-family: 'OptimusPrinceps'; color: white; text-align: center;margin-top: 5px">Pedidos Pendientes</h5>
 
           </div>
       </div>
   </div>
+  <!--
+  en Bienvenido otra vez 
+  {{getName()}}
+  en la img 1
+  (click)="open(content1)"
+  en la img 2
+  (click)="open(content2)"
+  -->
