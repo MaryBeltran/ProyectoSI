@@ -27,10 +27,10 @@ children:[
 {path: 'carrito',component: CarritoComponent},
 {path: 'recomendado',component: RecomendadoComponent},
 {path: 'favoritos',component: FavoritosComponent},
-  {path: 'productos', children:[ 
+{path: 'productos', children:[ 
       {path: 'producto',component: ProductoComponent},
       {path: 'listaproductos',component: ListaproductosComponent},
-  ]},
+]},
 {path: 'login',component: LoginComponent},
 {path: 'ajustes-usuario', component: AjustesUsuarioComponent},
 {path: 'ajustes-administrador', component: AjustesAdministradorComponent},
