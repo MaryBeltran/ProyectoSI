@@ -11,11 +11,11 @@
         </button>
       </div>
       <div class="modal-body">
-        ...
+        Usted ha activado el modo piloto
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Guardar Cambios</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Continuar</button>
       </div>
     </div>
   </div>
@@ -23,16 +23,27 @@
 
   <div class="container">
       <div class="row">
-          <div class="col-8 container-bg">
-              <img src="assets/imagenes/mandarina-m.png" width="350px" height="400px" style="margin-bottom: 40px" data-toggle="modal" data-target="#exampleModalCenter">
+          <div class="col-12 container-bg">
+            <div class="container">
+              <div class="card">
+                <div class="card-header">Modo Piloto</div>
+                <div class="card-body">La activacion del modo piloto, realizará .....</div> 
+                <div class="card-footer">
+                  
+            <label class="switch">
+            <input type="checkbox">
+            <span class="slider round" data-toggle="modal" data-target="#exampleModalCenter"></span>
+            </label>
+                </div>
+              </div>
+              </div>
           </div>
+          
       </div>
+      
+
   </div>
-  <!--
-  en Bienvenido otra vez 
-  {{getName()}}
-  en la img 1
-  (click)="open(content1)"
-  en la img 2
-  (click)="open(content2)"
-  -->
+  
+
+  
+  
