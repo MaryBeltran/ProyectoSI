@@ -1,11 +1,12 @@
-
+<app-navbar></app-navbar>
+  <app-navbar2></app-navbar2>
 
   
 
 
 <div *ngFor="let Producto of Productos | async">
    <div>{{Producto | json}}</div>
-   
-   
-
+   <div>{{Producto.Nombre}} </div>
 </div>
+
+<app-footer></app-footer>

@@ -2,20 +2,20 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Usuarios } from '../models/Usuarios';
-import { Productos } from '../models/Productos';
+import { Producto } from '../models/Producto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirestoreService {
- 
+  /*
  
  usuarios: Observable<Usuarios[]>;
  usuariosDoc:AngularFirestoreDocument;
- usuario: Observable <Productos>;
+ usuario: Observable <Producto>;
 
  productosColeccion: AngularFirestoreCollection;
- productos: Observable<Productos[]>;
+ productos: Observable<Producto[]>;
  productosDoc: AngularFirestoreDocument;
  idProducto;
 
@@ -31,11 +31,12 @@ export class FirestoreService {
     getUsers(): any {
     return this.db.collection('usuarios').snapshotChanges();
   }
+ 
   getProductos(): any {
-    this.productosColeccion= this.db.collection('menu')
+    this.productosColeccion= this.db.collection('Productos')
     this.productos = this.productosColeccion.valueChanges();
     return this.productos
-  }
+  }*/
 
 }
 
