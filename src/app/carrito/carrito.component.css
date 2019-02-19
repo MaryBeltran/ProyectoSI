@@ -1,0 +1,38 @@
+.cuadro{
+    width: auto;
+    height: auto;
+    margin: 0px;
+}
+.precio{
+    font-size: 30px;
+}
+
+ .lista {
+    display: inline-block;
+	margin-bottom: 0;
+	margin-left:-4px;
+    margin-right: 0;
+    border-color: black;
+    border-radius: 5px;
+    background-color: rgb(116, 202, 236);
+    margin: 0.5%;
+    
+}
+a{
+    text-decoration: none;
+    color:black;
+}
+
+.elemento{
+    text-align: center;
+  
+    margin: 10px 10px 0px 10px;
+   
+}
+.boton{
+    float: right;
+}
+.incrementar{
+    width: 50px;
+    border-radius: 5px;
+}
