@@ -1,38 +1,21 @@
-.cuadro{
-    width: auto;
-    height: auto;
-    margin: 0px;
-}
-.precio{
-    font-size: 30px;
+.general{
+ width: 100%;
+
+
 }
 
- .lista {
-    display: inline-block;
-	margin-bottom: 0;
-	margin-left:-4px;
-    margin-right: 0;
-    border-color: black;
-    border-radius: 5px;
-    background-color: rgb(116, 202, 236);
-    margin: 0.5%;
+.lista{
     
-}
-a{
-    text-decoration: none;
-    color:black;
-}
-
-.elemento{
-    text-align: center;
   
-    margin: 10px 10px 0px 10px;
+    max-width: 55%;
+    width: 55%;
+    float: left;
+}
+.pago{
+    margin-right: 7%;
+    margin-top: 10%;
+    max-width: 30%;
+    width: 30%;
    
-}
-.boton{
     float: right;
-}
-.incrementar{
-    width: 50px;
-    border-radius: 5px;
 }

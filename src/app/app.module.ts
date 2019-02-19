@@ -28,6 +28,7 @@ import { B2AdminComponent } from './Component/b2-admin/b2-admin.component';
 import { BannerComponent } from './banner/banner.component';
 import { TablaCategoriasComponent } from './tabla-categorias/tabla-categorias.component';
 import { ListaComponent } from './carrito/lista/lista.component';
+import { PagoComponent } from './carrito/pago/pago.component';
 
 
 
@@ -59,6 +60,7 @@ import { ListaComponent } from './carrito/lista/lista.component';
     BannerComponent,
     TablaCategoriasComponent,
     ListaComponent,
+    PagoComponent,
    
   ],
   imports: [
