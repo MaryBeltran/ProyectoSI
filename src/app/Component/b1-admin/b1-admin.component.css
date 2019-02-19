@@ -1,0 +1,24 @@
+.BarraNavAd {
+    overflow: hidden;
+    background-color: #ffdec6;
+  }
+  
+  .BarraNavAd a {
+    float: right;
+    display: block;
+    color: #f47820;
+    text-align: center;
+    padding: 14px 17px;
+    text-decoration: none;
+    font-size: 17px;
+    padding-top: 25px !important;
+    padding-bottom: 30px !important;
+  
+  }
+
+  
+  .logo{
+    float: left;
+    padding-left: 10px;
+    
+  }

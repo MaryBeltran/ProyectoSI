@@ -18,7 +18,6 @@ import { AjustesComponent } from './ajustes/ajustes.component';
 import { RecomendadoComponent } from './recomendado/recomendado.component';
 import { FavoritosComponent } from './favoritos/favoritos.component';
 import { LoginComponent } from './login/login.component';
-import { environment } from '../environments/environment';
 import { AjustesUsuarioComponent } from './Views/ajustes-usuario/ajustes-usuario.component';
 import { AjustesAdministradorComponent } from './Views/ajustes-administrador/ajustes-administrador.component';
 import { AdminComponent } from './Views/admin/admin.component';
@@ -67,6 +66,7 @@ import { PagoComponent } from './carrito/pago/pago.component';
     NgbModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
+    
     
   ],
   providers: [],

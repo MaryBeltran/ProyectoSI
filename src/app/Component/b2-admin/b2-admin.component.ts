@@ -13,3 +13,4 @@ export class B2AdminComponent implements OnInit {
   }
 
 }
+
