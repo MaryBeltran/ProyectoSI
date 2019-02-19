@@ -28,9 +28,12 @@ import { BannerComponent } from './banner/banner.component';
 import { TablaCategoriasComponent } from './tabla-categorias/tabla-categorias.component';
 import { ListaComponent } from './carrito/lista/lista.component';
 import { PagoComponent } from './carrito/pago/pago.component';
+import { environment } from 'src/environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireModule } from '@angular/fire';
 
-
-
+  
+ export const firebase = environment.firebase;
 
 
 @NgModule({
@@ -59,13 +62,17 @@ import { PagoComponent } from './carrito/pago/pago.component';
     BannerComponent,
     TablaCategoriasComponent,
     ListaComponent,
-    PagoComponent,
+    PagoComponent
+    
+    
    
   ],
   imports: [
     NgbModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
     
     
   ],

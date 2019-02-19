@@ -1,21 +1,11 @@
 
 
   
-<div class="row">
-  <div class="m-4 ">
-      <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="../assets/imagenes/computadora1.jpg" alt=""></a>
-        <div class="card-body">
-          <h4 class="card-title">
-            <a href="#">PC Gamer</a>
-          </h4>
-          <h5>$300</h5>
-          <p class="card-text">16 GB de RAM, 2 TB de almacenamiento, procesador inter core i9</p>
-        </div>
-        <div class="card-footer">
-            <div>&#9733; &#9733; &#9733; &#9734; &#9734;</div>
-        </div>
-      </div>
-    </div>
+
+
+<div *ngFor="let Producto of Productos | async">
+   <div>{{Producto | json}}</div>
+   
+   
+
 </div>
-  
