@@ -1,3 +1,11 @@
+.pie{
+    
+    position: relative;
+  clear: both;
+  margin-top: 0px;
+  padding-top: 0px;
+  overflow: visible;
+}
 .foot {
     background: #f47820;
     color: #ffdec6;
