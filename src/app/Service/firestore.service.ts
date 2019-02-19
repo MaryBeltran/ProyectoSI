@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
-import { Usuarios } from '../models/Usuarios';
-import { Producto } from '../models/Producto';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirestoreService {
+
+
   /*
  
  usuarios: Observable<Usuarios[]>;

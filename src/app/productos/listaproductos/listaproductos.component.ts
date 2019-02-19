@@ -4,10 +4,6 @@ import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/fire
 import { Observable } from 'rxjs';
 import * as firebase from 'firebase';
 
-
-
-
-
 interface Producto{
   id?: String;
   Nombre: String;
@@ -16,6 +12,11 @@ interface Producto{
   Cantidad: String;
   descuento: String;
   Clasificacion: String;
+}
+interface Categoria{
+  id?: String;
+  Nombre: String;
+  CantidadDeproductos: String;
 }
 
 @Component({
@@ -27,6 +28,9 @@ export class ListaproductosComponent implements OnInit {
   productoColeccion: AngularFirestoreCollection<Producto>;
   Productos: Observable<Producto[]>;
 
+  categoriasColeccion: AngularFirestoreCollection<Categoria>;
+  Categorias: Observable<Categoria[]>;
+
   constructor(private afs: AngularFirestore) {
 
    }
@@ -34,6 +38,17 @@ export class ListaproductosComponent implements OnInit {
   ngOnInit() {
     this.productoColeccion=this.afs.collection('Productos');
     this.Productos=this.productoColeccion.valueChanges();
+
+    this.categoriasColeccion=this.afs.collection('Categorias');
+    this.Categorias=this.categoriasColeccion.valueChanges();
   }
+
+  /* 
+  probar en el html
+  <div *ngFor="let Producto of Productos | async">
+   <div>{{Producto | json}}</div>
+   <div>{{Producto.Nombre}} </div>
+   
+</div>  */
 
 }

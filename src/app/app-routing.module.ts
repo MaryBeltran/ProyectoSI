@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { AjustesUsuarioComponent } from './Views/ajustes-usuario/ajustes-usuario.component';
 import { AjustesAdministradorComponent } from './Views/ajustes-administrador/ajustes-administrador.component';
 import { AdminComponent } from './Views/admin/admin.component';
+import { ListaDeseosComponent } from './lista-deseos/lista-deseos.component';
 
 const routes: Routes = [
 
@@ -25,6 +26,7 @@ children:[
 {path: 'promociones',component: PromocionesComponent},
 {path: 'ajustes',component: AjustesComponent},
 {path: 'carrito',component: CarritoComponent},
+{path: 'listadeseos',component: ListaDeseosComponent},
 {path: 'recomendado',component: RecomendadoComponent},
 {path: 'favoritos',component: FavoritosComponent},
 {path: 'productos', children:[ 

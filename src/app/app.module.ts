@@ -31,6 +31,7 @@ import { PagoComponent } from './carrito/pago/pago.component';
 import { environment } from 'src/environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
+import { ListaDeseosComponent } from './lista-deseos/lista-deseos.component';
 
   
  export const firebase = environment.firebase;
@@ -62,7 +63,8 @@ import { AngularFireModule } from '@angular/fire';
     BannerComponent,
     TablaCategoriasComponent,
     ListaComponent,
-    PagoComponent
+    PagoComponent,
+    ListaDeseosComponent
     
     
    
