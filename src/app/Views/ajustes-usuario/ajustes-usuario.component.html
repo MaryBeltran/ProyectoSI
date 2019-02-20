@@ -22,7 +22,7 @@
                                 <tr *ngFor="let usuario of usuarios">
                                 <td>{{usuario.Nombre}}</td>
                                 <td>{{usuario.Correo}}</td>
-                                <td>{{usuario.Admin}}</td>
+                                <td><button type="button" class="btn btn-outline-light" Style="margin-left: 50px"(click)="CambiarAdmin(usuario)">Cambiar</button></td>
                                 </tr>
                             </tbody>
                         </div>
@@ -36,7 +36,7 @@
 
             <div class="col-5 cusuarios">
                 <div class="row">
-                    <h2>Control Usuarios</h2> 
+                    <h3>Control Usuarios</h3> 
                 </div>
                 <div class="row">
                 </div>
