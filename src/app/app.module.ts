@@ -42,7 +42,7 @@ import { FormsModule } from '@angular/forms';
 
 
   
- export const firebase = environment.firebase;
+ 
 
 
 @NgModule({
@@ -87,7 +87,7 @@ import { FormsModule } from '@angular/forms';
     NgbModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    
     AngularFirestoreModule,
 
     FormsModule
