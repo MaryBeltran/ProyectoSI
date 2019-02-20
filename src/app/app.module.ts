@@ -19,7 +19,6 @@ import { RecomendadoComponent } from './recomendado/recomendado.component';
 import { FavoritosComponent } from './favoritos/favoritos.component';
 import { LoginComponent } from './login/login.component';
 import { AjustesUsuarioComponent } from './Views/ajustes-usuario/ajustes-usuario.component';
-import { AjustesAdministradorComponent } from './Views/ajustes-administrador/ajustes-administrador.component';
 import { AdminComponent } from './Views/admin/admin.component';
 import { Navbar2Component } from './navbar2/navbar2.component';
 import { B1AdminComponent } from './Component/b1-admin/b1-admin.component';
@@ -28,6 +27,10 @@ import { BannerComponent } from './banner/banner.component';
 import { TablaCategoriasComponent } from './tabla-categorias/tabla-categorias.component';
 import { ListaComponent } from './carrito/lista/lista.component';
 import { PagoComponent } from './carrito/pago/pago.component';
+import { CrudproductosComponent } from './Views/crudproductos/crudproductos.component';
+import { VentasComponent } from './Views/ventas/ventas.component';
+import { ARecomendadosComponent } from './Views/a-recomendados/a-recomendados.component';
+import { APromocionesComponent } from './Views/a-promociones/a-promociones.component';
 
 
 
@@ -51,7 +54,6 @@ import { PagoComponent } from './carrito/pago/pago.component';
     FavoritosComponent,
     LoginComponent,
     AjustesUsuarioComponent,
-    AjustesAdministradorComponent,
     AdminComponent,
     Navbar2Component,
     B1AdminComponent,
@@ -60,6 +62,10 @@ import { PagoComponent } from './carrito/pago/pago.component';
     TablaCategoriasComponent,
     ListaComponent,
     PagoComponent,
+    CrudproductosComponent,
+    VentasComponent,
+    ARecomendadosComponent,
+    APromocionesComponent,
    
   ],
   imports: [
