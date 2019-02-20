@@ -19,10 +19,22 @@ export class AjustesUsuarioComponent implements OnInit {
    CambiarAdmin(item){
     this.UsertoEdit = item
     console.log(this.UsertoEdit)
-    if(this.UsertoEdit.admin == true){
-      this.UsertoEdit.admin = false
+    if(this.UsertoEdit.Admin == true){
+      this.UsertoEdit.Admin = false
     }else{
-      this.UsertoEdit.admin = true
+      this.UsertoEdit.Admin = true
+    }
+    console.log(this.UsertoEdit)
+    this.fs.updateUsers(this.UsertoEdit)
+  }
+
+  CambiarHab(item){
+    this.UsertoEdit = item
+    console.log(this.UsertoEdit)
+    if(this.UsertoEdit.Habilitacion == true){
+      this.UsertoEdit.Habilitacion = false
+    }else{
+      this.UsertoEdit.Habilitacion = true
     }
     console.log(this.UsertoEdit)
     this.fs.updateUsers(this.UsertoEdit)

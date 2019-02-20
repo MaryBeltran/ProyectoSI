@@ -6,7 +6,7 @@
 
 <div class="container">
         <div class="row">
-            <div class="col-5 cadm">
+            <div class="col-6 cadm">
                 <div class="row">
                     <h3>Control Administradores</h3>
                 </div>
@@ -17,11 +17,13 @@
                                 <th>Nombre</th>
                                 <th>Correo</th>
                                 <th>Administrador</th>
+                                <th></th>
                             </thead>
                             <tbody>
                                 <tr *ngFor="let usuario of usuarios">
                                 <td>{{usuario.Nombre}}</td>
                                 <td>{{usuario.Correo}}</td>
+                                <td>{{usuario.Admin}}</td>
                                 <td><button type="button" class="btn btn-outline-light" Style="margin-left: 50px"(click)="CambiarAdmin(usuario)">Cambiar</button></td>
                                 </tr>
                             </tbody>
@@ -32,16 +34,35 @@
 
             </div>
 
-            <div class="col-2"></div>
+            <div class="col-1"></div>
 
             <div class="col-5 cusuarios">
                 <div class="row">
                     <h3>Control Usuarios</h3> 
                 </div>
                 <div class="row">
+                    <div class="table responsive">
+                        <div class="table table-hover">
+                            <thead>
+                                <th>Nombre</th>
+                                <th>Correo</th>
+                                <th>Estado del Usuario</th>
+                                <th></th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let usuario of usuarios">
+                                <td>{{usuario.Nombre}}</td>
+                                <td>{{usuario.Correo}}</td>
+                                <td>{{usuario.Habilitacion}}</td>
+                                <td><button type="button" class="btn btn-outline-light" Style="margin-left: 50px"(click)="CambiarHab(usuario)">Cambiar</button></td>
+                                </tr>
+                            </tbody>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+     
 </div>
 
 
