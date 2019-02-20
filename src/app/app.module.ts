@@ -32,9 +32,14 @@ import { CrudproductosComponent } from './Views/crudproductos/crudproductos.comp
 import { VentasComponent } from './Views/ventas/ventas.component';
 import { ARecomendadosComponent } from './Views/a-recomendados/a-recomendados.component';
 import { APromocionesComponent } from './Views/a-promociones/a-promociones.component';
+
 import { AngularFirestoreModule} from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
+
+import {ReactiveFormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+
 
   
  export const firebase = environment.firebase;
@@ -84,6 +89,9 @@ import { environment } from 'src/environments/environment';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+
+    FormsModule
+
     
     
   ],
