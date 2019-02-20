@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FirestoreService } from 'src/app/Service/firestore.service';
 
 @Component({
   selector: 'app-ajustes-usuario',
@@ -6,8 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ajustes-usuario.component.css']
 })
 export class AjustesUsuarioComponent implements OnInit {
+  usuarios = [];
 
-  constructor() { }
+  constructor(private fs: FirestoreService) {
+    this.fs.getAllUsuarios().subscribe(usuarios =>{
+      this.usuarios = usuarios
+    })
+   }
 
   ngOnInit() {
   }

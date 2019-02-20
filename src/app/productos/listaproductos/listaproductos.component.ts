@@ -10,6 +10,7 @@ export class ListaproductosComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }
