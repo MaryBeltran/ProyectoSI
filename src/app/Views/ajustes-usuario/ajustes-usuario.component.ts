@@ -10,7 +10,7 @@ export class AjustesUsuarioComponent implements OnInit {
   usuarios = [];
 
   constructor(private fs: FirestoreService) {
-    this.fs.getAllUsuarios().subscribe(usuarios =>{
+    fs.getAllUsuarios().subscribe(usuarios =>{
       this.usuarios = usuarios
     })
    }
