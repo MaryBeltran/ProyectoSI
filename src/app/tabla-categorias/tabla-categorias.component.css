@@ -28,12 +28,6 @@
     color: #f47820;
     
 }
-.icono :hover{
-    color: black;
-   
-    cursor: pointer;
-    
-}
 
 .elemento :hover{
     color: rgb(61, 60, 60);
