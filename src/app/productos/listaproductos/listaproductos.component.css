@@ -1,0 +1,19 @@
+.contenedor{
+    width: 100%;
+    height: 100%;
+    background-color: red;
+    
+}
+.productos{
+    width: 70%;
+    background-color: blue;
+    float: right;
+    column-count: 3;
+    margin: 2%;
+}
+.filtros{
+    margin: 2%;
+    width: 20%;
+    float: left;
+    background-color: orange;
+}

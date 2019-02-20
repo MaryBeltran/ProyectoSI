@@ -13,10 +13,13 @@ import { ListaproductosComponent } from './productos/listaproductos/listaproduct
 import { LoginComponent } from './login/login.component';
 import { AjustesUsuarioComponent } from './Views/ajustes-usuario/ajustes-usuario.component';
 import { AdminComponent } from './Views/admin/admin.component';
+
+import { ListaDeseosComponent } from './lista-deseos/lista-deseos.component';
 import { CrudproductosComponent } from './Views/crudproductos/crudproductos.component';
 import { VentasComponent } from './Views/ventas/ventas.component';
 import { ARecomendadosComponent } from './Views/a-recomendados/a-recomendados.component';
 import { APromocionesComponent } from './Views/a-promociones/a-promociones.component';
+
 
 
 const routes: Routes = [
@@ -29,6 +32,7 @@ children:[
 {path: 'promociones',component: PromocionesComponent},
 {path: 'ajustes',component: AjustesComponent},
 {path: 'carrito',component: CarritoComponent},
+{path: 'listadeseos',component: ListaDeseosComponent},
 {path: 'recomendado',component: RecomendadoComponent},
 {path: 'favoritos',component: FavoritosComponent},
 {path: 'productos', children:[ 
