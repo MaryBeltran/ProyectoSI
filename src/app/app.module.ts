@@ -36,7 +36,8 @@ import { CrudproductosComponent } from './Views/crudproductos/crudproductos.comp
 import { VentasComponent } from './Views/ventas/ventas.component';
 import { ARecomendadosComponent } from './Views/a-recomendados/a-recomendados.component';
 import { APromocionesComponent } from './Views/a-promociones/a-promociones.component';
-
+import {ReactiveFormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
   
  export const firebase = environment.firebase;
@@ -69,7 +70,7 @@ import { APromocionesComponent } from './Views/a-promociones/a-promociones.compo
     ListaComponent,
     PagoComponent,
 
-    ListaDeseosComponent
+    ListaDeseosComponent,
     
     
 
@@ -85,7 +86,8 @@ import { APromocionesComponent } from './Views/a-promociones/a-promociones.compo
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    FormsModule
     
     
   ],

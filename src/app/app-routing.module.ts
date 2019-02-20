@@ -27,7 +27,7 @@ const routes: Routes = [
 {
 path:'',
 children:[
-{path: '',redirectTo:'/home',pathMatch: 'full'},
+{path: '',redirectTo:'/login',pathMatch: 'full'},
 {path: 'home',component: HomeComponent},
 {path: 'promociones',component: PromocionesComponent},
 {path: 'ajustes',component: AjustesComponent},
