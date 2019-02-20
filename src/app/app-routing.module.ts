@@ -12,8 +12,12 @@ import { ProductoComponent } from './productos/producto/producto.component';
 import { ListaproductosComponent } from './productos/listaproductos/listaproductos.component';
 import { LoginComponent } from './login/login.component';
 import { AjustesUsuarioComponent } from './Views/ajustes-usuario/ajustes-usuario.component';
-import { AjustesAdministradorComponent } from './Views/ajustes-administrador/ajustes-administrador.component';
 import { AdminComponent } from './Views/admin/admin.component';
+import { CrudproductosComponent } from './Views/crudproductos/crudproductos.component';
+import { VentasComponent } from './Views/ventas/ventas.component';
+import { ARecomendadosComponent } from './Views/a-recomendados/a-recomendados.component';
+import { APromocionesComponent } from './Views/a-promociones/a-promociones.component';
+
 
 const routes: Routes = [
 
@@ -33,8 +37,11 @@ children:[
 ]},
 {path: 'login',component: LoginComponent},
 {path: 'ajustes-usuario', component: AjustesUsuarioComponent},
-{path: 'ajustes-administrador', component: AjustesAdministradorComponent},
+{path: 'a-promociones', component: APromocionesComponent},
+{path: 'a-recomendados', component: ARecomendadosComponent},
+{path: 'crudproductos', component: CrudproductosComponent},
 {path: 'admin', component: AdminComponent},
+{path: 'ventas', component: VentasComponent},
 
 ],
 
