@@ -27,6 +27,7 @@ import { BannerComponent } from './banner/banner.component';
 import { TablaCategoriasComponent } from './tabla-categorias/tabla-categorias.component';
 import { ListaComponent } from './carrito/lista/lista.component';
 import { PagoComponent } from './carrito/pago/pago.component';
+import { ListaDeseosComponent } from './lista-deseos/lista-deseos.component';
 import { CrudproductosComponent } from './Views/crudproductos/crudproductos.component';
 import { VentasComponent } from './Views/ventas/ventas.component';
 import { ARecomendadosComponent } from './Views/a-recomendados/a-recomendados.component';
@@ -35,7 +36,8 @@ import { AngularFirestoreModule} from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 
-
+  
+ export const firebase = environment.firebase;
 
 
 @NgModule({
@@ -64,10 +66,16 @@ import { environment } from 'src/environments/environment';
     TablaCategoriasComponent,
     ListaComponent,
     PagoComponent,
+
+    ListaDeseosComponent,
+    
+    
+
     CrudproductosComponent,
     VentasComponent,
     ARecomendadosComponent,
     APromocionesComponent,
+
    
   ],
   imports: [
