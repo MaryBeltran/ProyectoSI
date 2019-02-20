@@ -32,6 +32,14 @@ export class FirestoreService {
     return this.usuarios
   }
 
+  updateUsers(usuario: Usuario){
+    console.log(usuario);
+    this.usuariosDoc = this.db.doc(`Usuario/${usuario.id}`);
+    this.usuariosDoc.set(
+      {...usuario},
+      {merge:true});
+  }
+
   /*
  
  usuarios: Observable<Usuarios[]>;
