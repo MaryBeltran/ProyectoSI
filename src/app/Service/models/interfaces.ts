@@ -7,6 +7,7 @@ export interface Usuario { //interfaces utilizadas en todo el codigo
     Clave?: string;
     Clavec?: string;
     Direccion?: string;
-    admin?: boolean;
+    Admin?: boolean;
+    Habilitacion?: boolean;
 }
 
