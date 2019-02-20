@@ -98,7 +98,8 @@
     margin-top: 15px; }
     .preview-thumbnail.nav-tabs li {
       width: 18%;
-      margin-right: 2.5%; }
+      margin-right: 0;
+      margin-left: 1% }
       .preview-thumbnail.nav-tabs li img {
         opacity: 0.8;
         max-width: 100%;
