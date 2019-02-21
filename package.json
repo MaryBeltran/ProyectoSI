@@ -36,7 +36,6 @@
     "zone.js": "~0.8.26",
     "firestore": "^1.1.6",
     "ngx-bootstrap": "^3.0.1"
-   
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.12.4",
@@ -59,6 +58,5 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
     "typescript": "~3.2.2"
-    
   }
 }
