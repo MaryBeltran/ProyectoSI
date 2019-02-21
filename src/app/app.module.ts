@@ -36,11 +36,16 @@ import { APromocionesComponent } from './Views/a-promociones/a-promociones.compo
 import { AngularFirestoreModule} from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
+import { FormsModule } from '@angular/forms';
+
+
+  
+
 
 import { FormsModule } from '@angular/forms';
 
 
- export const firebase = environment.firebase;
+
 
 
 @NgModule({
@@ -71,8 +76,6 @@ import { FormsModule } from '@angular/forms';
     PagoComponent,
 
     ListaDeseosComponent,
-    
-    
 
     CrudproductosComponent,
     VentasComponent,
@@ -87,6 +90,7 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    FormsModule      
     
     
   ],
