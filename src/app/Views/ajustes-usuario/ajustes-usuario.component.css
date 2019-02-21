@@ -8,6 +8,7 @@
     box-shadow: 0px 0px 20px black;
     border-radius: 8px;
     margin-bottom: 80px;
+    text-align: center;
 }
 
 
@@ -19,6 +20,13 @@
     height: 100%;
     padding: 1vh;
     box-shadow: 0px 0px 20px black;
-    border-radius: 8px;
+    border-radius: 6px;
     margin-bottom: 80px;
+    margin-left: 8%;
+    text-align: center;
+}
+
+
+.btn-bg{
+background-color: #f47820 ; 
 }

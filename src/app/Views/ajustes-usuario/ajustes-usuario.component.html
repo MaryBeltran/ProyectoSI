@@ -2,13 +2,11 @@
 <app-b2-admin></app-b2-admin>
 
 
-<a> AJUSTES DE USUARIO: Desactivar o Activar clientes + Crear o Eliminar a un Administrador </a>
-
 <div class="container">
         <div class="row">
             <div class="col-6 cadm">
                 <div class="row">
-                    <h3>Control Administradores</h3>
+                    <h3> .       Control Administradores</h3>
                 </div>
                 <div class="row">
                     <div class="table responsive">
@@ -24,7 +22,7 @@
                                 <td>{{usuario.Nombre}}</td>
                                 <td>{{usuario.Correo}}</td>
                                 <td>{{usuario.Admin}}</td>
-                                <td><button type="button" class="btn btn-outline-light" Style="margin-left: 50px"(click)="CambiarAdmin(usuario)">Cambiar</button></td>
+                                <td><button type="button" class="btn btn-outline-light btn-bg" Style="margin-left: 20px"  (click)="CambiarAdmin(usuario)">Cambiar</button></td>
                                 </tr>
                             </tbody>
                         </div>
@@ -34,11 +32,10 @@
 
             </div>
 
-            <div class="col-1"></div>
 
             <div class="col-5 cusuarios">
                 <div class="row">
-                    <h3>Control Usuarios</h3> 
+                    <h3> .        Control Usuarios</h3> 
                 </div>
                 <div class="row">
                     <div class="table responsive">
@@ -54,7 +51,7 @@
                                 <td>{{usuario.Nombre}}</td>
                                 <td>{{usuario.Correo}}</td>
                                 <td>{{usuario.Habilitacion}}</td>
-                                <td><button type="button" class="btn btn-outline-light" Style="margin-left: 50px"(click)="CambiarHab(usuario)">Cambiar</button></td>
+                                <td><button type="button" class="btn btn-outline-light btn-bg" Style="margin-left: 5px"(click)="CambiarHab(usuario)">Cambiar</button></td>
                                 </tr>
                             </tbody>
                         </div>
