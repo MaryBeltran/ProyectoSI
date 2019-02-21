@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FirestoreService } from 'src/app/Service/firestore.service';
 
 @Component({
   selector: 'app-navbar2',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Navbar2Component implements OnInit {
 
-  constructor() { }
+  usuarios = [];
+
+  constructor(private fs: FirestoreService) {
+    fs.getAllUsuarios().subscribe(usuarios =>{
+      this.usuarios = usuarios
+    })
+   }
 
   ngOnInit() {
   }
