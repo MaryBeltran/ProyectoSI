@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import {Usuario} from 'src/app/Service/models/interfaces'
+import {Usuario, Producto, Categoria} from 'src/app/Service/models/interfaces'
 
 
 @Injectable({
@@ -14,12 +14,22 @@ export class FirestoreService {
   usuariosDoc: AngularFirestoreDocument;
   Ausuario = [];
 
+  productoColeccion: AngularFirestoreCollection<Producto>;
+  Productos: Observable<Producto[]>;
+
+  categoriasColeccion: AngularFirestoreCollection<Categoria>;
+  Categorias: Observable<Categoria[]>;
+
   constructor(public db: AngularFirestore) { 
     this.getUsers().subscribe(data => {
       data.forEach(element => {
         this.Ausuario.push(element.payload.doc.data())
       });
     });
+
+
+
+
   }
 
   getUsers(){
@@ -38,6 +48,18 @@ export class FirestoreService {
     this.usuariosDoc.set(
       {...usuario},
       {merge:true});
+  }
+
+  getAllProductos(){
+    this.productoColeccion=this.db.collection('Productos');
+    this.Productos=this.productoColeccion.valueChanges();
+    return this.Productos
+  }
+
+  getCategorias(){
+    this.categoriasColeccion=this.db.collection('Categorias');
+    this.Categorias=this.categoriasColeccion.valueChanges();
+    return this.Categorias
   }
 
   /*
