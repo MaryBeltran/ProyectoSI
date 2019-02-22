@@ -16,23 +16,23 @@
    <p>Z-A</p>
    <hr>
    <p>Departamentos:</p>
-   <div *ngFor="let Categoria of Categorias | async">
-         <p>{{Categoria.Nombre}}</p>
+   <div *ngFor="let categoria of categorias">
+         <p>{{categoria.Nombre}}</p>
     </div>
    
 
 
    </div>
    <div class="productos">
-         <div *ngFor="let Producto of Productos | async" class="card" style="width: 18rem;">
-               <img class="card-img-top" src="{{Producto.foto}}" alt="Card image cap">
+         <div *ngFor="let producto of productos " class="card" style="width: 18rem;" routerLink="/productos/producto">
+               <img class="card-img-top" src="{{producto.foto}}" alt="Card image cap">
                <div class="card-body">
-                  <h2 class="card-text">{{Producto.Costo}} BsS</h2>
-                  <p class="card-text">{{Producto.Nombre}}</p>
-                  <p class="card-text">Departamento: {{Producto.Departamento}}</p>
+                  <h2 class="card-text">{{producto.Costo}} BsS</h2>
+                  <p class="card-text">{{producto.Nombre}}</p>
+                  <p class="card-text">Departamento: {{producto.Departamento}}</p>
                 
                </div>
-             </div>
+            </div>
 
    </div>
    

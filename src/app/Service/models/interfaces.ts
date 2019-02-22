@@ -7,6 +7,23 @@ export interface Usuario { //interfaces utilizadas en todo el codigo
     Clave?: string;
     Clavec?: string;
     Direccion?: string;
-    admin?: boolean;
+    Admin?: boolean;
+    Habilitacion?: boolean;
 }
+
+export interface Producto{
+    id?: String;
+    Nombre: String;
+    Foto: String;
+    Costo: String;
+    Cantidad: String;
+    descuento: String;
+    Clasificacion: String;
+  }
+
+  export interface Categoria{
+    id?: String;
+    Nombre: String;
+    CantidadDeproductos: String;
+  }
 

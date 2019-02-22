@@ -35,9 +35,9 @@ import { APromocionesComponent } from './Views/a-promociones/a-promociones.compo
 import { AngularFirestoreModule} from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
-
+import { FormsModule } from '@angular/forms';
   
- export const firebase = environment.firebase;
+
 
 
 @NgModule({
@@ -84,6 +84,7 @@ import { environment } from 'src/environments/environment';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    FormsModule
     
     
   ],
