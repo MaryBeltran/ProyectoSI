@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
-<<<<<<< HEAD
-=======
 import { FirestoreService } from '../Service/firestore.service';
->>>>>>> e0231e8371ca92f53e98cdf253b9daec1f3b2e30
 
 
 @Component({
@@ -17,9 +14,6 @@ export class LoginComponent implements OnInit {
   contra; 
   correo;
   msgError="";
-<<<<<<< HEAD
-  constructor( private router: Router) { }
-=======
 
   usuarios = [];
   name = [];
@@ -39,17 +33,10 @@ export class LoginComponent implements OnInit {
 
     
   }
->>>>>>> e0231e8371ca92f53e98cdf253b9daec1f3b2e30
 
   ngOnInit() {
   }
 
-<<<<<<< HEAD
-  buscar(): void 
-	{
-		
-		if (this.contra == 12345 && this.correo == "bladimirapon@gmail.com" )
-=======
  cant = 0;
 
 
@@ -91,7 +78,6 @@ export class LoginComponent implements OnInit {
    
 		/*
 		if (this.contra == this.usuarios.indexOf('Clave') && this.correo == "bladimirapon@gmail.com" )
->>>>>>> e0231e8371ca92f53e98cdf253b9daec1f3b2e30
 		{
       this.msgError="Entrar!!";		 
       console.log(this.msgError);
@@ -105,11 +91,7 @@ export class LoginComponent implements OnInit {
     }else{
       this.router.navigate(['/login']);
       alert("Por favor verifique los campos y vuelva a intentar");
-<<<<<<< HEAD
-    }
-=======
     }*/
->>>>>>> e0231e8371ca92f53e98cdf253b9daec1f3b2e30
 		this.msgError="";
 	
 		

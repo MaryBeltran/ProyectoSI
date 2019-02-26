@@ -25,18 +25,7 @@ export class FirestoreService {
   Categorias: Observable<Categoria[]>;
 
   constructor(public db: AngularFirestore) { 
-<<<<<<< HEAD
-    this.getUsers().subscribe(data => {
-      data.forEach(element => {
-        this.Ausuario.push(element.payload.doc.data())
-      });
-    });
-
-
-
-=======
   
->>>>>>> e0231e8371ca92f53e98cdf253b9daec1f3b2e30
 
   }
 
@@ -56,17 +45,7 @@ export class FirestoreService {
     return this.usuarios
   }
 
-<<<<<<< HEAD
-  updateUsers(usuario: Usuario){
-    console.log(usuario);
-    this.usuariosDoc = this.db.doc(`Usuario/${usuario.id}`);
-    this.usuariosDoc.set(
-      {...usuario},
-      {merge:true});
-  }
-=======
   
->>>>>>> e0231e8371ca92f53e98cdf253b9daec1f3b2e30
 
   getAllProductos(){
     this.productoColeccion=this.db.collection('Productos');
@@ -80,8 +59,6 @@ export class FirestoreService {
     return this.Categorias
   }
 
-<<<<<<< HEAD
-=======
   setUsuarioActual(user){
     this.usuarioActual= user;
   }
@@ -89,7 +66,6 @@ export class FirestoreService {
     return this.usuarioActual;
   }
 
->>>>>>> e0231e8371ca92f53e98cdf253b9daec1f3b2e30
   /*
  
  usuarios: Observable<Usuarios[]>;
