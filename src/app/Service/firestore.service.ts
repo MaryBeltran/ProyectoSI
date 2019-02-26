@@ -9,6 +9,10 @@ import {Usuario, Producto, Categoria} from 'src/app/Service/models/interfaces'
   providedIn: 'root'
 })
 export class FirestoreService {
+ 
+  
+  usuarioActual="";
+
   usuariosCollection: AngularFirestoreCollection;
   usuarios: Observable<Usuario[]>;
   usuariosDoc: AngularFirestoreDocument;
@@ -21,6 +25,7 @@ export class FirestoreService {
   Categorias: Observable<Categoria[]>;
 
   constructor(public db: AngularFirestore) { 
+<<<<<<< HEAD
     this.getUsers().subscribe(data => {
       data.forEach(element => {
         this.Ausuario.push(element.payload.doc.data())
@@ -29,19 +34,13 @@ export class FirestoreService {
 
 
 
+=======
+  
+>>>>>>> e0231e8371ca92f53e98cdf253b9daec1f3b2e30
 
   }
 
-  getUsers(){
-    return this.db.collection('Usuario').snapshotChanges();
-  }
-
-  getAllUsuarios(){
-    this.usuariosCollection= this.db.collection('Usuario')
-    this.usuarios = this.usuariosCollection.valueChanges();
-    return this.usuarios
-  }
-
+  
   updateUsers(usuario: Usuario){
     console.log(usuario);
     this.usuariosDoc = this.db.doc(`Usuario/${usuario.id}`);
@@ -49,6 +48,25 @@ export class FirestoreService {
       {...usuario},
       {merge:true});
   }
+  
+
+  getAllUsuarios(){
+    this.usuariosCollection= this.db.collection('Usuario')
+    this.usuarios = this.usuariosCollection.valueChanges();
+    return this.usuarios
+  }
+
+<<<<<<< HEAD
+  updateUsers(usuario: Usuario){
+    console.log(usuario);
+    this.usuariosDoc = this.db.doc(`Usuario/${usuario.id}`);
+    this.usuariosDoc.set(
+      {...usuario},
+      {merge:true});
+  }
+=======
+  
+>>>>>>> e0231e8371ca92f53e98cdf253b9daec1f3b2e30
 
   getAllProductos(){
     this.productoColeccion=this.db.collection('Productos');
@@ -62,6 +80,16 @@ export class FirestoreService {
     return this.Categorias
   }
 
+<<<<<<< HEAD
+=======
+  setUsuarioActual(user){
+    this.usuarioActual= user;
+  }
+  getUsuarioActual(){
+    return this.usuarioActual;
+  }
+
+>>>>>>> e0231e8371ca92f53e98cdf253b9daec1f3b2e30
   /*
  
  usuarios: Observable<Usuarios[]>;

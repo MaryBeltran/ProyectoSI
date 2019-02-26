@@ -37,6 +37,7 @@ import { AngularFirestoreModule} from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { FormsModule } from '@angular/forms';
+<<<<<<< HEAD
 
 
   
@@ -46,6 +47,10 @@ import { FormsModule } from '@angular/forms';
 
 
 
+=======
+  
+
+>>>>>>> e0231e8371ca92f53e98cdf253b9daec1f3b2e30
 
 
 @NgModule({
@@ -90,7 +95,11 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+<<<<<<< HEAD
     FormsModule      
+=======
+    FormsModule
+>>>>>>> e0231e8371ca92f53e98cdf253b9daec1f3b2e30
     
     
   ],
