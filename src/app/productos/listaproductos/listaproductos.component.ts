@@ -16,8 +16,11 @@ export class ListaproductosComponent implements OnInit {
  
   productos = [];
   categorias = [];
+  
 
   constructor(private fs: FirestoreService) {
+  
+
     fs.getAllProductos().subscribe(productos =>{
       this.productos = productos;
     })
@@ -32,6 +35,12 @@ export class ListaproductosComponent implements OnInit {
   ngOnInit() {
    
   }
+
+  onClick(producto){
+    
+    console.log(producto);
+  }
+ 
 
   /* 
   probar en el html

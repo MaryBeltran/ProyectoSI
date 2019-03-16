@@ -35,7 +35,7 @@ children:[
 {path: 'recomendado',component: RecomendadoComponent,  canActivate: [AuthGuard]},
 {path: 'favoritos',component: FavoritosComponent,  canActivate: [AuthGuard]},
 {path: 'productos', children:[ 
-      {path: 'producto',component: ProductoComponent,  canActivate: [AuthGuard]},
+      {path: 'producto/:id',component: ProductoComponent,  canActivate: [AuthGuard]},
       {path: 'listaproductos',component: ListaproductosComponent,  canActivate: [AuthGuard]},
 ]},
 {path: 'login',component: LoginComponent},
