@@ -1,3 +1,5 @@
+import { FirestoreService } from 'src/app/Service/firestore.service';
+import { Usuario } from './Service/models/interfaces';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -49,12 +51,16 @@ export class AuthService {
 
     }
 
-    registerEmail(email: string, pass: string){
-        return new Promise ((resolve, reject) => {
-          this.afAuth.auth.createUserWithEmailAndPassword(email, pass)
-          .then( userData => resolve(userData),
-          err => reject(err));
-        });
+    async registerEmail(email: string, pass: string){
+      const credential = await this.afAuth.auth.signInAndRetrieveDataWithEmailAndPassword(email, pass)
+      return this.updateUserData(credential.user).then((success)=>{
+        this.router.navigate(['/home']);
+      });
+     //   return new Promise ((resolve, reject) => {
+      //    this.afAuth.auth.createUserWithEmailAndPassword(email, pass)
+      //    .then( userData => resolve(userData),
+       //   err => reject(err));
+        //});
     }
     
    loginEmail(email: string, pass: string){
