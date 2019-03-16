@@ -1,26 +1,25 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 
+
 <div id="Contenedor">
   <div class="icono">
     <img class="imagen" src="../assets/imagenes/mandarina-m.png" alt="">
                 
               </div>
 <div class="ContentForm">
-    <form name="FormEntrar" (ngSubmit)="buscar()">
+    <form name="FormEntrar" >
       <div class="input-group input-group-lg">
-       <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-envelope"></i></span>
-       <input type="email" [(ngModel)]="correo" class="form-control" name="correo" placeholder="Correo" id="Correo" aria-describedby="sizing-addon1" required>
+       <input type="email" [(ngModel)]="email" class="form-control" name="email" placeholder="Correo" id="email" aria-describedby="sizing-addon1" required>
      </div>
      <br>
      <div class="input-group input-group-lg">
-       <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-lock"></i></span>
-       <input type="password" [(ngModel)]="contra"  name="contra" class="form-control" placeholder="******" aria-describedby="sizing-addon1" required>
+       <input type="password" [(ngModel)]="password"  name="password" class="form-control" placeholder="contraseña" id="password"aria-describedby="sizing-addon1" required>
      </div>
      <br>
-     <button class="btn btn-lg btn-primary btn-block btn-signin" id="ingresar" type="submit">Entrar</button>
+     <button class="btn btn-lg btn-primary btn-block btn-signin" id="ingresar" type="submit" (click)="onlogin()">Entrar</button>
      
-     <div class="opcioncontra"><a href="#">Olvidaste tu contraseña?</a></div>
+     
     </form>
   </div>	
   <div class="ContenedorG">
@@ -44,7 +43,8 @@
     </div>
     </ng-template>
     </div>
+    <div class="opcioncontra"><a href="#">¿Olvidaste tu contraseña?</a></div>
+    <div class="opcioncontra2"><a>¿No tienes cuenta? </a><a href="/registro">Registrate</a></div>
   </div>
-
-
+  
   

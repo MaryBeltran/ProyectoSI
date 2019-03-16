@@ -13,7 +13,7 @@ import { ListaproductosComponent } from './productos/listaproductos/listaproduct
 import { LoginComponent } from './login/login.component';
 import { AjustesUsuarioComponent } from './Views/ajustes-usuario/ajustes-usuario.component';
 import { AdminComponent } from './Views/admin/admin.component';
-
+import { RegistroComponent } from './registro/registro.component';
 import { ListaDeseosComponent } from './lista-deseos/lista-deseos.component';
 import { CrudproductosComponent } from './Views/crudproductos/crudproductos.component';
 import { VentasComponent } from './Views/ventas/ventas.component';
@@ -39,12 +39,14 @@ children:[
       {path: 'listaproductos',component: ListaproductosComponent,  canActivate: [AuthGuard]},
 ]},
 {path: 'login',component: LoginComponent},
+{path: 'registro',component: RegistroComponent},
 {path: 'ajustes-usuario', component: AjustesUsuarioComponent,  canActivate: [AuthGuard]},
 {path: 'a-promociones', component: APromocionesComponent,  canActivate: [AuthGuard]},
 {path: 'a-recomendados', component: ARecomendadosComponent,  canActivate: [AuthGuard]},
 {path: 'crudproductos', component: CrudproductosComponent,  canActivate: [AuthGuard]},
 {path: 'admin', component: AdminComponent,  canActivate: [AuthGuard]},
 {path: 'ventas', component: VentasComponent,  canActivate: [AuthGuard]},
+
 ],
 
 },

@@ -3,7 +3,7 @@
 	margin: 50px auto;
 	background-color: rgb(255, 254, 254);
         border: 1px solid #f47820 ;
-	height: 600px;
+	height: 620px;
 	border-radius:8px;
     padding: 0px 9px 0px 9px;
    
@@ -46,7 +46,7 @@
 
 .opcioncontra{
 	text-align: center;
-	margin-top: 20px;
+	margin-top: 10px;
 	font-size: 14px;
 }
 

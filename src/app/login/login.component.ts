@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from '../auth.service';
 
+import { FirebaseAuth } from '@angular/fire';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { FirestoreService } from '../Service/firestore.service';
@@ -13,8 +14,8 @@ import { FirestoreService } from '../Service/firestore.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  contra; 
-  correo;
+  public password: string=''; 
+  public email: string='';
   msgError="";
 
   usuarios = [];
@@ -24,13 +25,7 @@ export class LoginComponent implements OnInit {
   Actual ="";
   constructor( private router: Router, private fs: FirestoreService,public auth: AuthService) { 
 
-    fs.getAllUsuarios().subscribe(usuarios =>{
-      this.usuarios = usuarios
-      console.log(usuarios);
-    })
-    
-    fs.setUsuarioActual(this.Actual);
-    fs.getUsuarioActual();
+  
     
 
     
@@ -39,9 +34,15 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
- cant = 0;
+  onlogin(): void{
+    this.auth.loginEmail(this.email, this.password)
+    .then((res)=>{
+      this.router.navigate(['/home']);
+    }).catch( err => console.log('err', err.msgError));
+  }
 
-
+ /*cant = 0;
+ 
   buscar(): void {
 
     
@@ -80,6 +81,7 @@ export class LoginComponent implements OnInit {
 		this.msgError="";
 	
 		
-	}
+  }
+  */
 
 }

@@ -7,6 +7,8 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { resolve } from 'url';
+import { reject } from 'q';
 
 interface User {
   uid: string;
@@ -24,7 +26,9 @@ interface User {
 export class AuthService {
 
   user$: Observable<User>;
-  
+  public password: string=''; 
+  public email: string='';
+
   constructor(
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
@@ -45,10 +49,28 @@ export class AuthService {
 
     }
 
+    registerEmail(email: string, pass: string){
+        return new Promise ((resolve, reject) => {
+          this.afAuth.auth.createUserWithEmailAndPassword(email, pass)
+          .then( userData => resolve(userData),
+          err => reject(err));
+        });
+    }
+    
+   loginEmail(email: string, pass: string){
+    return new Promise((resolve, reject) => {
+      this.afAuth.auth.signInWithEmailAndPassword(email, pass).then(userData=>resolve(userData),
+      err => reject(err));
+    });
+   }
+   
+
     async googleSignin() {
     const provider = new auth.GoogleAuthProvider();
-    const credential = await this.afAuth.auth.signInWithPopup(provider);
-    return this.updateUserData(credential.user);
+    const credential = await this.afAuth.auth.signInWithPopup(provider)
+    return this.updateUserData(credential.user).then((success)=>{
+      this.router.navigate(['/home']);
+    });
     }
   
     private updateUserData(user) {

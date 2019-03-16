@@ -37,6 +37,7 @@ import { environment } from 'src/environments/environment';
 import { FormsModule } from '@angular/forms';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AuthGuard } from '../app/auth.guard';
+import { RegistroComponent } from './registro/registro.component';
 
 const config = {
   apiKey: "AIzaSyAq3MIfdMvBQNgk_4CCyAIRJsqWxmQ-VII",
@@ -77,6 +78,7 @@ const config = {
     VentasComponent,
     ARecomendadosComponent,
     APromocionesComponent,
+    RegistroComponent,
 
    
   ],
