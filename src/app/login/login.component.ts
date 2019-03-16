@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AuthService } from '../auth.service';
+
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { FirestoreService } from '../Service/firestore.service';
@@ -20,7 +22,7 @@ export class LoginComponent implements OnInit {
   pass = [];
 
   Actual ="";
-  constructor( private router: Router, private fs: FirestoreService) { 
+  constructor( private router: Router, private fs: FirestoreService,public auth: AuthService) { 
 
     fs.getAllUsuarios().subscribe(usuarios =>{
       this.usuarios = usuarios
@@ -40,8 +42,7 @@ export class LoginComponent implements OnInit {
  cant = 0;
 
 
-  buscar(): void 
-	{
+  buscar(): void {
 
     
     console.log("entraa");
@@ -76,22 +77,6 @@ export class LoginComponent implements OnInit {
     }
 
    
-		/*
-		if (this.contra == this.usuarios.indexOf('Clave') && this.correo == "bladimirapon@gmail.com" )
-		{
-      this.msgError="Entrar!!";		 
-      console.log(this.msgError);
-      this.router.navigate(['/home']);
-        alert("Bienvenido " + "Bladimir Aponte");
-		  return;
-		}else if(this.contra == 12345 && this.correo == "supernacho@gmail.com"){
-      this.router.navigate(['/admin']);
-      alert("Bienvenido " + "Ignacio Rodriguez");
-      return;
-    }else{
-      this.router.navigate(['/login']);
-      alert("Por favor verifique los campos y vuelva a intentar");
-    }*/
 		this.msgError="";
 	
 		

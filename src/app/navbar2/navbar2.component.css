@@ -7,6 +7,15 @@
     text-align: center;
     
   }
+
+  .boton button{
+    background-color: #f47820;
+    border: none;
+    color: white;
+  }
+  .boton button:hover{
+    color: #9fbc31;
+  }
   
   .BarraNav2 a {
     display: inline-block;

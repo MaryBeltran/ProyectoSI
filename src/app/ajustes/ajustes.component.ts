@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from 'src/app/Service/firestore.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-ajustes',
@@ -8,12 +9,12 @@ import { FirestoreService } from 'src/app/Service/firestore.service';
 })
 export class AjustesComponent implements OnInit {
 
-  usuarios = [];
+  user ="";
 
-  constructor(private fs: FirestoreService) {
-    fs.getAllUsuarios().subscribe(usuarios =>{
-      this.usuarios = usuarios
-    })
+  constructor(private fs: FirestoreService, public auth: AuthService) {
+    this.user= fs.getUsuarioActual();
+
+   
    }
 
   ngOnInit() {

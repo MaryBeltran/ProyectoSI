@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from '../Service/firestore.service';
 
+import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-navbar2',
   templateUrl: './navbar2.component.html',
@@ -8,7 +9,7 @@ import { FirestoreService } from '../Service/firestore.service';
 })
 export class Navbar2Component implements OnInit {
   user ="";
-  constructor(private fs: FirestoreService) {
+  constructor(private fs: FirestoreService,public auth: AuthService) {
 
     this.user= fs.getUsuarioActual();
    }
