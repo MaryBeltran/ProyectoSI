@@ -23,18 +23,18 @@
 
 
    </div>
-   <div class="productos">
-         <div *ngFor="let producto of productos " class="card" style="width: 18rem;" routerLink="/productos/producto">
-               <img class="card-img-top" src="{{producto.foto}}" alt="Card image cap">
+   
+         <div *ngFor="let producto of productos " class="card" style="width: 18rem;" >
+               <img class="card-img-top" src="{{producto.foto}}" alt="Card image cap" [routerLink]="['/productos/producto',producto.id]">
                <div class="card-body">
-                  <h2 class="card-text">{{producto.Costo}} BsS</h2>
+                 
                   <p class="card-text">{{producto.Nombre}}</p>
                   <p class="card-text">Departamento: {{producto.Departamento}}</p>
                 
                </div>
             </div>
+   
 
-   </div>
    
 
 </div>

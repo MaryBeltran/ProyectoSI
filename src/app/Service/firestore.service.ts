@@ -21,6 +21,8 @@ export class FirestoreService {
   productoColeccion: AngularFirestoreCollection<Producto>;
   Productos: Observable<Producto[]>;
 
+ 
+
   categoriasColeccion: AngularFirestoreCollection<Categoria>;
   Categorias: Observable<Categoria[]>;
 
@@ -45,14 +47,14 @@ export class FirestoreService {
     return this.usuarios
   }
 
-  
+ 
 
   getAllProductos(){
     this.productoColeccion=this.db.collection('Productos');
     this.Productos=this.productoColeccion.valueChanges();
-    return this.Productos
+    return this.Productos;
   }
-
+  
   getCategorias(){
     this.categoriasColeccion=this.db.collection('Categorias');
     this.Categorias=this.categoriasColeccion.valueChanges();

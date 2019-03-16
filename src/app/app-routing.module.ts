@@ -36,7 +36,7 @@ children:[
 {path: 'recomendado',component: RecomendadoComponent},
 {path: 'favoritos',component: FavoritosComponent},
 {path: 'productos', children:[ 
-      {path: 'producto',component: ProductoComponent},
+      {path: 'producto/:id',component: ProductoComponent},
       {path: 'listaproductos',component: ListaproductosComponent},
 ]},
 {path: 'login',component: LoginComponent},
