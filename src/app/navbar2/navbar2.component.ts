@@ -9,9 +9,12 @@ import { AuthService } from '../auth.service';
 })
 export class Navbar2Component implements OnInit {
   user ="";
+ 
   constructor(private fs: FirestoreService,public auth: AuthService) {
 
     this.user= fs.getUsuarioActual();
+
+   
    }
 
   ngOnInit() {

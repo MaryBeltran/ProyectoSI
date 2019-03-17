@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ListaproductosComponent } from '../listaproductos/listaproductos.component';
 import { FirestoreService } from 'src/app/Service/firestore.service';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Favoritos } from 'src/app/Service/models/interfaces';
+import { AuthService } from 'src/app/auth.service';
 
 
 
@@ -15,8 +18,10 @@ export class ProductoComponent implements OnInit {
   idProducto: any;
   productos=[];
   detalle = [];
+
+  favoritos: Observable<Favoritos[]>;
  
-  constructor(private fs: FirestoreService, private route: ActivatedRoute) {
+  constructor(private fs: FirestoreService, private route: ActivatedRoute, public auth: AuthService) {
     
 
    }
@@ -41,10 +46,6 @@ export class ProductoComponent implements OnInit {
 
     });
 
-   
-    
-    
-
 
 
     function myFunction(imgs) {
@@ -53,5 +54,11 @@ export class ProductoComponent implements OnInit {
       expandImg.parentElement.style.display = "block";
     }
   }
+  
+  addFav(){
+    
+    this.fs.addFavorito(this.favoritos);
+  }
+  
  
 }

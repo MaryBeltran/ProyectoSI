@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import {Usuario, Producto, Categoria} from 'src/app/Service/models/interfaces'
+import {Usuario, Producto, Categoria, Favoritos} from 'src/app/Service/models/interfaces'
 
 
 @Injectable({
@@ -20,6 +20,9 @@ export class FirestoreService {
 
   productoColeccion: AngularFirestoreCollection<Producto>;
   Productos: Observable<Producto[]>;
+
+  favoritosColeccion: AngularFirestoreCollection<Favoritos>;
+  Favoritos: Observable<Favoritos[]>;
 
   categoriasColeccion: AngularFirestoreCollection<Categoria>;
   Categorias: Observable<Categoria[]>;
@@ -53,6 +56,12 @@ export class FirestoreService {
     return this.Productos
   }
 
+  getAllFavoritos(){
+    this.favoritosColeccion=this.db.collection('Favoritos');
+    this.Favoritos=this.favoritosColeccion.valueChanges();
+    return this.Favoritos
+  }
+
   getCategorias(){
     this.categoriasColeccion=this.db.collection('Categorias');
     this.Categorias=this.categoriasColeccion.valueChanges();
@@ -66,6 +75,11 @@ export class FirestoreService {
     return this.usuarioActual;
   }
 
+  addFavorito(favorito){
+    return this.db.collection('/Favoritos').add(favorito);
+  }
+
+  
   /*
  
  usuarios: Observable<Usuarios[]>;

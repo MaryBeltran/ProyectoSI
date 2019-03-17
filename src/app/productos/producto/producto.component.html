@@ -22,9 +22,9 @@
 <div class="col-sm-6">
  <div class="Nombre">
   {{detalle.Nombre}}
-  {{idProducto}}
- </div>
  
+ </div>
+
 <span class="fa fa-star checked"></span>
 <span class="fa fa-star checked"></span>
 <span class="fa fa-star checked"></span>
@@ -32,7 +32,9 @@
 <span class="fa fa-star"></span>
 <hr>
 <div class="Precio">
+   
   {{detalle.Costo}}
+  
      </div>
      <div class="dropdown">
         <button class="dropbtn">Tipos <i class="fa fa-caret-down" style="font-size:13px"></i></button>
@@ -49,7 +51,7 @@
     <br>
      <button class="btn">Añadir al Carrito <i class="fa fa-shopping-cart" style="font-size:20px"></i></button>
     <a style="padding-left: 10px;" >
-     <button class="btn"><i class="fas fa-heart" style="font-size:20px"></i></button>
+     <button class="btn"><i class="fas fa-heart" style="font-size:20px" (click)="addFav"></i></button>
     </a>
     </div>
   <div>
@@ -73,7 +75,7 @@
          
         
          
-         
+      
           Producto:  {{detalle.Descripcion}}
         
           <br>______________________________________________________________________________<br>

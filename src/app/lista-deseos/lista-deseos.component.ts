@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FirestoreService } from '../Service/firestore.service';
 
 @Component({
   selector: 'app-lista-deseos',
@@ -6,8 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lista-deseos.component.css']
 })
 export class ListaDeseosComponent implements OnInit {
-
-  constructor() { }
+  productos = [];
+  constructor(private fs: FirestoreService) {
+    fs.getAllFavoritos().subscribe(productos =>{
+      this.productos = productos;
+    })
+   }
 
   ngOnInit() {
   }
