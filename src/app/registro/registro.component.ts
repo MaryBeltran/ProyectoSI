@@ -22,12 +22,13 @@ export class RegistroComponent implements OnInit {
 
   public email: string ='';
   public password: string='';
+  public name: string='';
 
   ngOnInit() {
   }
 
  onAddUser(){
-   this.auth.registerEmail(this.email, this.password)
+   this.auth.registerEmail(this.email, this.password, this.name)
    .then((res)=> {
      this.router.navigate(['/home']);
    }).catch(err => console.log('err', err.message));

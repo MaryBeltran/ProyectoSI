@@ -22,6 +22,7 @@ interface User {
   photoURL?: string;
 }
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -51,23 +52,31 @@ export class AuthService {
 
     }
 
-    async registerEmail(email: string, pass: string){
-      const credential = await this.afAuth.auth.signInAndRetrieveDataWithEmailAndPassword(email, pass)
+    async registerEmail(email: string, pass: string, displayName: string){
+      const credential = await this.afAuth.auth.createUserAndRetrieveDataWithEmailAndPassword(email, pass)
       return this.updateUserData(credential.user).then((success)=>{
-        this.router.navigate(['/home']);
-      });
-     //   return new Promise ((resolve, reject) => {
-      //    this.afAuth.auth.createUserWithEmailAndPassword(email, pass)
-      //    .then( userData => resolve(userData),
-       //   err => reject(err));
-        //});
+        this.router.navigate(['/home']); 
+        this.updateUserData2(credential.user, displayName);
+         // this.afAuth.auth.createUserAndRetrieveDataWithEmailAndPassword(email, pass)
+          //.then( userData => resolve(userData),
+          //err => reject(err));
+        });
+    }
+    private updateUserData2(user, name: string) {
+      this.afs.collection('users').doc(user.uid).update({
+        displayName: name
+      })
     }
     
-   loginEmail(email: string, pass: string){
-    return new Promise((resolve, reject) => {
-      this.afAuth.auth.signInWithEmailAndPassword(email, pass).then(userData=>resolve(userData),
-      err => reject(err));
-    });
+    
+   async loginEmail(email: string, pass: string){
+    const credential = await this.afAuth.auth.signInWithEmailAndPassword(email, pass)
+      
+        this.router.navigate(['/home']);
+    //return new Promise((resolve, reject) => {
+      //this.afAuth.auth.signInWithEmailAndPassword(email, pass).then(userData=>resolve(userData),
+      //err => reject(err));
+    
    }
    
 
@@ -78,6 +87,8 @@ export class AuthService {
       this.router.navigate(['/home']);
     });
     }
+
+   
   
     private updateUserData(user) {
       // Sets user data to firestore on login
