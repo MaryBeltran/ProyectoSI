@@ -3,21 +3,9 @@ import { FirestoreService } from 'src/app/Service/firestore.service';
 import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import * as firebase from 'firebase';
+import { Producto, Categoria } from 'src/app/Service/models/interfaces';
 
-interface Producto{
-  id?: String;
-  Nombre: String;
-  Foto: String;
-  Costo: String;
-  Cantidad: String;
-  descuento: String;
-  Clasificacion: String;
-}
-interface Categoria{
-  id?: String;
-  Nombre: String;
-  CantidadDeproductos: String;
-}
+
 
 @Component({
   selector: 'app-listaproductos',
@@ -25,23 +13,34 @@ interface Categoria{
   styleUrls: ['./listaproductos.component.css']
 })
 export class ListaproductosComponent implements OnInit {
-  productoColeccion: AngularFirestoreCollection<Producto>;
-  Productos: Observable<Producto[]>;
+ 
+  productos = [];
+  categorias = [];
+  
 
-  categoriasColeccion: AngularFirestoreCollection<Categoria>;
-  Categorias: Observable<Categoria[]>;
+  constructor(private fs: FirestoreService) {
+  
 
-  constructor(private afs: AngularFirestore) {
+    fs.getAllProductos().subscribe(productos =>{
+      this.productos = productos;
+    })
+
+    fs.getCategorias().subscribe(categorias =>{
+      this.categorias = categorias;
+    })
+
 
    }
 
   ngOnInit() {
-    this.productoColeccion=this.afs.collection('Productos');
-    this.Productos=this.productoColeccion.valueChanges();
-
-    this.categoriasColeccion=this.afs.collection('Categorias');
-    this.Categorias=this.categoriasColeccion.valueChanges();
+   
   }
+
+  onClick(producto){
+    
+    console.log(producto);
+  }
+ 
 
   /* 
   probar en el html

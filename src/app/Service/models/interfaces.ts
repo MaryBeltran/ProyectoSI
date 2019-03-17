@@ -11,3 +11,19 @@ export interface Usuario { //interfaces utilizadas en todo el codigo
     Habilitacion?: boolean;
 }
 
+export interface Producto{
+    id?: String;
+    Nombre: String;
+    Foto: String;
+    Costo: String;
+    Cantidad: String;
+    descuento: String;
+    Clasificacion: String;
+  }
+
+  export interface Categoria{
+    id?: String;
+    Nombre: String;
+    CantidadDeproductos: String;
+  }
+

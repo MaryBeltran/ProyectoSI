@@ -4,24 +4,25 @@
   <div class="row">
       <div class="col-sm-6">
       <div class="preview-pic tab-content">
-          <div class="tab-pane active" id="pic-1"><img src="../assets/imagenes/computadora1.jpg" /></div>
-          <div class="tab-pane" id="pic-2"><img src="../assets/imagenes/computadora2.jpg" /></div>
-          <div class="tab-pane" id="pic-3"><img src="../assets/imagenes/computadora1.jpg" /></div>
-          <div class="tab-pane" id="pic-4"><img src="../assets/imagenes/computadora2.jpg" /></div>
-          <div class="tab-pane" id="pic-5"><img src="../assets/imagenes/computadora1.jpg" /></div>
+          <div class="tab-pane active" id="pic-1"><img src="{{detalle.foto}}" /></div>
+          <div class="tab-pane" id="pic-2"><img src="{{detalle.foto1}}" /></div>
+          <div class="tab-pane" id="pic-3"><img src="{{detalle.foto2}}" /></div>
+          <div class="tab-pane" id="pic-4"><img src="{{detalle.foto3}}" /></div>
+          <div class="tab-pane" id="pic-5"><img src="{{detalle.foto4}}" /></div>
         </div>
         <ul class="preview-thumbnail nav nav-tabs">
-          <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="../assets/imagenes/computadora1.jpg" /></a></li>
-          <li><a data-target="#pic-2" data-toggle="tab"><img src="../assets/imagenes/computadora2.jpg" /></a></li>
-          <li><a data-target="#pic-3" data-toggle="tab"><img src="../assets/imagenes/computadora1.jpg" /></a></li>
-          <li><a data-target="#pic-4" data-toggle="tab"><img src="../assets/imagenes/computadora2.jpg" /></a></li>
-          <li><a data-target="#pic-5" data-toggle="tab"><img src="../assets/imagenes/computadora1.jpg" /></a></li>
+          <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="{{detalle.foto}}" /></a></li>
+          <li><a data-target="#pic-2" data-toggle="tab"><img src="{{detalle.foto1}}" /></a></li>
+          <li><a data-target="#pic-3" data-toggle="tab"><img src="{{detalle.foto2}}" /></a></li>
+          <li><a data-target="#pic-4" data-toggle="tab"><img src="{{detalle.foto3}}" /></a></li>
+          <li><a data-target="#pic-5" data-toggle="tab"><img src="{{detalle.foto4}}" /></a></li>
         </ul>
       </div>
 
 <div class="col-sm-6">
  <div class="Nombre">
-nombre prod
+  {{detalle.Nombre}}
+  {{idProducto}}
  </div>
  
 <span class="fa fa-star checked"></span>
@@ -31,7 +32,7 @@ nombre prod
 <span class="fa fa-star"></span>
 <hr>
 <div class="Precio">
-    Precio VEF
+  {{detalle.Costo}}
      </div>
      <div class="dropdown">
         <button class="dropbtn">Tipos <i class="fa fa-caret-down" style="font-size:13px"></i></button>
@@ -48,7 +49,7 @@ nombre prod
     <br>
      <button class="btn">Añadir al Carrito <i class="fa fa-shopping-cart" style="font-size:20px"></i></button>
     <a style="padding-left: 10px;" >
-     <button class="btn"><i class="fa fa-star" style="font-size:20px"></i></button>
+     <button class="btn"><i class="fas fa-heart" style="font-size:20px"></i></button>
     </a>
     </div>
   <div>
@@ -69,49 +70,19 @@ nombre prod
     <div class="tab-pane fade show active" id="desc" role="tabpanel" aria-labelledby="desc-tab">
       <div>
         <p>
-          &gt;&gt;&gt;&gt;COMPUGATE CENTER, C.A - SOMOS TIENDA FÍSICA&lt;&lt;&lt;&lt;
-          <br>
-          (LOS HORARIOS DE LA TIENDA SE PUEDEN VISUALIZAR EN LA FOTO)
+         
+        
+         
+         
+          Producto:  {{detalle.Descripcion}}
+        
           <br>______________________________________________________________________________<br>
-          Producto: COMBO COMPUTADORA CPU INTEL CORE I7 3.1 GHZ 500GB DD / 8GB RAM / 500W / UNIDAD DVD/ 
-          <br>
-          INCLUYE MOUSE Y TECLADO USB
-          <br>______________________________________________________________________________<br><br>
           ESPECIFICACIONES: 
           <br>
-          &gt;CONDICION: NUEVO
+          {{detalle.especificaciones}}
           <br>
-          &gt;TARJETA MADRE: ASROCK / ASUS / INTEL / BIOSTAR
-          <br>
-          &gt;PROCESADOR: INTEL CORE I7 3.1GHZ
-          <br>
-          &gt;MEMORIA RAM: 8GB DDR3
-          <br>
-          &gt;DISCO DURO: 500GB SATA
-          <br>
-          &gt;CASE: ATX COLOR NEGRO (VARIOS MODELOS DISPONIBLES)
-          <br>
-          &gt;FUENTE: ATX 500W
-          <br>
-          &gt;UNIDAD DVD: SI INCLUYE
-          <br>
-          &gt;INCLUYE MOUSE Y TECLADO USB
-          <br><br>
-          OBSERVACIÓN: EL EQUIPO CPU SE ENTREGA ENSAMBLADO EN UN TIEMPO MÁXIMO DE 3 DÍAS HÁBILES. 
-          <br><br><br>___________________________________________________<br>
-          &gt;&gt;&gt;&gt; COMPUGATE CENTER, C.A - Somos Tienda física &lt;&lt;&lt;&lt;
-          <br><br>___________________________________________________<br>
-          &gt;Bancos Aliados: Banesco/ Banco de Venezuela / Provincial/ Mercantil/ Bod/ Bnc/ Bicentenario
-          <br>
-          &gt;Emitimos Factura Fiscal.
-          <br>
-          &gt;Tenemos punto de venta para su comodidad.
-          <br>
-          &gt;Todos nuestros precios incluyen IVA. 
-          <br>
-          &gt;Todos nuestros productos cuentan con Garantía. Consulte por la misma antes de ofertar
-          <br>
-          &gt;Para envíos a nivel nacional trabajamos con: TEALCA, DOMESA, ZOOM Y SEREX.
+         
+         
         </p>
       </div>
     </div>

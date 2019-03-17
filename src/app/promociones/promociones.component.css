@@ -1,0 +1,9 @@
+.card{
+    width: 100%;
+}
+
+@media(max-width:500px){
+    .card-text{
+        font-size: 8px;
+    }
+}

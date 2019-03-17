@@ -13,39 +13,39 @@ import { ListaproductosComponent } from './productos/listaproductos/listaproduct
 import { LoginComponent } from './login/login.component';
 import { AjustesUsuarioComponent } from './Views/ajustes-usuario/ajustes-usuario.component';
 import { AdminComponent } from './Views/admin/admin.component';
-
+import { RegistroComponent } from './registro/registro.component';
 import { ListaDeseosComponent } from './lista-deseos/lista-deseos.component';
 import { CrudproductosComponent } from './Views/crudproductos/crudproductos.component';
 import { VentasComponent } from './Views/ventas/ventas.component';
 import { ARecomendadosComponent } from './Views/a-recomendados/a-recomendados.component';
 import { APromocionesComponent } from './Views/a-promociones/a-promociones.component';
-
-
+import { AuthGuard } from '../app/auth.guard';
 
 const routes: Routes = [
 
 {
 path:'',
 children:[
-{path: '',redirectTo:'/home',pathMatch: 'full'},
-{path: 'home',component: HomeComponent},
-{path: 'promociones',component: PromocionesComponent},
-{path: 'ajustes',component: AjustesComponent},
-{path: 'carrito',component: CarritoComponent},
-{path: 'listadeseos',component: ListaDeseosComponent},
-{path: 'recomendado',component: RecomendadoComponent},
-{path: 'favoritos',component: FavoritosComponent},
+{path: '',redirectTo:'/login',pathMatch: 'full'},
+{path: 'home',component: HomeComponent,  canActivate: [AuthGuard]},
+{path: 'promociones',component: PromocionesComponent,  canActivate: [AuthGuard]},
+{path: 'ajustes',component: AjustesComponent,  canActivate: [AuthGuard]},
+{path: 'carrito',component: CarritoComponent,  canActivate: [AuthGuard]},
+{path: 'listadeseos',component: ListaDeseosComponent,  canActivate: [AuthGuard]},
+{path: 'recomendado',component: RecomendadoComponent,  canActivate: [AuthGuard]},
+{path: 'favoritos',component: FavoritosComponent,  canActivate: [AuthGuard]},
 {path: 'productos', children:[ 
-      {path: 'producto',component: ProductoComponent},
-      {path: 'listaproductos',component: ListaproductosComponent},
+      {path: 'producto/:id',component: ProductoComponent,  canActivate: [AuthGuard]},
+      {path: 'listaproductos',component: ListaproductosComponent,  canActivate: [AuthGuard]},
 ]},
 {path: 'login',component: LoginComponent},
-{path: 'ajustes-usuario', component: AjustesUsuarioComponent},
-{path: 'a-promociones', component: APromocionesComponent},
-{path: 'a-recomendados', component: ARecomendadosComponent},
-{path: 'crudproductos', component: CrudproductosComponent},
-{path: 'admin', component: AdminComponent},
-{path: 'ventas', component: VentasComponent},
+{path: 'registro',component: RegistroComponent},
+{path: 'ajustes-usuario', component: AjustesUsuarioComponent,  canActivate: [AuthGuard]},
+{path: 'a-promociones', component: APromocionesComponent,  canActivate: [AuthGuard]},
+{path: 'a-recomendados', component: ARecomendadosComponent,  canActivate: [AuthGuard]},
+{path: 'crudproductos', component: CrudproductosComponent,  canActivate: [AuthGuard]},
+{path: 'admin', component: AdminComponent,  canActivate: [AuthGuard]},
+{path: 'ventas', component: VentasComponent,  canActivate: [AuthGuard]},
 
 ],
 

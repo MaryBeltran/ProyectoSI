@@ -19,9 +19,14 @@
     </div>
   </div>
   
- 
-<a style="float:right">Bienvenido:</a>
-
+<div *ngIf="auth.user$ | async as user">
+<div class="boton">
+  <a style="float:right">
+  <button (click)="auth.signOut()">Cerrar Sesión</button>
+</a>  
+</div>
+<a style="float:right">Bienvenido, {{user.displayName}}</a>
+</div>
 
 
 <a href="javascript:void(0);" class="icon" onclick="menuresponsive()">

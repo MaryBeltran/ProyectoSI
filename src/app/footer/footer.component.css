@@ -21,6 +21,17 @@
     padding: 0px 20px 0px 20px !important;
     color: #ffdec6;
 }
+@media(max-width:750px){
+    .foot a {
+    
+        font-size: 10px;
+    }
+    .fa{
+        font-size: 30px !important;
+        padding: 0px 20px 0px 20px !important;
+        color: #ffdec6;
+    }
+}
 
 .fa-instagram:hover{
     color: #e1306c;

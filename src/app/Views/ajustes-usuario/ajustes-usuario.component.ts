@@ -11,9 +11,7 @@ export class AjustesUsuarioComponent implements OnInit {
   UsertoEdit;
 
   constructor(private fs: FirestoreService) {
-    fs.getAllUsuarios().subscribe(usuarios =>{
-      this.usuarios = usuarios
-    })
+    
    }
 
    CambiarAdmin(item){
@@ -25,7 +23,6 @@ export class AjustesUsuarioComponent implements OnInit {
       this.UsertoEdit.Admin = true
     }
     console.log(this.UsertoEdit)
-    this.fs.updateUsers(this.UsertoEdit)
   }
 
   CambiarHab(item){
@@ -37,7 +34,6 @@ export class AjustesUsuarioComponent implements OnInit {
       this.UsertoEdit.Habilitacion = true
     }
     console.log(this.UsertoEdit)
-    this.fs.updateUsers(this.UsertoEdit)
   }
 
   ngOnInit() {

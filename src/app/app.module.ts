@@ -1,10 +1,9 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
-
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProductosComponent } from './productos/productos.component';
 import { FooterComponent } from './footer/footer.component';
@@ -35,10 +34,19 @@ import { APromocionesComponent } from './Views/a-promociones/a-promociones.compo
 import { AngularFirestoreModule} from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
+import { FormsModule } from '@angular/forms';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AuthGuard } from '../app/auth.guard';
+import { RegistroComponent } from './registro/registro.component';
 
-  
- export const firebase = environment.firebase;
-
+const config = {
+  apiKey: "AIzaSyAq3MIfdMvBQNgk_4CCyAIRJsqWxmQ-VII",
+    authDomain: "la-mandarina.firebaseapp.com",
+    databaseURL: "https://la-mandarina.firebaseio.com",
+    projectId: "la-mandarina",
+    storageBucket: "la-mandarina.appspot.com",
+    messagingSenderId: "345266150675"
+}
 
 @NgModule({
   declarations: [
@@ -49,7 +57,6 @@ import { environment } from 'src/environments/environment';
     FooterComponent,
     PromocionesComponent,
     HomeComponent,
-  
     ListaproductosComponent,
     ProductoComponent,
     CarritoComponent,
@@ -66,15 +73,12 @@ import { environment } from 'src/environments/environment';
     TablaCategoriasComponent,
     ListaComponent,
     PagoComponent,
-
     ListaDeseosComponent,
-    
-    
-
     CrudproductosComponent,
     VentasComponent,
     ARecomendadosComponent,
     APromocionesComponent,
+    RegistroComponent,
 
    
   ],
@@ -83,11 +87,14 @@ import { environment } from 'src/environments/environment';
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp(config),
     AngularFirestoreModule,
+    AngularFireAuthModule,
+    FormsModule
     
     
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
