@@ -19,7 +19,15 @@ export class ProductoComponent implements OnInit {
   productos=[];
   detalle = [];
 
-  favoritos: Observable<Favoritos[]>;
+  
+  favoritos = {
+    id: String,
+    Usuario: String,
+    Foto: String,
+    Departamento: String,
+    Costo: String
+  };
+  
  
   constructor(private fs: FirestoreService, private route: ActivatedRoute, public auth: AuthService) {
     
@@ -27,6 +35,10 @@ export class ProductoComponent implements OnInit {
    }
 
   ngOnInit() {
+   
+   
+
+    
     this.idProducto=this.route.snapshot.paramMap.get('id');
 
     this.fs.getAllProductos().subscribe(productos =>{
@@ -38,10 +50,13 @@ export class ProductoComponent implements OnInit {
         console.log(this.productos[index]);
          if (this.idProducto == this.productos[index].id) {
           this.detalle=this.productos[index];
+         
           console.log("entraa");
          }
         
       }
+      console.log("cero");
+      console.log(this.productos[1]);
 
 
     });
@@ -55,9 +70,16 @@ export class ProductoComponent implements OnInit {
     }
   }
   
-  addFav(){
+  addFav(usu,ide,cos,fot,dep){
+    console.log("holis");
+    this.favoritos.Usuario=usu;
+    this.favoritos.id=ide;
+    this.favoritos.Costo=cos;
+    this.favoritos.Departamento=dep;
+    this.favoritos.Foto=fot;
     
-    this.fs.addFavorito(this.favoritos);
+
+   this.fs.addFavorito(this.favoritos);
   }
   
  

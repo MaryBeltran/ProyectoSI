@@ -23,9 +23,11 @@ export interface Producto{
     Costo: String;
     Cantidad: String;
     descuento: String;
-    Descrpcion: String;
+    Descripcion: String;
     Departamento: String;
   }
+
+  
 
   export interface Categoria{
     id?: String;
@@ -33,8 +35,8 @@ export interface Producto{
     CantidadDeproductos: String;
   }
 
-  export interface Favoritos{
-    id?: String;
+  export class Favoritos{
+    id: String;
     Usuario: String;
     Nombre: String;
     Costo: String;
