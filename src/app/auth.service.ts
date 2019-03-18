@@ -1,3 +1,5 @@
+import { FirestoreService } from 'src/app/Service/firestore.service';
+import { Usuario } from './Service/models/interfaces';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -19,6 +21,7 @@ interface User {
   direccion?: string;
   photoURL?: string;
 }
+
 
 @Injectable({
   providedIn: 'root'
@@ -49,19 +52,31 @@ export class AuthService {
 
     }
 
-    registerEmail(email: string, pass: string){
-        return new Promise ((resolve, reject) => {
-          this.afAuth.auth.createUserWithEmailAndPassword(email, pass)
-          .then( userData => resolve(userData),
-          err => reject(err));
+    async registerEmail(email: string, pass: string, displayName: string){
+      const credential = await this.afAuth.auth.createUserAndRetrieveDataWithEmailAndPassword(email, pass)
+      return this.updateUserData(credential.user).then((success)=>{
+        this.router.navigate(['/home']); 
+        this.updateUserData2(credential.user, displayName);
+         // this.afAuth.auth.createUserAndRetrieveDataWithEmailAndPassword(email, pass)
+          //.then( userData => resolve(userData),
+          //err => reject(err));
         });
     }
+    private updateUserData2(user, name: string) {
+      this.afs.collection('users').doc(user.uid).update({
+        displayName: name
+      })
+    }
     
-   loginEmail(email: string, pass: string){
-    return new Promise((resolve, reject) => {
-      this.afAuth.auth.signInWithEmailAndPassword(email, pass).then(userData=>resolve(userData),
-      err => reject(err));
-    });
+    
+   async loginEmail(email: string, pass: string){
+    const credential = await this.afAuth.auth.signInWithEmailAndPassword(email, pass)
+      
+        this.router.navigate(['/home']);
+    //return new Promise((resolve, reject) => {
+      //this.afAuth.auth.signInWithEmailAndPassword(email, pass).then(userData=>resolve(userData),
+      //err => reject(err));
+    
    }
    
 
@@ -72,6 +87,8 @@ export class AuthService {
       this.router.navigate(['/home']);
     });
     }
+
+   
   
     private updateUserData(user) {
       // Sets user data to firestore on login
