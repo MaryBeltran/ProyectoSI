@@ -36,7 +36,6 @@ import { AngularFirestoreModule} from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { FormsModule } from '@angular/forms';
-import { AngularFontAwesomeModule } from 'angular-font-awesome';  
 
 
 
@@ -85,7 +84,6 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     FormsModule,
-    AngularFontAwesomeModule
     
     
   ],
