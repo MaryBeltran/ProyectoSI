@@ -45,12 +45,9 @@ export class LoginComponent implements OnInit {
  
   buscar(): void {
 
-    
     console.log("entraa");
     for (let index = 0; index <= this.usuarios.length; index++) {
      
-      
-
       if (this.contra ==  this.usuarios[index].Clave && this.correo ==  this.usuarios[index].Correo && this.usuarios[index].Admin == true )
       {
         this.router.navigate(['/admin']);
@@ -77,9 +74,7 @@ export class LoginComponent implements OnInit {
       
     }
 
-   
-		this.msgError="";
-	
+		this.msgError="";	
 		
   }
   */
