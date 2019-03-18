@@ -19,7 +19,7 @@ export class RegistroComponent implements OnInit {
   constructor( private router: Router, private fs: FirestoreService,public auth: AuthService) { 
 
   }
-
+//a
   public email: string ='';
   public password: string='';
   public name: string='';
