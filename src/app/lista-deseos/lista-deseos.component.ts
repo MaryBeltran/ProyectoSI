@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from '../Service/firestore.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-lista-deseos',
@@ -9,56 +10,23 @@ import { FirestoreService } from '../Service/firestore.service';
 export class ListaDeseosComponent implements OnInit {
   //idProductos= [];
   idFavoritos = [];
+  CorreoFavoritos= [];
   //articulos=[];
   productos = [];
   //favoritos=[];
-  ref=0;
-  constructor(private fs: FirestoreService) {
+  usuario;
   
+  constructor(private fs: FirestoreService, public auth: AuthService) {
+     console.log("usuarios");
+     auth.user$.forEach(user=>{
+     console.log(user.email);
+     this.usuario=user.email;
+     });
    
 
-    fs.getAllFavoritos().subscribe(items => {
-      // items is an array
-      items.forEach(item => {
-          console.log("ADD: ",item.id);
-          this.idFavoritos.push(item.id);
-      });
-     }
-
-    );
-
-    console.log("ID: ",this.idFavoritos);
     
-    fs.getAllProductos().subscribe(elemento => {
-     
-      elemento.forEach(item => {
-        console.log("Antes:",item);
 
-       /* while(this.ref<this.idFavoritos.length){
-        if(item.id==this.idFavoritos[this.ref]){
-
-        }
-        }*/
-        for (let index = 0; index < this.idFavoritos.length; index++) {
-          console.log("Entran");
-          console.log(this.idFavoritos[index],item.id);
-          if(item.id==this.idFavoritos[index]){
-            console.log("Entran");
-            console.log(this.idFavoritos[index],item.id);
-           // console.log("Entran:",item);
-            this.productos.push(item);
-
-
-          }
-          
-        }
-         
-      });
-     }
-
-    );
-
-    console.log(this.productos);
+    
     
 
     /*fs.getAllProductos().subscribe(productos =>{
@@ -79,6 +47,42 @@ export class ListaDeseosComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.fs.getAllFavoritos().subscribe(items => {
+      // items is an array
+      items.forEach(item => {
+          this.idFavoritos.push(item.id);
+          this.CorreoFavoritos.push(item.Usuario);
+      });
+     }
+
+    );
+
+  
+    
+    this.fs.getAllProductos().subscribe(elemento => {
+     
+      elemento.forEach(item => {
+        
+
+      
+        for (let index = 0; index < this.idFavoritos.length; index++) {
+          console.log("Entran");
+          console.log(this.idFavoritos[index],item.id);
+          if(item.id==this.idFavoritos[index] && this.usuario==this.CorreoFavoritos[index] ){
+            console.log("Entran");
+            console.log(this.idFavoritos[index],item.id);
+           // console.log("Entran:",item);
+            this.productos.push(item);
+
+
+          }
+          
+        }
+         
+      });
+     }
+
+    );
   }
 
 }
