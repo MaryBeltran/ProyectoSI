@@ -18,18 +18,17 @@ export class ProductoComponent implements OnInit {
   idProducto: any;
   productos=[];
   detalle = [];
-
+  user ="";
   
   favoritos = {
     id: String,
-    Usuario: String,
-    Foto: String,
-    Departamento: String,
-    Costo: String
+    Usuario: String
+    
   };
   
  
   constructor(private fs: FirestoreService, private route: ActivatedRoute, public auth: AuthService) {
+    this.user= auth.email;
     
 
    }
@@ -70,16 +69,23 @@ export class ProductoComponent implements OnInit {
     }
   }
   
-  addFav(usu,ide,cos,fot,dep){
-    console.log("holis");
+  addFav(usu,ide){
+    console.log(usu);
+    console.log(ide);
     this.favoritos.Usuario=usu;
     this.favoritos.id=ide;
+    console.log(this.favoritos.Usuario);
+    console.log(this.favoritos.id);
+    this.fs.addFavorito(this.favoritos);
+
+    /*
+   
     this.favoritos.Costo=cos;
     this.favoritos.Departamento=dep;
     this.favoritos.Foto=fot;
     
 
-   this.fs.addFavorito(this.favoritos);
+  */
   }
   
  

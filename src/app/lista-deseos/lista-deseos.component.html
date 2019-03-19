@@ -5,7 +5,7 @@
 <div class="container-fluid"> 
     <div class="row">
     <div *ngFor="let producto of productos " class="card col-3" style="width: 18rem;" >
-          <img class="card-img-top row" src="{{producto.Foto}}" alt="Card image cap" [routerLink]="['/productos/producto',producto.id]">
+          <img class="card-img-top row" src="{{producto.foto}}" alt="Card image cap" [routerLink]="['/productos/producto',producto.id]">
           <div class="card-body row">
              <p class="card-text">{{producto.Nombre}}</p>
           </div>

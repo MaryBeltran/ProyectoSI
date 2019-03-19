@@ -12,7 +12,7 @@ export class Navbar2Component implements OnInit {
  
   constructor(private fs: FirestoreService,public auth: AuthService) {
 
-    this.user= fs.getUsuarioActual();
+   
 
    
    }

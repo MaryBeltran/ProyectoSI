@@ -75,6 +75,9 @@ export class FirestoreService {
     return this.usuarioActual;
   }
 
+ 
+
+
   addFavorito(favorito){
     return this.db.collection('/Favoritos').add(favorito);
   }

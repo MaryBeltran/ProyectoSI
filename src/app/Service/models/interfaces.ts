@@ -26,6 +26,10 @@ export interface Producto{
     Descripcion: String;
     Departamento: String;
   }
+  export interface Favoritos{
+    id?: String;
+    Usuario: String;
+  }
 
   
 
@@ -35,12 +39,5 @@ export interface Producto{
     CantidadDeproductos: String;
   }
 
-  export class Favoritos{
-    id: String;
-    Usuario: String;
-    Nombre: String;
-    Costo: String;
-    Foto: String;
-    Departamento: String;
-  }
+ 
 
