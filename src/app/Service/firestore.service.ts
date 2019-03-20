@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, catchError } from "rxjs/operators";
 import {Usuario, Producto, Categoria, Favoritos} from 'src/app/Service/models/interfaces'
+import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
+
 
 
 @Injectable({
@@ -22,15 +25,27 @@ export class FirestoreService {
   Productos: Observable<Producto[]>;
 
   favoritosColeccion: AngularFirestoreCollection<Favoritos>;
-  Favoritos: Observable<Favoritos[]>;
+  favoritos: Observable<Favoritos[]>;
+  favoritosDoc: AngularFirestoreDocument<Favoritos>;
+  idFavoritos= [];
 
   categoriasColeccion: AngularFirestoreCollection<Categoria>;
   Categorias: Observable<Categoria[]>;
 
-  constructor(public db: AngularFirestore) { 
+  constructor(public db: AngularFirestore, private http: HttpClient,  private router: Router) { 
+   
+  this.getFavoritos().subscribe(data => {
+    data.forEach(element => {
+     this.idFavoritos.push(element.payload.doc.ref)
+     }); 
+  });
   
-
+   
+    
   }
+  
+  baseUrl: string = 'http://localhost:4200/productos/producto';
+
 
   
   updateUsers(usuario: Usuario){
@@ -40,14 +55,18 @@ export class FirestoreService {
       {...usuario},
       {merge:true});
   }
-  
+
+ 
 
   getAllUsuarios(){
     this.usuariosCollection= this.db.collection('Usuario')
     this.usuarios = this.usuariosCollection.valueChanges();
     return this.usuarios
   }
-
+  getFavoritos(){
+    return this.db.collection('Favoritos').snapshotChanges();
+  }
+  
   
 
   getAllProductos(){
@@ -58,8 +77,8 @@ export class FirestoreService {
 
   getAllFavoritos(){
     this.favoritosColeccion=this.db.collection('Favoritos');
-    this.Favoritos=this.favoritosColeccion.valueChanges();
-    return this.Favoritos
+    this.favoritos=this.favoritosColeccion.valueChanges();
+    return this.favoritos
   }
 
   getCategorias(){
@@ -79,39 +98,24 @@ export class FirestoreService {
 
 
   addFavorito(favorito){
+    favorito.id= this.db.collection('/Favoritos').ref;
     return this.db.collection('/Favoritos').add(favorito);
+    
   }
 
   
-  /*
  
- usuarios: Observable<Usuarios[]>;
- usuariosDoc:AngularFirestoreDocument;
- usuario: Observable <Producto>;
-
- productosColeccion: AngularFirestoreCollection;
- productos: Observable<Producto[]>;
- productosDoc: AngularFirestoreDocument;
- idProducto;
-
-  constructor(public db: AngularFirestore) {
-
-    this.getProductos().subscribe(data => {
-      data.forEach(element => {
-        this.idProducto.push(element.payload.doc.ref)
-        });; 
-    });
-   }
-
-    getUsers(): any {
-    return this.db.collection('usuarios').snapshotChanges();
+  deletePreferidos(item){
+   
+    this.favoritosDoc = this.db.doc(`Favoritos/${item.id}`);
+    this.favoritosDoc.delete();
+    //this.router['/home'];
+   
+    
   }
+  
+
  
-  getProductos(): any {
-    this.productosColeccion= this.db.collection('Productos')
-    this.productos = this.productosColeccion.valueChanges();
-    return this.productos
-  }*/
 
 }
 

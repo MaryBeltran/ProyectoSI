@@ -20,11 +20,12 @@ export class ProductoComponent implements OnInit {
   detalle = [];
   user ="";
   
-  favoritos = {
-    id: String,
-    Usuario: String
-    
-  };
+  favoritos: Favoritos = {
+    Usuario: '',
+    productoID: ''
+
+  }
+  
   
  
   constructor(private fs: FirestoreService, private route: ActivatedRoute, public auth: AuthService) {
@@ -73,9 +74,9 @@ export class ProductoComponent implements OnInit {
     console.log(usu);
     console.log(ide);
     this.favoritos.Usuario=usu;
-    this.favoritos.id=ide;
+    this.favoritos.productoID=ide;
     console.log(this.favoritos.Usuario);
-    console.log(this.favoritos.id);
+    console.log(this.favoritos.productoID);
     this.fs.addFavorito(this.favoritos);
 
     /*

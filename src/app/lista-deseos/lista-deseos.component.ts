@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from '../Service/firestore.service';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
+import { Favoritos, Producto } from '../Service/models/interfaces';
 
 @Component({
   selector: 'app-lista-deseos',
@@ -13,10 +15,13 @@ export class ListaDeseosComponent implements OnInit {
   CorreoFavoritos= [];
   //articulos=[];
   productos = [];
+  favo:Favoritos[];
+  favoritos=[];
   //favoritos=[];
   usuario;
   
-  constructor(private fs: FirestoreService, public auth: AuthService) {
+  constructor(private fs: FirestoreService, public auth: AuthService, private router: Router) {
+     fs.getFavoritos();
      console.log("usuarios");
      auth.user$.forEach(user=>{
      console.log(user.email);
@@ -24,36 +29,18 @@ export class ListaDeseosComponent implements OnInit {
      });
    
 
-    
-
-    
-    
-
-    /*fs.getAllProductos().subscribe(productos =>{
-      this.articulos=productos;
-
-      this.productos = productos;
-    });*/
-
-    
-   
-
-   
-   
-
-
-
-
    }
 
   ngOnInit() {
     this.fs.getAllFavoritos().subscribe(items => {
       // items is an array
       items.forEach(item => {
-          this.idFavoritos.push(item.id);
+          this.idFavoritos.push(item.productoID);
           this.CorreoFavoritos.push(item.Usuario);
       });
+      this.favo=items;
      }
+    
 
     );
 
@@ -84,5 +71,24 @@ export class ListaDeseosComponent implements OnInit {
 
     );
   }
+
+  
+  deleteFavorito(event, prod){
+   
+   
+   
+
+   this.favo.forEach(item => {
+      if(prod==item.productoID){
+        this.fs.deletePreferidos(item);
+        
+        console.log(item);
+      }
+   
+  });
+
+   
+  };
+  
 
 }

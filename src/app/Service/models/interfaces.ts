@@ -12,7 +12,7 @@ export interface Usuario { //interfaces utilizadas en todo el codigo
 }
 
 export interface Producto{
-    id?: String;
+    id?: number;
     Nombre: String;
     Foto: String;
     Foto1: String;
@@ -28,7 +28,8 @@ export interface Producto{
   }
   export interface Favoritos{
     id?: String;
-    Usuario: String;
+    Usuario?: String;
+    productoID?: String;
   }
 
   
