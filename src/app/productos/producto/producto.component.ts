@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from 'src/app/Service/firestore.service';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Favoritos } from 'src/app/Service/models/interfaces';
+import { Favoritos, Carrito } from 'src/app/Service/models/interfaces';
 import { AuthService } from 'src/app/auth.service';
 
 
@@ -22,8 +22,10 @@ export class ProductoComponent implements OnInit {
   favoritos: Favoritos = {
     Usuario: '',
     productoID: '',
-    
-
+  }
+  carrito: Carrito = {
+    Usuario: '',
+    productoID: '',
   }
   
   
@@ -82,14 +84,18 @@ export class ProductoComponent implements OnInit {
     this.fs.addFavorito(this.favoritos);
     this.fs.getAllFavoritos();
 
-    /*
-   
-    this.favoritos.Costo=cos;
-    this.favoritos.Departamento=dep;
-    this.favoritos.Foto=fot;
     
-
-  */
+  }
+  addCar(usu,ide){
+    console.log(usu);
+    console.log(ide);
+ 
+    this.carrito.Usuario=usu;
+    this.carrito.productoID=ide;
+    console.log(this.carrito.Usuario);
+    console.log(this.carrito.productoID);
+    this.fs.addCarrito(this.carrito);
+    this.fs.getAllCarrito();
   }
   
  

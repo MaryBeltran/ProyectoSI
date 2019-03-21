@@ -3,17 +3,17 @@
 		
         <div class=" ">
 
-            <div class="lista">
-                <a href="#" class=" boton"><button type="button" class="btn btn-danger">X</button></a>
-                <a href="#" class=""> <img class="imagen" src="../assets/imagenes/mandarina-m.png" width="200" height="200"></a>
+            <div class="lista" *ngFor="let producto of productos ">
+                <div class="row" style="padding-left:2%">
+                    <a href="#" class="elemento precio ">{{producto.Nombre}}</a></div>
+                <a class=" boton"><button type="button" class="btn btn-danger" (click)="deleteCar($event,producto.id)">X</button></a>
+                <a [routerLink]="['/productos/producto',producto.id]" class=""> <img class="imagen" src="{{producto.foto}}" width="150" ></a>
                 
-                <a href="#" class="elemento precio ">100 BsS c/u</a>
                           
                  <input type="text" class="elemento incrementar">
-                <a href="#" class="elemento">Subtotal:</a>
-                <a href="#" class="elemento ">100 BsS</a>   
+                <a  class="elemento">Subtotal:</a>
+                <a  class="elemento ">{{producto.Costo}}</a>   
                 <br>
-                <a href="#" class=" ">Mandarina de paquete</a>
                 <hr>
                 <span>Condiciones de la entrega</span>
             </div>
@@ -22,49 +22,3 @@
 
 	</div>
 </div>
-<div class="cuadro">
-    <div class="" >
-      
-          <div class=" ">
-  
-              <div class="lista">
-                  <a href="#" class=" boton"><button type="button" class="btn btn-danger">X</button></a>
-                  <a href="#" class=""> <img class="imagen" src="../assets/imagenes/mandarina-m.png" width="200" height="200"></a>
-                  <a href="#" class="elemento precio ">100 BsS c/u</a>
-                            
-                   <input type="text" class="elemento incrementar">
-                  <a href="#" class="elemento">Subtotal:</a>
-                  <a href="#" class="elemento ">100 BsS</a>   
-                  <br>
-                  <a href="#" class=" ">Mandarina de paquete</a>
-                  <hr>
-                  <span>Condiciones de la entrega</span>
-              </div>
-          </div>
-          
-  
-    </div>
-  </div>
-  <div class="cuadro">
-      <div class="" >
-        
-            <div class=" ">
-    
-                <div class="lista">
-                    <a href="#" class=" boton"><button type="button" class="btn btn-danger">X</button></a>
-                    <a href="#" class=""> <img class="imagen" src="../assets/imagenes/mandarina-m.png" width="200" height="200"></a>
-                    <a href="#" class="elemento precio ">100 BsS c/u</a>
-                              
-                     <input type="text" class="elemento incrementar">
-                    <a href="#" class="elemento">Subtotal:</a>
-                    <a href="#" class="elemento ">100 BsS</a>   
-                    <br>
-                    <a href="#" class=" ">Mandarina de paquete</a>
-                    <hr>
-                    <span>Condiciones de la entrega</span>
-                </div>
-            </div>
-            
-    
-      </div>
-    </div>

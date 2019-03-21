@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map, catchError } from "rxjs/operators";
-import {Usuario, Producto, Categoria, Favoritos, User} from 'src/app/Service/models/interfaces'
+import {Usuario, Producto, Categoria, Favoritos, User, Carrito} from 'src/app/Service/models/interfaces'
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 
@@ -31,6 +31,10 @@ export class FirestoreService {
   favoritos: Observable<Favoritos[]>;
   favoritosDoc: AngularFirestoreDocument<Favoritos>;
   idFavoritos= [];
+  carritoColeccion: AngularFirestoreCollection<Carrito>;
+  carrito: Observable<Carrito[]>;
+  carritoDoc: AngularFirestoreDocument<Carrito>;
+  idcarrito= [];
 
   categoriasColeccion: AngularFirestoreCollection<Categoria>;
   Categorias: Observable<Categoria[]>;
@@ -44,8 +48,16 @@ export class FirestoreService {
      this.idFavoritos.push(element.payload.doc.ref)
      }); 
   });
+  this.getCarrito().subscribe(data => {
+    
+    data.forEach(element => {
+      
+     this.idcarrito.push(element.payload.doc.ref)
+     }); 
+  });
 
   this.getAllFavoritos();
+  this.getAllCarrito();
   
  
     
@@ -84,6 +96,9 @@ export class FirestoreService {
   getFavoritos(){
     return this.db.collection('Favoritos').snapshotChanges();
   }
+  getCarrito(){
+    return this.db.collection('Carrito').snapshotChanges();
+  }
   getAllUsers(){
     this.usersCollection = this.db.collection('users')
     this.users = this.usersCollection.valueChanges();
@@ -112,6 +127,20 @@ export class FirestoreService {
 
     return this.favoritos;
   }
+  getAllCarrito(){
+   
+    this.carritoColeccion = this.db.collection('Carrito');
+    this.carrito = this.carritoColeccion.snapshotChanges().pipe(map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as Carrito;
+        data.id = a.payload.doc.id;
+        console.log("dataaa", data);
+        return data
+      })
+    }))
+
+    return this.carrito;
+  }
 
   getCategorias(){
     this.categoriasColeccion=this.db.collection('Categorias');
@@ -126,15 +155,10 @@ export class FirestoreService {
     return this.usuarioActual;
   }
 
- 
-
 
   addFavorito(favorito){
-    
      this.db.collection('/Favoritos').add(favorito).then(function(docRef){
       console.log(docRef.id);
-     // favorito.id=docRef.id;
-    //this.db.collection('/Favoritos').set(favorito);
       return this.db.collection('/Favoritos').doc(docRef.id).set({
         id: docRef.id
       },{merge: docRef.id });
@@ -142,13 +166,30 @@ export class FirestoreService {
 
  
   }
+  addCarrito(carrito){
+    this.db.collection('/Carrito').add(carrito).then(function(docRef){
+     console.log(docRef.id);
+     return this.db.collection('/Carrito').doc(docRef.id).set({
+       id: docRef.id
+     },{merge: docRef.id });
+   });
 
+
+ }
   
  
   deletePreferidos(id){
    
     this.favoritosDoc = this.db.doc(`Favoritos/${id}`);
     this.favoritosDoc.delete();
+    //this.router['/home'];
+   
+    
+  }
+  deleteCarros(id){
+   
+    this.carritoDoc = this.db.doc(`Carrito/${id}`);
+    this.carritoDoc.delete();
     //this.router['/home'];
    
     

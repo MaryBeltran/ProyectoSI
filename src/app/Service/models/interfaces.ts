@@ -39,6 +39,11 @@ export interface Producto{
     Usuario?: String;
     productoID?: String;
   }
+  export interface Carrito{
+    id?: String;
+    Usuario?: String;
+    productoID?: String;
+  }
 
   
 
