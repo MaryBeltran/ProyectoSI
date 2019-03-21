@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -35,18 +36,33 @@ export class FirestoreService {
   constructor(public db: AngularFirestore, private http: HttpClient,  private router: Router) { 
    
   this.getFavoritos().subscribe(data => {
+    
     data.forEach(element => {
+      
      this.idFavoritos.push(element.payload.doc.ref)
      }); 
   });
+
+  this.getAllFavoritos();
   
-   
+ 
     
   }
   
   baseUrl: string = 'http://localhost:4200/productos/producto';
 
+  getAlgo(id){
+    this.favoritosColeccion = this.db.collection('Favoritos');
+    this.favoritos = this.favoritosColeccion.snapshotChanges().pipe(map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as Favoritos;
+        data.id = a.payload.doc.id;
+        return data
+      })
+    }))
 
+    return this.favoritos;
+  }
   
   updateUsers(usuario: Usuario){
     console.log(usuario);
@@ -76,9 +92,18 @@ export class FirestoreService {
   }
 
   getAllFavoritos(){
-    this.favoritosColeccion=this.db.collection('Favoritos');
-    this.favoritos=this.favoritosColeccion.valueChanges();
-    return this.favoritos
+   
+    this.favoritosColeccion = this.db.collection('Favoritos');
+    this.favoritos = this.favoritosColeccion.snapshotChanges().pipe(map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as Favoritos;
+        data.id = a.payload.doc.id;
+        console.log("dataaa", data);
+        return data
+      })
+    }))
+
+    return this.favoritos;
   }
 
   getCategorias(){
@@ -98,16 +123,24 @@ export class FirestoreService {
 
 
   addFavorito(favorito){
-    favorito.id= this.db.collection('/Favoritos').ref;
-    return this.db.collection('/Favoritos').add(favorito);
     
+     this.db.collection('/Favoritos').add(favorito).then(function(docRef){
+      console.log(docRef.id);
+     // favorito.id=docRef.id;
+    //this.db.collection('/Favoritos').set(favorito);
+      return this.db.collection('/Favoritos').doc(docRef.id).set({
+        id: docRef.id
+      },{merge: docRef.id });
+    });
+
+ 
   }
 
   
  
-  deletePreferidos(item){
+  deletePreferidos(id){
    
-    this.favoritosDoc = this.db.doc(`Favoritos/${item.id}`);
+    this.favoritosDoc = this.db.doc(`Favoritos/${id}`);
     this.favoritosDoc.delete();
     //this.router['/home'];
    

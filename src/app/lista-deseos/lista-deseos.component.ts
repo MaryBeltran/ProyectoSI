@@ -16,7 +16,8 @@ export class ListaDeseosComponent implements OnInit {
   //articulos=[];
   productos = [];
   favo:Favoritos[];
-  favoritos=[];
+  coID;
+ 
   //favoritos=[];
   usuario;
   
@@ -26,7 +27,9 @@ export class ListaDeseosComponent implements OnInit {
      auth.user$.forEach(user=>{
      console.log(user.email);
      this.usuario=user.email;
+    
      });
+
    
 
    }
@@ -34,6 +37,7 @@ export class ListaDeseosComponent implements OnInit {
   ngOnInit() {
     this.fs.getAllFavoritos().subscribe(items => {
       // items is an array
+      
       items.forEach(item => {
           this.idFavoritos.push(item.productoID);
           this.CorreoFavoritos.push(item.Usuario);
@@ -80,8 +84,8 @@ export class ListaDeseosComponent implements OnInit {
 
    this.favo.forEach(item => {
       if(prod==item.productoID){
-        this.fs.deletePreferidos(item);
-        
+        this.fs.deletePreferidos(item.id);
+        this.route['/listadeseos']
         console.log(item);
       }
    
