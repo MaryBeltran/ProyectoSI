@@ -1,17 +1,12 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-<<<<<<< HEAD
 import { map, catchError } from "rxjs/operators";
-import {Usuario, Producto, Categoria, Favoritos} from 'src/app/Service/models/interfaces'
+import {Usuario, Producto, Categoria, Favoritos, User} from 'src/app/Service/models/interfaces'
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 
-=======
-import { map } from 'rxjs/operators';
-import {Usuario, Producto, Categoria, Favoritos, User} from 'src/app/Service/models/interfaces'
->>>>>>> Desarrollo-Ign
 
 
 @Injectable({
@@ -86,20 +81,15 @@ export class FirestoreService {
     this.usuarios = this.usuariosCollection.valueChanges();
     return this.usuarios
   }
-<<<<<<< HEAD
   getFavoritos(){
     return this.db.collection('Favoritos').snapshotChanges();
   }
-  
-=======
-
   getAllUsers(){
     this.usersCollection = this.db.collection('users')
     this.users = this.usersCollection.valueChanges();
     return this.users
   }
 
->>>>>>> Desarrollo-Ign
   
 
   getAllProductos(){

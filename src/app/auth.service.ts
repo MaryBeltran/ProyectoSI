@@ -17,7 +17,7 @@ interface User {
   email: string;
   displayName?: string;
   admin?: boolean;
-  disabled?: boolean;
+  habilitacion?: boolean;
   direccion?: string;
   photoURL?: string;
 }
@@ -85,7 +85,6 @@ export class AuthService {
     const credential = await this.afAuth.auth.signInWithPopup(provider)
       this.router.navigate(['/home']);
     }
-<<<<<<< HEAD
 
     async googleRegister() {
       const provider = new auth.GoogleAuthProvider();
@@ -96,11 +95,6 @@ export class AuthService {
       }
 
    
-=======
-    deleteU(user: User){
-      this.afAuth.auth.currentUser.delete()
-    }
->>>>>>> Desarrollo-Ign
   
     private updateUserData(user) {
       // Sets user data to firestore on login
@@ -112,7 +106,7 @@ export class AuthService {
         displayName: user.displayName,
         photoURL: user.photoURL,
         admin: false,
-        disabled:false,
+        habilitacion:true,
         direccion: ""
       }
   

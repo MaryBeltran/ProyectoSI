@@ -15,7 +15,7 @@ export interface User {
   email?: string;
   displayName?: string;
   admin?: boolean;
-  disabled?: boolean;
+  habilitado?: boolean;
   direccion?: string;
   photoURL?: string;
 }
