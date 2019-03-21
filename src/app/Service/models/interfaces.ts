@@ -10,7 +10,15 @@ export interface Usuario { //interfaces utilizadas en todo el codigo
     Admin?: boolean;
     Habilitacion?: boolean;
 }
-
+export interface User {
+  uid?: string;
+  email?: string;
+  displayName?: string;
+  admin?: boolean;
+  habilitado?: boolean;
+  direccion?: string;
+  photoURL?: string;
+}
 export interface Producto{
     id?: number;
     Nombre: String;

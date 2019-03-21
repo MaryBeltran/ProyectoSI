@@ -15,6 +15,14 @@
     padding-bottom: 30px !important;
   
   }
+  .boton button{
+    background-color: #ffdec6;
+    border: none;
+    color: #f47820;
+  }
+  .boton button:hover{
+    color: #9fbc31;
+  }
 
   
   .logo{

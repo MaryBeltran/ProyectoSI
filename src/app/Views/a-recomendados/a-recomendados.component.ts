@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { FirestoreService } from 'src/app/Service/firestore.service';
+
+import { AuthService } from 'src/app/auth.service';
 @Component({
   selector: 'app-a-recomendados',
   templateUrl: './a-recomendados.component.html',
@@ -7,7 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ARecomendadosComponent implements OnInit {
 
-  constructor() { }
+  user ="";
+  constructor(private fs: FirestoreService,public auth: AuthService) {
+    
+    this.user= fs.getUsuarioActual();
+   }
 
   ngOnInit() {
   }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map, catchError } from "rxjs/operators";
-import {Usuario, Producto, Categoria, Favoritos} from 'src/app/Service/models/interfaces'
+import {Usuario, Producto, Categoria, Favoritos, User} from 'src/app/Service/models/interfaces'
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 
@@ -17,6 +17,8 @@ export class FirestoreService {
   
   usuarioActual="";
 
+  usersCollection: AngularFirestoreCollection;
+  users:Observable<User[]>
   usuariosCollection: AngularFirestoreCollection;
   usuarios: Observable<Usuario[]>;
   usuariosDoc: AngularFirestoreDocument;
@@ -64,11 +66,11 @@ export class FirestoreService {
     return this.favoritos;
   }
   
-  updateUsers(usuario: Usuario){
-    console.log(usuario);
-    this.usuariosDoc = this.db.doc(`Usuario/${usuario.id}`);
+  updateUsers(user: User){
+    console.log(user);
+    this.usuariosDoc = this.db.doc(`users/${user.uid}`);
     this.usuariosDoc.set(
-      {...usuario},
+      {...user},
       {merge:true});
   }
 
@@ -82,7 +84,12 @@ export class FirestoreService {
   getFavoritos(){
     return this.db.collection('Favoritos').snapshotChanges();
   }
-  
+  getAllUsers(){
+    this.usersCollection = this.db.collection('users')
+    this.users = this.usersCollection.valueChanges();
+    return this.users
+  }
+
   
 
   getAllProductos(){
