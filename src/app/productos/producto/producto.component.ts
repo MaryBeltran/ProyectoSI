@@ -17,7 +17,7 @@ export class ProductoComponent implements OnInit {
   
   idProducto: any;
   productos=[];
-  detalle = [];
+  detalle=[];
   user ="";
   
   favoritos: Favoritos = {
