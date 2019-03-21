@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import {Usuario, Producto, Categoria, Favoritos} from 'src/app/Service/models/interfaces'
+import {Usuario, Producto, Categoria, Favoritos, User} from 'src/app/Service/models/interfaces'
 
 
 @Injectable({
@@ -13,6 +13,8 @@ export class FirestoreService {
   
   usuarioActual="";
 
+  usersCollection: AngularFirestoreCollection;
+  users:Observable<User[]>
   usuariosCollection: AngularFirestoreCollection;
   usuarios: Observable<Usuario[]>;
   usuariosDoc: AngularFirestoreDocument;
@@ -33,11 +35,11 @@ export class FirestoreService {
   }
 
   
-  updateUsers(usuario: Usuario){
-    console.log(usuario);
-    this.usuariosDoc = this.db.doc(`Usuario/${usuario.id}`);
+  updateUsers(user: User){
+    console.log(user);
+    this.usuariosDoc = this.db.doc(`users/${user.uid}`);
     this.usuariosDoc.set(
-      {...usuario},
+      {...user},
       {merge:true});
   }
   
@@ -46,6 +48,12 @@ export class FirestoreService {
     this.usuariosCollection= this.db.collection('Usuario')
     this.usuarios = this.usuariosCollection.valueChanges();
     return this.usuarios
+  }
+
+  getAllUsers(){
+    this.usersCollection = this.db.collection('users')
+    this.users = this.usersCollection.valueChanges();
+    return this.users
   }
 
   

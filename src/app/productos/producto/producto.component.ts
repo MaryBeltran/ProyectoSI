@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ListaproductosComponent } from '../listaproductos/listaproductos.component';
 import { FirestoreService } from 'src/app/Service/firestore.service';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -46,7 +45,8 @@ export class ProductoComponent implements OnInit {
 
     });
 
-
+   
+    
 
     function myFunction(imgs) {
       var expandImg = document.getElementById("expandedImg");
