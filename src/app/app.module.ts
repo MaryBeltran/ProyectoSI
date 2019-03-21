@@ -35,10 +35,14 @@ import { AngularFirestoreModule} from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { FormsModule } from '@angular/forms';
+<<<<<<< HEAD
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AuthGuard } from '../app/auth.guard';
 import { RegistroComponent } from './registro/registro.component';
 import { HttpClientModule } from '@angular/common/http';
+=======
+
+>>>>>>> Desarrollo-Bladimir
 
 const config = {
   apiKey: "AIzaSyAq3MIfdMvBQNgk_4CCyAIRJsqWxmQ-VII",
@@ -90,9 +94,13 @@ const config = {
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireModule.initializeApp(config),
     AngularFirestoreModule,
+<<<<<<< HEAD
     AngularFireAuthModule,
     FormsModule,
     HttpClientModule
+=======
+    FormsModule,
+>>>>>>> Desarrollo-Bladimir
     
     
   ],

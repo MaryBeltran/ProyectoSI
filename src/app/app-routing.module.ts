@@ -36,8 +36,13 @@ children:[
 {path: 'recomendado',component: RecomendadoComponent,  canActivate: [AuthGuard]},
 {path: 'favoritos',component: FavoritosComponent,  canActivate: [AuthGuard]},
 {path: 'productos', children:[ 
+<<<<<<< HEAD
       {path: 'producto/:id',component: ProductoComponent,  canActivate: [AuthGuard]},
       {path: 'listaproductos',component: ListaproductosComponent,  canActivate: [AuthGuard]},
+=======
+      {path: 'producto/:id',component: ProductoComponent},
+      {path: 'listaproductos',component: ListaproductosComponent},
+>>>>>>> Desarrollo-Bladimir
 ]},
 {path: 'login',component: LoginComponent},
 {path: 'registro',component: RegistroComponent},

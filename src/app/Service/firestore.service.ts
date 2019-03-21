@@ -27,6 +27,7 @@ export class FirestoreService {
   productoColeccion: AngularFirestoreCollection<Producto>;
   Productos: Observable<Producto[]>;
 
+<<<<<<< HEAD
   favoritosColeccion: AngularFirestoreCollection<Favoritos>;
   favoritos: Observable<Favoritos[]>;
   favoritosDoc: AngularFirestoreDocument<Favoritos>;
@@ -35,6 +36,9 @@ export class FirestoreService {
   carrito: Observable<Carrito[]>;
   carritoDoc: AngularFirestoreDocument<Carrito>;
   idcarrito= [];
+=======
+ 
+>>>>>>> Desarrollo-Bladimir
 
   categoriasColeccion: AngularFirestoreCollection<Categoria>;
   Categorias: Observable<Categoria[]>;
@@ -105,13 +109,14 @@ export class FirestoreService {
     return this.users
   }
 
-  
+ 
 
   getAllProductos(){
     this.productoColeccion=this.db.collection('Productos');
     this.Productos=this.productoColeccion.valueChanges();
-    return this.Productos
+    return this.Productos;
   }
+<<<<<<< HEAD
 
   getAllFavoritos(){
    
@@ -142,6 +147,9 @@ export class FirestoreService {
     return this.carrito;
   }
 
+=======
+  
+>>>>>>> Desarrollo-Bladimir
   getCategorias(){
     this.categoriasColeccion=this.db.collection('Categorias');
     this.Categorias=this.categoriasColeccion.valueChanges();
