@@ -20,6 +20,7 @@ import { VentasComponent } from './Views/ventas/ventas.component';
 import { ARecomendadosComponent } from './Views/a-recomendados/a-recomendados.component';
 import { APromocionesComponent } from './Views/a-promociones/a-promociones.component';
 import { AuthGuard } from '../app/auth.guard';
+import { AdminGuard } from '../app/admin.guard';
 
 const routes: Routes = [
 
@@ -44,7 +45,7 @@ children:[
 {path: 'a-promociones', component: APromocionesComponent,  canActivate: [AuthGuard]},
 {path: 'a-recomendados', component: ARecomendadosComponent,  canActivate: [AuthGuard]},
 {path: 'crudproductos', component: CrudproductosComponent,  canActivate: [AuthGuard]},
-{path: 'admin', component: AdminComponent,  canActivate: [AuthGuard]},
+{path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
 {path: 'ventas', component: VentasComponent,  canActivate: [AuthGuard]},
 
 ],

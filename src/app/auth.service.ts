@@ -17,7 +17,7 @@ interface User {
   email: string;
   displayName?: string;
   admin?: boolean;
-  habilitacion?: boolean;
+  disabled?: boolean;
   direccion?: string;
   photoURL?: string;
 }
@@ -85,6 +85,7 @@ export class AuthService {
     const credential = await this.afAuth.auth.signInWithPopup(provider)
       this.router.navigate(['/home']);
     }
+<<<<<<< HEAD
 
     async googleRegister() {
       const provider = new auth.GoogleAuthProvider();
@@ -95,18 +96,23 @@ export class AuthService {
       }
 
    
+=======
+    deleteU(user: User){
+      this.afAuth.auth.currentUser.delete()
+    }
+>>>>>>> Desarrollo-Ign
   
     private updateUserData(user) {
       // Sets user data to firestore on login
       const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
-  
+
       const data: User = {
         uid: user.uid,
         email: user.email,
         displayName: user.displayName,
         photoURL: user.photoURL,
         admin: false,
-        habilitacion:true,
+        disabled:false,
         direccion: ""
       }
   
