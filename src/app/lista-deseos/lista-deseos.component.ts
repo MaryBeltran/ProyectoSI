@@ -81,14 +81,20 @@ export class ListaDeseosComponent implements OnInit {
    
    
    
-
-   this.favo.forEach(item => {
+    this.favo.forEach(item => {
       if(prod==item.productoID){
-        this.fs.deletePreferidos(item.id);
-        console.log(item);
+
+        if(confirm("¿Quiere remover este elemento de su lista de deseos?")==true){
+          this.fs.deletePreferidos(item.id);
+          this.router['/home'];
+          console.log(item);
+        }
+        
+
       }
    
   });
+
 
    
   };

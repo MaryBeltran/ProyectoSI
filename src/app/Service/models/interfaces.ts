@@ -30,7 +30,7 @@ export interface Producto{
     espeficificaciones: String;
     Costo: String;
     Cantidad: String;
-    descuento: String;
+    descuento: number;
     Descripcion: String;
     Departamento: String;
   }
