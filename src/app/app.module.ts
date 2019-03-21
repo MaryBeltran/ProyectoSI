@@ -38,6 +38,7 @@ import { FormsModule } from '@angular/forms';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AuthGuard } from '../app/auth.guard';
 import { RegistroComponent } from './registro/registro.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const config = {
   apiKey: "AIzaSyAq3MIfdMvBQNgk_4CCyAIRJsqWxmQ-VII",
@@ -94,7 +95,8 @@ const config = {
     AngularFireModule.initializeApp(config),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
     
     
   ],

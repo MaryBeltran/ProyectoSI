@@ -12,18 +12,33 @@ export interface Usuario { //interfaces utilizadas en todo el codigo
 }
 
 export interface Producto{
-    id?: String;
+    id?: number;
     Nombre: String;
     Foto: String;
+    Foto1: String;
+    Foto2: String;
+    Foto3: String;
+    Foto4: String;
+    espeficificaciones: String;
     Costo: String;
     Cantidad: String;
     descuento: String;
-    Clasificacion: String;
+    Descripcion: String;
+    Departamento: String;
   }
+  export interface Favoritos{
+    id?: String;
+    Usuario?: String;
+    productoID?: String;
+  }
+
+  
 
   export interface Categoria{
     id?: String;
     Nombre: String;
     CantidadDeproductos: String;
   }
+
+ 
 
