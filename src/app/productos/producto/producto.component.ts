@@ -74,8 +74,14 @@ export class ProductoComponent implements OnInit {
     }
   }
   
-  addFav(){
-    
+  addFav(usu,ide){
+    console.log(usu);
+    console.log(ide);
+ 
+    this.favoritos.Usuario=usu;
+    this.favoritos.productoID=ide;
+    console.log(this.favoritos.Usuario);
+    console.log(this.favoritos.productoID);
     this.fs.addFavorito(this.favoritos);
     this.fs.getAllFavoritos();
 
