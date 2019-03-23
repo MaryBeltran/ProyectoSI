@@ -1,2 +1,15 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="BarraNavAd" id="BarraNaveAd">
+
+  <img src="../assets/imagenes/mandarina-px.png" class="logo" routerLink="/home">
+  <div *ngIf="auth.user$ | async as user">
+    <div class="boton">
+      <a style="float:right">
+      <button (click)="auth.signOut()">Cerrar Sesión</button>
+    </a>  
+    </div>
+    <a style="float:right">Bienvenido, {{user.displayName}}</a>
+    </div>
+ 
+
+</div>

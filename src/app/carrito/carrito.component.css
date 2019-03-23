@@ -1,0 +1,21 @@
+.general{
+ width: 100%;
+
+
+}
+
+.lista{
+    
+  
+    max-width: 55%;
+    width: 55%;
+    float: left;
+}
+.pago{
+    margin-right: 7%;
+    margin-top: 10%;
+    max-width: 30%;
+    width: 30%;
+   
+    float: right;
+}

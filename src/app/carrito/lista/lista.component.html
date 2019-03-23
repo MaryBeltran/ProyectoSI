@@ -1,0 +1,24 @@
+<div class="cuadro">
+	<div class="" >
+		
+        <div class=" ">
+
+            <div class="lista" style="max-height:300px" *ngFor="let producto of productos ">
+                <div class="row" style="padding-left:2%">
+                    <a href="#" class="elemento precio ">{{producto.Nombre}}</a></div>
+                <a class=" boton"><button type="button" class="btn btn-danger" (click)="deleteCar($event,producto.id)">X</button></a>
+                <a [routerLink]="['/productos/producto',producto.id]" class=""> <img class="imagen" src="{{producto.foto}}" height="150" ></a>
+                
+                          
+                 <input type="text" class="elemento incrementar">
+                <a  class="elemento">Subtotal:</a>
+                <a  class="elemento ">{{producto.Costo}}</a>   
+                <br>
+                <hr>
+                <span>Condiciones de la entrega</span>
+            </div>
+        </div>
+        
+
+	</div>
+</div>

@@ -1,0 +1,63 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
+<div id="Contenedor">
+    <div class="icono">
+      <img class="imagen" src="../assets/imagenes/mandarina-m.png" alt="">
+                  
+                </div>
+  <div class="ContentForm">
+    <form name="FormEntrar">
+        
+        <div class="form-group">
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <input type="text" [(ngModel)]="name" class="form-control" name="username" id="username"  placeholder="Nombre de Usuario"/>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <input type="email" [(ngModel)]="email" class="form-control" name="email" id="email"  placeholder="Correo"/>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <input type="password" [(ngModel)]="password" class="form-control" name="password" id="password"  placeholder="Contraseña"/>
+              </div>
+            </div>
+          </div>
+       
+     <button class="btn btn-lg btn-primary btn-block btn-signin" id="ingresar" type="submit" (click)="onAddUser()">Entrar</button>
+
+      </form>
+    </div>	
+    <div class="ContenedorG">
+      <div *ngIf="auth.user$ | async; then authenticated else guest">
+      </div>
+      <!-- User NOT logged in -->
+      <ng-template #guest>
+      <button (click)="auth.googleRegister()" >
+       <a>
+             <div class="left">
+                 <img width="20px" alt="Google &quot;G&quot; Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"/>
+             </div>
+              Registrate con Google
+         </a>
+      </button>
+      </ng-template>
+      <!-- User logged in -->
+      <ng-template #authenticated >
+        <div *ngIf="auth.user$ | async as user">
+          <button (click)="auth.signOut()">Cerrar Sesion</button>
+      </div>
+      </ng-template>
+      </div>
+      
+    <div class="opcioncontra"><a>¿Tienes una cuenta? </a><a href="/login">Inicia Sesion</a></div>
+    </div>

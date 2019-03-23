@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="BarraNav2" id="BarraNave2">
- 
+  
   <div class="expandible">
     <a class="expan" routerLink="/Departamentos">Departamentos <i class="fa fa-caret-down" style="font-size:13px"></i></a>
     <div class="contenido-expan">
@@ -11,20 +11,28 @@
       <a routerLink="#">Deporte y Fitness</a>
       <a routerLink="#">Relojes y Joyas</a>
       <a routerLink="#">Belleza y Estética</a>
+      <a routerLink="#">Videojuegos</a>      
       <a routerLink="#">Instrumentos Musicales</a> 
-      <a routerLink="#">Vehículos</a>  
+      <a routerLink="#">Automotor</a>  
       <a routerLink="#">Libros y Música</a>
       <a routerLink="#">Mascotas</a>
     </div>
   </div>
   
-  <a>
-  <i class="fa fa-shopping-cart" style="font-size:20px"></i>
-  </a>
-  <a routerLink="/home">Inicio</a>
+<div *ngIf="auth.user$ | async as user">
+<div class="boton">
+  <a style="float:right">
+  <button (click)="auth.signOut()">Cerrar Sesión</button>
+</a>  
+</div>
+<a style="float:right">Bienvenido, {{user.displayName}}</a>
+<div *ngIf="user.admin == true">
+<a href="/admin">Ajustes de Administrador</a>
+</div>
+</div>
 
 
-<a style="float:right">Bienvenido:</a>
+
 
 
 <a href="javascript:void(0);" class="icon" onclick="menuresponsive()">

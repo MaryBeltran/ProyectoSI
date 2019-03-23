@@ -1,0 +1,12 @@
+
+<div *ngIf="auth.user$ | async as user">
+    <div *ngIf="user.admin == true">
+<app-b1-admin></app-b1-admin>
+<app-b2-admin></app-b2-admin>
+
+
+<a> Aca administramos las PROMOCIONES </a>
+
+<app-footer></app-footer>
+</div>
+</div>

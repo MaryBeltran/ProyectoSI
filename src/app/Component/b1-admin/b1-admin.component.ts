@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FirestoreService } from 'src/app/Service/firestore.service';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-b1-admin',
@@ -6,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./b1-admin.component.css']
 })
 export class B1AdminComponent implements OnInit {
+user ="";
+  constructor(private fs: FirestoreService,public auth: AuthService) {
 
-  constructor() { }
+    this.user= fs.getUsuarioActual();
+   }
 
   ngOnInit() {
   }

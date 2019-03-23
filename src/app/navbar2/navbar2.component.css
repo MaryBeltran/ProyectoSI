@@ -7,6 +7,15 @@
     text-align: center;
     
   }
+
+  .boton button{
+    background-color: #f47820;
+    border: none;
+    color: white;
+  }
+  .boton button:hover{
+    color: #9fbc31;
+  }
   
   .BarraNav2 a {
     display: inline-block;
@@ -95,14 +104,14 @@
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
   }
-  
+   
   .contenido-expan a {
     float: none;
     color: #f47820;
     padding: 10px 16px 0px 16px;
     text-decoration: none;
     display: block;
-    font-size: 16px;
+    font-size: 12px;
     text-align: left;
   }
   
@@ -117,3 +126,4 @@
 
   
 
+  

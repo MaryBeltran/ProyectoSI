@@ -11,7 +11,7 @@ export const environment = {
     projectId: "la-mandarina",
     storageBucket: "la-mandarina.appspot.com",
     messagingSenderId: "345266150675"
-  }
+  },
 };
 
 /*
