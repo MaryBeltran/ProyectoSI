@@ -17,7 +17,7 @@ export class ProductoComponent implements OnInit {
   
   idProducto: any;
   productos=[];
-  detalle = [];
+  detalle=[];
   user ="";
   
   favoritos: Favoritos = {
@@ -46,20 +46,18 @@ export class ProductoComponent implements OnInit {
 
     this.fs.getAllProductos().subscribe(productos =>{
       this.productos = productos;
-      console.log(this.productos[0]+"0");
-      console.log(this.detalle[0]+"1");
+     
 
       for (let index = 0; index < this.productos.length; index++) {
-        console.log(this.productos[index]);
+    
          if (this.idProducto == this.productos[index].id) {
           this.detalle=this.productos[index];
          
-          console.log("entraa");
+         
          }
         
       }
-      console.log("cero");
-      console.log(this.productos[1]);
+     
 
 
     });
@@ -67,21 +65,17 @@ export class ProductoComponent implements OnInit {
    
     
 
-    function myFunction(imgs) {
-      var expandImg = document.getElementById("expandedImg");
-      
-      expandImg.parentElement.style.display = "block";
-    }
   }
   
   addFav(usu,ide){
+    console.log("Entramos: ");
     console.log(usu);
     console.log(ide);
- 
+   
     this.favoritos.Usuario=usu;
     this.favoritos.productoID=ide;
-    console.log(this.favoritos.Usuario);
-    console.log(this.favoritos.productoID);
+    
+    
     this.fs.addFavorito(this.favoritos);
     this.fs.getAllFavoritos();
 

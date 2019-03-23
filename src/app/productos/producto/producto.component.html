@@ -1,6 +1,7 @@
 <app-navbar></app-navbar>
   <app-navbar2></app-navbar2>
 
+          
   <div class="row">
       <div class="col-sm-6">
       <div class="preview-pic tab-content">
@@ -23,6 +24,8 @@
  <div class="Nombre">
   {{detalle.Nombre}}
  
+
+  {{user.email}}
  </div>
 
 <span class="fa fa-star checked"></span>
@@ -34,7 +37,7 @@
 <div class="Precio">
    
   {{detalle.Costo}}
-  
+
      </div>
      <div class="dropdown">
         <button class="dropbtn">Tipos <i class="fa fa-caret-down" style="font-size:13px"></i></button>
@@ -47,11 +50,11 @@
 <div>
   <input type="text" onfocus="this.value=''" value="1" style="width:157px;">
   </div>
-  <div>
+  <div *ngIf="auth.user$ | async as user">
     <br>
-     <button class="btn">Añadir al Carrito <i class="fa fa-shopping-cart" style="font-size:20px"></i></button>
+     <button class="btn" type="submit" (click)="addCar(user.email,detalle.id)">Añadir al Carrito <i class="fa fa-shopping-cart" style="font-size:20px"></i></button>
     <a style="padding-left: 10px;" >
-     <button class="btn"><i class="fas fa-heart" style="font-size:20px" (click)="addFav"></i></button>
+     <button class="btn" type="submit" (click)="addFav(user.email,detalle.id)"><i class="fas fa-heart" style="font-size:20px" ></i></button>
     </a>
     </div>
   <div>
@@ -92,7 +95,7 @@
       <div class="container">
         <div class="row pb-3">
           <div class="col-lf-12">
-              <h5>Comentarios y Calificaciones de Nombre Prod</h5>
+              <h5>Comentarios y Calificaciones de {{detalle.Nombre}}</h5>
           </div>
         </div>
          <div class="one-review">
@@ -162,4 +165,5 @@
       </div>
      </div>
     </div> 
+  </div>
   <app-footer></app-footer>
