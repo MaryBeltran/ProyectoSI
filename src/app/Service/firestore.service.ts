@@ -44,7 +44,7 @@ export class FirestoreService {
   categoriasColeccion: AngularFirestoreCollection<Categoria>;
   Categorias: Observable<Categoria[]>;
 
-  constructor(public db: AngularFirestore, private http: HttpClient,  private router: Router, private af: AngularFireDatabase) { 
+  constructor(public db: AngularFirestore, private http: HttpClient,  private router: Router) { 
    
   this.getFavoritos().subscribe(data => {
     
