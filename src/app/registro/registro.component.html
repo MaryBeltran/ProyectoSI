@@ -1,5 +1,8 @@
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <div *ngIf="pag == false">
+
 
 <div id="Contenedor">
     <div class="icono">
@@ -61,3 +64,23 @@
       
     <div class="opcioncontra"><a>¿Tienes una cuenta? </a><a href="/login">Inicia Sesion</a></div>
     </div>
+</div>
+<div *ngIf="pag == true">
+    <div id="Contenedor2">
+        <div class="icono">
+          <img class="imagen" src="../assets/imagenes/mandarina-m.png" alt="">
+           </div>
+      <div class="ContentForm">
+        <form name="FormEntrar">
+            <div id="alerta">
+              El registro en nuestra página esta bloqueado debido a que se encuentra en modo piloto.
+            </div>
+            <div id="alerta">
+                Solo los usuarios previamente registrados podran inicar sesión.
+              </div>
+         <a class="btn btn-lg btn-primary btn-block btn-signin" id="ingresar" href="/login">Iniciar Sesion</a>
+          </form>
+        </div>	
+        </div>
+    
+</div>

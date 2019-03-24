@@ -36,7 +36,6 @@ export class ListaDeseosComponent implements OnInit {
 
   ngOnInit() {
     this.fs.getAllFavoritos().subscribe(items => {
-      // items is an array
       
       items.forEach(item => {
           this.idFavoritos.push(item.productoID);

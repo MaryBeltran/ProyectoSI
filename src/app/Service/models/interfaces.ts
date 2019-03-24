@@ -19,6 +19,9 @@ export interface User {
   direccion?: string;
   photoURL?: string;
 }
+export interface Piloto {
+  Piloto?: boolean;
+}
 export interface Producto{
     id?: number;
     Nombre: String;
