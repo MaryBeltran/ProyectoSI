@@ -1,57 +1,67 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet"/>
+
 <app-navbar></app-navbar>
 <app-navbar2></app-navbar2>
 
 
 <div class="contenedor">
    <div class="filtros">
-   <p>Precio:</p>
-   <p>Ascendente</p>
-   <p>Descendente</p>
+   <p>Precio desde:</p>
+   <input type="number"
+         [(ngModel)]="Costo"
+         (change)="filterGreaterThan('Costo', Costo)">
+
+  <button *ngIf="Costo"
+          (click)="removeFilter('Costo')">
+            X
+        </button>
+
    <hr>
    <p>Estrellas:</p>
-   <p><span class="fas fa-star"></span>
-      <span class="fas fa-star"></span>
-      <span class="fas fa-star"></span>
-      <span class="fas fa-star"></span>
-      <span class="fas fa-star"></span></p>
-   <p><span class="fas fa-star"></span>
-      <span class="fas fa-star"></span>
-      <span class="fas fa-star"></span>
-      <span class="fas fa-star"></span>
-      <span class="far fa-star"></span></p>
-   <p><span class="fas fa-star"></span>
-      <span class="fas fa-star"></span>
-      <span class="fas fa-star"></span>
-      <span class="far fa-star"></span>
-      <span class="far fa-star"></span></p>
-   <p><span class="fas fa-star"></span>
-      <span class="fas fa-star"></span>
-      <span class="far fa-star"></span>
-      <span class="far fa-star"></span>
-      <span class="far fa-star"></span></p>
-   <p><span class="fas fa-star"></span>
-      <span class="far fa-star"></span>
-      <span class="far fa-star"></span>
-      <span class="far fa-star"></span>
-      <span class="far fa-star"></span></p>
+   <select style="font-family: 'FontAwesome', 'Second Font name'" [(ngModel)]="Calificacion" (change)="filterGreater('Calificacion', Calificacion)">
+   <option value="5" >
+        &#xf005;  &#xf005;  &#xf005;  &#xf005;  &#xf005;
+      </option>
+   <option value="4">
+         &#xf005;  &#xf005;  &#xf005;  &#xf005;  &#xf006;
+   </option>
+   <option value="3">
+         &#xf005;  &#xf005;  &#xf005;  &#xf006;  &#xf006;
+   </option>
+   <option value="2">
+         &#xf005;  &#xf005;  &#xf006;  &#xf006;  &#xf006;
+   </option>
+   <option value="1">
+         &#xf005;  &#xf006;  &#xf006;  &#xf006;  &#xf006;
+   </option>
+   </select>
+   <button *ngIf="Calificacion" (click)="removeFilter('Calificacion')">
+      X
+   </button>
    <hr>
    <p>Departamentos:</p>
-   <div *ngFor="let categoria of categorias">
+   <select [(ngModel)]="Departamento" (change)="filterExact('Departamento', Departamento)">
+   <option *ngFor="let categoria of categorias">
          <p routerlink="#">{{categoria.Nombre}}</p>
-    </div>
-   
+   </option>
+   </select>
+   <button *ngIf="Departamento"
+          (click)="removeFilter('Departamento')">
+            X
+  </button>
 
 
    </div>
    <div class="container-fluid"> 
          <div class="row">
-         <div *ngFor="let producto of productos " class="card col-3" style="width: 18rem;" >
+         <div *ngFor="let producto of filteredProds " class="card col-3" style="width: 18rem;" >
                <img class="card-img-top row" src="{{producto.foto}}" alt="Card image cap" [routerLink]="['/productos/producto',producto.id]">
-               <div class="card-body row">
-                  <p class="card-text">{{producto.Nombre}}</p>
-                  <p class="card-text">Departamento: {{producto.Departamento}}</p>
+               <div  class="card-body row">
+                  <p class="card-text">{{producto.Nombre}} <br> Precio: {{producto.Costo}} <br> Calificacion: {{producto.Calificacion}}<br> Departamento: {{producto.Departamento}}</p> 
+                
                 
                </div>
+               
             </div>
             </div>
          </div>
