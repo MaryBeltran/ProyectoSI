@@ -40,6 +40,7 @@ import { AuthGuard } from '../app/auth.guard';
 import { RegistroComponent } from './registro/registro.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { EditarComponent } from './Views/editar/editar.component';
 
 const config = {
   apiKey: "AIzaSyAq3MIfdMvBQNgk_4CCyAIRJsqWxmQ-VII",
@@ -81,6 +82,7 @@ const config = {
     ARecomendadosComponent,
     APromocionesComponent,
     RegistroComponent,
+    EditarComponent,
 
    
   ],

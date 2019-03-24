@@ -28,6 +28,8 @@ export class FirestoreService {
 
   productoColeccion: AngularFirestoreCollection<Producto>;
   Productos: Observable<Producto[]>;
+  productosDoc: AngularFirestoreDocument<Producto>;
+
 
   favoritosColeccion: AngularFirestoreCollection<Favoritos>;
   favoritos: Observable<Favoritos[]>;
@@ -63,25 +65,12 @@ export class FirestoreService {
 
   this.getAllFavoritos();
   this.getAllCarrito();
-  
+  this.getAllProductos();
  
     
   }
   
-  baseUrl: string = 'http://localhost:4200/productos/producto';
-
-  getAlgo(id){
-    this.favoritosColeccion = this.db.collection('Favoritos');
-    this.favoritos = this.favoritosColeccion.snapshotChanges().pipe(map(actions => {
-      return actions.map(a => {
-        const data = a.payload.doc.data() as Favoritos;
-        data.id = a.payload.doc.id;
-        return data
-      })
-    }))
-
-    return this.favoritos;
-  }
+  
 
   
 
@@ -130,7 +119,17 @@ export class FirestoreService {
 
   getAllProductos(){
     this.productoColeccion=this.db.collection('Productos');
-    this.Productos=this.productoColeccion.valueChanges();
+   
+
+    this.Productos = this.productoColeccion.snapshotChanges().pipe(map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as Producto;
+        data.cod= a.payload.doc.id;
+        console.log("dataaa", data);
+        return data
+      })
+    }))
+  
     return this.Productos;
   }
 
@@ -212,6 +211,28 @@ export class FirestoreService {
 
 
  }
+ addProductos(producto){
+  this.productoColeccion= this.db.collection('/Productos');
+  this.productoColeccion.add(producto);
+ 
+ }
+ actualizarProductos(producto: Producto){
+  console.log(producto);
+  this.productosDoc = this.db.doc(`users/${producto.cod}`);
+  this.productosDoc.set(
+    {...producto},
+    {merge:true});
+
+    this.router['/views/crudproductos'];
+}
+deleteProductos(id){
+   
+  this.productosDoc = this.db.doc(`Productos/${id}`);
+  this.productosDoc.delete();
+  //this.router['/home'];
+ 
+  
+}
   
  
   deletePreferidos(id){
