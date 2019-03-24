@@ -6,12 +6,22 @@
 	height: 620px;
 	border-radius:8px;
     padding: 0px 9px 0px 9px;
-   
-    
+}
+#Contenedor2{
+	width: 400px;
+	margin: 50px auto;
+	background-color: rgb(255, 254, 254);
+    border: 1px solid #f47820 ;
+	height: 450px;
+	border-radius:8px;
+    padding: 0px 9px 0px 9px;
 }
 
 .ContenedorG{
     padding-top: 10px;
+}
+#alerta{
+    padding-bottom: 10px;
 }
 .ContenedorG button{
     width: 100%;

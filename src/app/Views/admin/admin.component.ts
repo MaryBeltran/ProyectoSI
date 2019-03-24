@@ -11,7 +11,9 @@ import { AuthService } from 'src/app/auth.service';
 })
 export class AdminComponent implements OnInit {
 
+  AdminEdit;
   user ="";
+  
   constructor(private fs: FirestoreService,public auth: AuthService) {
     
     this.user= fs.getUsuarioActual();
@@ -19,5 +21,19 @@ export class AdminComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  CambiarPiloto(){
+
+      this.fs.updatePiloto()
+    
+    
+  }
+  CambiarPiloto2(){
+
+    this.fs.updatePiloto2()
+  
+  
+}
+
 
 }

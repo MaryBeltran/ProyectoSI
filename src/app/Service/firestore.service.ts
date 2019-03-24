@@ -1,8 +1,9 @@
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map, catchError } from "rxjs/operators";
-import {Usuario, Producto, Categoria, Favoritos, User, Carrito} from 'src/app/Service/models/interfaces'
+import {Usuario, Producto, Categoria, Favoritos, User, Carrito, Piloto} from 'src/app/Service/models/interfaces'
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 
@@ -19,6 +20,7 @@ export class FirestoreService {
 
   usersCollection: AngularFirestoreCollection;
   users:Observable<User[]>
+  
   usuariosCollection: AngularFirestoreCollection;
   usuarios: Observable<Usuario[]>;
   usuariosDoc: AngularFirestoreDocument;
@@ -30,6 +32,9 @@ export class FirestoreService {
   favoritosColeccion: AngularFirestoreCollection<Favoritos>;
   favoritos: Observable<Favoritos[]>;
   favoritosDoc: AngularFirestoreDocument<Favoritos>;
+  pilotoColeccion: AngularFirestoreCollection<Piloto>;
+  piloto: Observable<Piloto[]>;
+  pilotoDoc: AngularFirestoreDocument<Piloto>;
   idFavoritos= [];
   carritoColeccion: AngularFirestoreCollection<Carrito>;
   carrito: Observable<Carrito[]>;
@@ -77,6 +82,9 @@ export class FirestoreService {
 
     return this.favoritos;
   }
+
+  
+
   
   updateUsers(user: User){
     console.log(user);
@@ -86,12 +94,24 @@ export class FirestoreService {
       {merge:true});
   }
 
+  updatePiloto(){
+    this.usuariosDoc = this.db.doc(`Pagina/1`);
+    this.usuariosDoc.set(
+      {Piloto:true},
+      {merge:true});
+  }
+  updatePiloto2(){
+    this.usuariosDoc = this.db.doc(`Pagina/1`);
+    this.usuariosDoc.set(
+      {Piloto:false},
+      {merge:true});
+  }
  
 
   getAllUsuarios(){
-    this.usuariosCollection= this.db.collection('Usuario')
+    this.usuariosCollection= this.db.collection('Users')
     this.usuarios = this.usuariosCollection.valueChanges();
-    return this.usuarios
+    return this.users
   }
   getFavoritos(){
     return this.db.collection('Favoritos').snapshotChanges();
@@ -105,6 +125,7 @@ export class FirestoreService {
     return this.users
   }
 
+ 
  
 
   getAllProductos(){
@@ -127,6 +148,21 @@ export class FirestoreService {
 
     return this.favoritos;
   }
+  
+  getAllPiloto(){
+   
+    this.pilotoColeccion = this.db.collection('Pagina');
+    this.piloto = this.pilotoColeccion.snapshotChanges().pipe(map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as Piloto;
+        console.log("dataaa", data);
+        return data
+      })
+    }))
+
+    return this.piloto;
+  }
+
   getAllCarrito(){
    
     this.carritoColeccion = this.db.collection('Carrito');

@@ -16,9 +16,19 @@
     
 
 }
+
+
 .filtros{
     margin: 2%;
     width: 20%;
     float: left;
-    background-color: orange;
+    color: white;
+    background-color: #f47820;
+}
+
+.filtros input{
+    width: 90%;
+}
+.filtros select{
+    width: 90%;
 }
