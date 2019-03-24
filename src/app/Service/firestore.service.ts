@@ -26,6 +26,7 @@ export class FirestoreService {
 
   productoColeccion: AngularFirestoreCollection<Producto>;
   Productos: Observable<Producto[]>;
+  productosDoc: AngularFirestoreDocument<Producto>;
 
   favoritosColeccion: AngularFirestoreCollection<Favoritos>;
   favoritos: Observable<Favoritos[]>;
@@ -58,7 +59,7 @@ export class FirestoreService {
 
   this.getAllFavoritos();
   this.getAllCarrito();
-  
+  this.getAllProductos();
  
     
   }
@@ -96,7 +97,17 @@ export class FirestoreService {
 
   getAllProductos(){
     this.productoColeccion=this.db.collection('Productos');
-    this.Productos=this.productoColeccion.valueChanges();
+   
+
+    this.Productos = this.productoColeccion.snapshotChanges().pipe(map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as Producto;
+        data.cod= a.payload.doc.id;
+        console.log("dataaa", data);
+        return data
+      })
+    }))
+  
     return this.Productos;
   }
 
@@ -164,14 +175,35 @@ export class FirestoreService {
 
  }
  addProductos(producto){
-  this.db.collection('/Productos').add(producto);
+  this.productoColeccion= this.db.collection('/Productos');
+  this.productoColeccion.add(producto);
+ 
  }
+
+ actualizarProductos(producto: Producto){
+  console.log(producto);
+  this.productosDoc = this.db.doc(`users/${producto.cod}`);
+  this.productosDoc.set(
+    {...producto},
+    {merge:true});
+
+    this.router['/views/crudproductos'];
+}
   
  
   deletePreferidos(id){
    
     this.favoritosDoc = this.db.doc(`Favoritos/${id}`);
     this.favoritosDoc.delete();
+    //this.router['/home'];
+   
+    
+  }
+
+  deleteProductos(id){
+   
+    this.productosDoc = this.db.doc(`Productos/${id}`);
+    this.productosDoc.delete();
     //this.router['/home'];
    
     

@@ -21,6 +21,9 @@ import { ARecomendadosComponent } from './Views/a-recomendados/a-recomendados.co
 import { APromocionesComponent } from './Views/a-promociones/a-promociones.component';
 import { AuthGuard } from '../app/auth.guard';
 import { AdminGuard } from '../app/admin.guard';
+import { EditarComponent } from './Views/editar/editar.component';
+
+
 
 const routes: Routes = [
 
@@ -44,7 +47,11 @@ children:[
 {path: 'ajustes-usuario', component: AjustesUsuarioComponent,  canActivate: [AuthGuard]},
 {path: 'a-promociones', component: APromocionesComponent,  canActivate: [AuthGuard]},
 {path: 'a-recomendados', component: ARecomendadosComponent,  canActivate: [AuthGuard]},
-{path: 'crudproductos', component: CrudproductosComponent,  canActivate: [AuthGuard]},
+{path: 'views', children:[ 
+  {path: 'crudproductos', component: CrudproductosComponent,  canActivate: [AuthGuard]},
+  {path: 'editar/:id',component: EditarComponent,  canActivate: [AuthGuard]},
+]},
+
 {path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
 {path: 'ventas', component: VentasComponent,  canActivate: [AuthGuard]},
 

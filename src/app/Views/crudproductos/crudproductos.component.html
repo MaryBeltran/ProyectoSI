@@ -113,8 +113,8 @@
                   <td>{{ListaProducto.descuento}}</td>
                   <td>{{ListaProducto.especificaciones}}</td>
                   <td>{{ListaProducto.Descripcion}}</td>
-                  <td><button class="btn btn-warning">Editar</button></td>
-                  <td><button class="btn btn-danger">Eliminar</button></td>
+                  <td><button class="btn btn-warning" [routerLink]="['/views/editar',ListaProducto.id]">Editar</button></td>
+                  <td><button class="btn btn-danger" (click)="eliminar(ListaProducto.cod)">Eliminar</button></td>
                   
                 </tr>
                 <tr>

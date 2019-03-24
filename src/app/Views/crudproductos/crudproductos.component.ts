@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Producto } from 'src/app/Service/models/interfaces';
 import { FirestoreService } from 'src/app/Service/firestore.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crudproductos',
@@ -36,7 +37,7 @@ export class CrudproductosComponent implements OnInit {
   }
 
 
-  constructor(private fs: FirestoreService) {
+  constructor(private fs: FirestoreService, private router: Router) {
     
     fs.getAllProductos().subscribe(productos =>{
       productos.forEach(item=>{
@@ -55,15 +56,20 @@ export class CrudproductosComponent implements OnInit {
   ngOnInit() {
   }
   registrar(){
-    
-    
-    
-    
     console.log( this.productos.Nombre);
     console.log(this.productos);
 
     this.fs.addProductos(this.productos);
 
+
+  }
+  eliminar(id){
+    
+    if(confirm("¿Quiere remover este producto?")==true){
+      this.fs.deleteProductos(id);
+      this.router['/home/views/crudproductos'];
+      console.log(id);
+    }
 
   }
   
