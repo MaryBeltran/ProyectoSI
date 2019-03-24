@@ -1,3 +1,4 @@
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
@@ -43,7 +44,7 @@ export class FirestoreService {
   categoriasColeccion: AngularFirestoreCollection<Categoria>;
   Categorias: Observable<Categoria[]>;
 
-  constructor(public db: AngularFirestore, private http: HttpClient,  private router: Router) { 
+  constructor(public db: AngularFirestore, private http: HttpClient,  private router: Router, private af: AngularFireDatabase) { 
    
   this.getFavoritos().subscribe(data => {
     
@@ -81,6 +82,9 @@ export class FirestoreService {
 
     return this.favoritos;
   }
+
+  
+
   
   updateUsers(user: User){
     console.log(user);

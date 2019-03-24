@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from 'src/app/Service/firestore.service';
 import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
+
+import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import * as firebase from 'firebase';
 import { Producto, Categoria } from 'src/app/Service/models/interfaces';
@@ -16,9 +18,8 @@ export class ListaproductosComponent implements OnInit {
  
   productos = [];
   categorias = [];
-  
 
-  constructor(private fs: FirestoreService) {
+  constructor(private fs: FirestoreService,private db: AngularFireDatabase) {
   
 
     fs.getAllProductos().subscribe(productos =>{
@@ -36,6 +37,7 @@ export class ListaproductosComponent implements OnInit {
    
   }
 
+  
   onClick(producto){
     
     console.log(producto);
