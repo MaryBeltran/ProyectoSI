@@ -21,18 +21,20 @@ export interface User {
 }
 export interface Producto{
     id?: number;
-    Nombre: String;
-    Foto: String;
-    Foto1: String;
-    Foto2: String;
-    Foto3: String;
-    Foto4: String;
-    espeficificaciones: String;
-    Costo: String;
-    Cantidad: String;
-    descuento: number;
-    Descripcion: String;
-    Departamento: String;
+    Nombre?: String;
+    foto?: String;
+    foto1?: String;
+    foto2?: String;
+    foto3?: String;
+    foto4?: String;
+    especificaciones?: String;
+    Costo?: String;
+    Cantidad?: String;
+    descuento?: number;
+    Descripcion?: String;
+    Departamento?: String;
+    Calificacion?: number;
+    cod?: String;
   }
   export interface Favoritos{
     id?: String;
@@ -44,8 +46,8 @@ export interface Producto{
     Usuario?: String;
     productoID?: String;
   }
-
   
+ 
 
   export interface Categoria{
     id?: String;

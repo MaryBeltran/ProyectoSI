@@ -5,7 +5,7 @@ import { map, catchError } from "rxjs/operators";
 import {Usuario, Producto, Categoria, Favoritos, User, Carrito} from 'src/app/Service/models/interfaces'
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
-
+import * as firebase from 'firebase';
 
 
 
@@ -63,20 +63,7 @@ export class FirestoreService {
     
   }
   
-  baseUrl: string = 'http://localhost:4200/productos/producto';
 
-  getAlgo(id){
-    this.favoritosColeccion = this.db.collection('Favoritos');
-    this.favoritos = this.favoritosColeccion.snapshotChanges().pipe(map(actions => {
-      return actions.map(a => {
-        const data = a.payload.doc.data() as Favoritos;
-        data.id = a.payload.doc.id;
-        return data
-      })
-    }))
-
-    return this.favoritos;
-  }
   
   updateUsers(user: User){
     console.log(user);
@@ -175,6 +162,9 @@ export class FirestoreService {
    });
 
 
+ }
+ addProductos(producto){
+  this.db.collection('/Productos').add(producto);
  }
   
  

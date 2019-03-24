@@ -41,6 +41,9 @@ export class ListaDeseosComponent implements OnInit {
       items.forEach(item => {
           this.idFavoritos.push(item.productoID);
           this.CorreoFavoritos.push(item.Usuario);
+          
+
+          
       });
       this.favo=items;
      }
