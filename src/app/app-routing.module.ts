@@ -42,10 +42,11 @@ children:[
 ]},
 {path: 'login',component: LoginComponent},
 {path: 'registro',component: RegistroComponent},
-{path: 'ajustes-usuario', component: AjustesUsuarioComponent,  canActivate: [AuthGuard]},
+
 {path: 'a-promociones', component: APromocionesComponent,  canActivate: [AuthGuard]},
 {path: 'a-recomendados', component: ARecomendadosComponent,  canActivate: [AuthGuard]},
 {path: 'views', children:[ 
+  {path: 'ajustesusuario', component: AjustesUsuarioComponent,  canActivate: [AuthGuard]},
   {path: 'crudproductos', component: CrudproductosComponent,  canActivate: [AuthGuard]},
   {path: 'editar/:id',component: EditarComponent,  canActivate: [AuthGuard]},
 ]},
