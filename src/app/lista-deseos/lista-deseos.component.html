@@ -5,7 +5,7 @@
     <div class="row">
     <div *ngFor="let producto of productos " class="card col-3 contenedor" style="width: 18rem;" >
       <div class="">
-      <button type="button" class="btn btn-danger" (click)="deleteFavorito($event,producto.id)">X</button>
+      <button type="button" class="btn btn-danger" (click)="deleteFavorito(producto.id)">X</button>
           <img class="card-img-top row" src="{{producto.foto}}" alt="Card image cap" [routerLink]="['/productos/producto',producto.id]">
           <div class="card-body row">
              <p class="card-text">{{producto.Nombre}}</p>

@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class CrudproductosComponent implements OnInit {
  
- 
+  categorias = [];
 
  id=0;
    
@@ -38,6 +38,10 @@ export class CrudproductosComponent implements OnInit {
 
 
   constructor(private fs: FirestoreService, private router: Router) {
+
+    fs.getCategorias().subscribe(categorias =>{
+      this.categorias = categorias;
+    })
     
     fs.getAllProductos().subscribe(productos =>{
       productos.forEach(item=>{

@@ -15,8 +15,8 @@ import { AuthService } from 'src/app/auth.service';
 })
 export class ProductoComponent implements OnInit {
   
-  idProducto: any;
-  productos=[];
+  idProducto;
+  productos: any[];
   detalle=[];
   user ="";
   

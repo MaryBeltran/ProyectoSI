@@ -76,7 +76,7 @@ export class ListaDeseosComponent implements OnInit {
   }
 
   
-  deleteFavorito(event, prod){
+  deleteFavorito(prod){
    
    
    
@@ -85,7 +85,7 @@ export class ListaDeseosComponent implements OnInit {
 
         if(confirm("¿Quiere remover este elemento de su lista de deseos?")==true){
           this.fs.deletePreferidos(item.id);
-          this.router['/home'];
+       
           console.log(item);
         }
         
