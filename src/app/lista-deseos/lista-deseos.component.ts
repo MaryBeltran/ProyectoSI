@@ -85,7 +85,7 @@ export class ListaDeseosComponent implements OnInit {
    this.favo.forEach(item => {
       if(prod==item.productoID){
         this.fs.deletePreferidos(item.id);
-        this.route['/listadeseos']
+       // this.route['/listadeseos']
         console.log(item);
       }
    
