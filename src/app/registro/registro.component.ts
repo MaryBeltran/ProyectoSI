@@ -45,9 +45,9 @@ export class RegistroComponent implements OnInit {
    this.auth.registerEmail(this.email, this.password, this.name)
    .then((res)=> {
      this.router.navigate(['/home']);
+     alert("Se ha registrado con exito");
    }).catch(err => console.log('err', err.message));
  }
-
 
 
  

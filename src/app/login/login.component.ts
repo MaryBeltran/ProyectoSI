@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
     .then((res)=>{
       this.router.navigate(['/home']);
     }).catch( err => console.log('err', err.msgError));
+    alert("Ha iniciado sesión con exito");
   }
 
 

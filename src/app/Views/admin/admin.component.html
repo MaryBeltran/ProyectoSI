@@ -19,10 +19,10 @@
             <input type="checkbox">
             <div>
                 <div *ngIf="pag == false">
-            <button type="button" class="btn btn-success" (click)="CambiarPiloto()">Activar</button>
+            <button type="button" class="btn btn-success" (click)="CambiarPiloto()" (click)="myClickFunction($event)">Activar</button>
             </div>
             <div *ngIf="pag == true">
-           <button type="button" class="btn btn-danger" (click)="CambiarPiloto2()">Desactivar</button>
+           <button type="button" class="btn btn-danger" (click)="CambiarPiloto2()" (click)="myClickFunction2($event)">Desactivar</button>
           </div>
           </div>
             </label>
