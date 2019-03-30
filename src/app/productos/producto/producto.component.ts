@@ -84,7 +84,7 @@ export class ProductoComponent implements OnInit {
     console.log(this.favoritos.productoID);
     this.fs.addFavorito(this.favoritos);
     this.fs.getAllFavoritos();
-
+    alert("Ha añadido el producto a Favoritos");
     
   }
   addCar(usu,ide){
@@ -97,6 +97,7 @@ export class ProductoComponent implements OnInit {
     console.log(this.carrito.productoID);
     this.fs.addCarrito(this.carrito);
     this.fs.getAllCarrito();
+    alert("Ha añadido el producto al Carrito");
   }
   
  
