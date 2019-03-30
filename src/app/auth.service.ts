@@ -67,6 +67,13 @@ export class AuthService {
         displayName: name
       })
     }
+    async updateUserData3(user, name: string, dir: string, corr: string) {
+      this.afs.collection('users').doc(user.uid).update({
+        displayName: name,
+        email: corr,
+        direccion: dir
+      })
+    }
     
     
    async loginEmail(email: string, pass: string){

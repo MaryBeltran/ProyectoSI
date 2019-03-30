@@ -1,4 +1,8 @@
+import { ListaproductosComponent } from './../productos/listaproductos/listaproductos.component';
 import { Component, OnInit } from '@angular/core';
+import{ Router} from '@angular/router';
+import { RouterLink } from '@angular/router';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-tabla-categorias',
@@ -7,9 +11,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TablaCategoriasComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
+  prods: any;
+  filteredProds: any;
+  Departamento:     string;
+  Calificacion:     number;
+  Costo: number;
 
-  ngOnInit() {
+  filters = {}
+  ngOnInit() {    
   }
-
+  private applyFilters() {
+    this.filteredProds = _.filter(this.prods, _.conforms(this.filters) )
+  }
+  filterExact2(property: string, rule: any) {
+    
+    this.router.navigate(['/productos/listaproductos']);
+    
+  }
 }

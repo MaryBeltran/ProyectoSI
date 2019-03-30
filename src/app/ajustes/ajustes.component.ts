@@ -20,4 +20,8 @@ export class AjustesComponent implements OnInit {
   ngOnInit() {
   }
 
+  updateusuario(user, name: string, dir: string, corr: string){
+    this.auth.updateUserData3(user, name,dir,corr)
+  }
+
 }

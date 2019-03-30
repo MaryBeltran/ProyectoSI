@@ -17,7 +17,7 @@
 <br>
 <br>
   <div class="entradas">
-<input type="text" value="{{user.displayName }}">
+<input type="text" #name value="{{user.displayName }}">
 <!-- <input type="text" onfocus="this.value=''" value="Nombre de La persona"> -->
 </div>
 </div>
@@ -32,29 +32,13 @@
 <br>
 <br>
       <div class="entradas">
-    <input type="text" value="{{user.email }}">
+    <input  type="text" #em value="{{user.email }}">
     <!-- <input type="text" onfocus="this.value=''" value="Nombre de La persona"> -->
     </div>
     </div>
     <br>
     <br>
     <br>
-
-    <div class="linea">
-        <h4 class="opciones">
-          Contraseña
-        </h4>
-        <br>
-    <br>
-    <br>
-          <div class="entradas">
-        <input type="password" value="Contrasena">
-        <!-- <input type="text" onfocus="this.value=''" value="Nombre de La persona"> -->
-        </div>
-        </div>
-        <br>
-        <br>
-        <br>
         <div class="linea">
             <h4 class="opciones">
                 Dirección
@@ -64,7 +48,7 @@
         <br>
         <br>
               <div class="entradas">
-            <input type="text" rows="2" cols="50" value="{{user.direccion}}">
+            <input type="text" #dir rows="2" cols="50" value="{{user.direccion}}">
             <!-- <input type="text" onfocus="this.value=''" value="Nombre de La persona"> -->
             </div>
             </div>
@@ -73,7 +57,7 @@
             <br>
             <br>
             <div>
-                <button class="boton">Guardar Cambios</button>
+                <button class="boton" (click)="updateusuario(user.uid, name.value, dir.value, em.value)">Guardar Cambios</button>
                 </div>
                 <br>
                 

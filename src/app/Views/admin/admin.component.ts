@@ -13,6 +13,7 @@ export class AdminComponent implements OnInit {
 
   AdminEdit;
   user ="";
+  pag;
   
   constructor(private fs: FirestoreService,public auth: AuthService) {
     
@@ -20,6 +21,15 @@ export class AdminComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.fs.getAllPiloto().subscribe(items => {
+      
+      items.forEach(item => {
+          this.pag = item.Piloto;
+      });
+     }
+    
+
+    );
   }
 
   CambiarPiloto(){

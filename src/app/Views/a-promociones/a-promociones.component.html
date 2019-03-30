@@ -9,4 +9,23 @@
 
 <app-footer></app-footer>
 </div>
+<div *ngIf="user.admin == false">
+    <div id="Contenedor2">
+        <div class="icono">
+          <img class="imagen" src="../assets/imagenes/mandarina-m.png" alt="">
+           </div>
+      <div class="ContentForm">
+        <form name="FormEntrar">
+            <div id="alerta">
+              Usted no tiene permisos de administrador
+            </div>
+            <div id="alerta">
+                Solo los usuarios con permisos de administrador podran visulalizar esta página.
+              </div>
+              
+         <a class="btn btn-lg btn-primary btn-block btn-signin" id="ingresar" href="/home">Inicio</a>
+          </form>
+        </div>	
+    </div>
+</div>
 </div>
