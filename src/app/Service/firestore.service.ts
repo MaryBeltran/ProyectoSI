@@ -216,14 +216,14 @@ export class FirestoreService {
   this.productoColeccion.add(producto);
  
  }
- actualizarProductos(producto: Producto){
+ actualizarProds(producto: Producto){
   console.log(producto);
-  this.productosDoc = this.db.doc(`users/${producto.cod}`);
+  this.productosDoc = this.db.doc(`Productos/${producto.cod}`);
   this.productosDoc.set(
     {...producto},
     {merge:true});
 
-    this.router['/views/crudproductos'];
+    this.router.navigate(['/views/crudproductos']);
 }
 deleteProductos(id){
    

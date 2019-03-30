@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Producto } from 'src/app/Service/models/interfaces';
 import { FirestoreService } from 'src/app/Service/firestore.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-crudproductos',
@@ -11,7 +12,9 @@ import { Router } from '@angular/router';
 export class CrudproductosComponent implements OnInit {
  
   categorias = [];
+  users = [];
 
+  user ="";
  id=0;
    
   ListaProductos= [];
@@ -37,7 +40,7 @@ export class CrudproductosComponent implements OnInit {
   }
 
 
-  constructor(private fs: FirestoreService, private router: Router) {
+  constructor(private fs: FirestoreService, private router: Router,public auth: AuthService) {
 
     fs.getCategorias().subscribe(categorias =>{
       this.categorias = categorias;
@@ -58,6 +61,11 @@ export class CrudproductosComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.fs.getAllUsers().subscribe(users =>{
+      this.users = users
+    })
+    
+    this.user= this.fs.getUsuarioActual();
   }
   registrar(){
     console.log( this.productos.Nombre);

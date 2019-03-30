@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from 'src/app/Service/firestore.service';
 import { Route, ActivatedRoute } from '@angular/router';
 import { Producto } from 'src/app/Service/models/interfaces';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-editar',
@@ -13,9 +14,11 @@ export class EditarComponent implements OnInit {
   articulo: Producto;
   producto= [];
   detalle=[];
-  
+  users = [];
+
+  user ="";
   idProducto: any;
-  constructor(private fs: FirestoreService, private router: ActivatedRoute) {
+  constructor(private fs: FirestoreService, private router: ActivatedRoute,public auth: AuthService) {
    
    }
 
@@ -28,7 +31,11 @@ export class EditarComponent implements OnInit {
          this.articulo=item;
        }
       })
-
+      this.fs.getAllUsers().subscribe(users =>{
+        this.users = users
+      })
+      
+      this.user= this.fs.getUsuarioActual();
      
      
 
@@ -38,7 +45,7 @@ export class EditarComponent implements OnInit {
   }
 
   actualizarProductos(){
-    this.fs.actualizarProductos(this.articulo);
+    this.fs.actualizarProds(this.articulo);
     
   
 
