@@ -6,6 +6,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import * as firebase from 'firebase';
 import { Producto, Categoria } from 'src/app/Service/models/interfaces';
+import { AuthService } from 'src/app/auth.service';
 
 
 
@@ -28,9 +29,10 @@ export class ListaproductosComponent implements OnInit {
   Costo: number;
 
   filters = {}
-
-  constructor(private fs: FirestoreService,private db: AngularFireDatabaseModule) {
+  user=""
   
+  constructor(private fs: FirestoreService,private db: AngularFireDatabaseModule, public auth: AuthService) {
+    this.user= fs.getUsuarioActual();
 
     fs.getAllProductos().subscribe(productos =>{
       this.productos = productos;

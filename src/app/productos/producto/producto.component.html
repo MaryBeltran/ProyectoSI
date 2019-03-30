@@ -1,3 +1,5 @@
+<div *ngIf="auth.user$ | async as user">
+    <div *ngIf="user.habilitacion == true">
 <app-navbar></app-navbar>
   <app-navbar2></app-navbar2>
 
@@ -39,13 +41,7 @@
   {{detalle.Costo}}
 
      </div>
-     <div class="dropdown">
-        <button class="dropbtn">Tipos <i class="fa fa-caret-down" style="font-size:13px"></i></button>
-        <div class="dropdown-content">
-          <a>8GB RAM</a>
-          <a>16GB RAM</a>
-        </div>
-      </div>
+     
       <hr>
 <div>
   <input type="text" onfocus="this.value=''" value="1" style="width:157px;">
@@ -167,3 +163,21 @@
     </div> 
   </div>
   <app-footer></app-footer>
+</div>
+  <div *ngIf="user.habilitacion == false">
+      <div id="Contenedor2">
+          <div class="icono">
+            <img class="imagen" src="../assets/imagenes/mandarina-m.png" alt="">
+             </div>
+        <div class="ContentForm">
+          <form name="FormEntrar">
+              <div id="alerta">
+                Usted se encuentra desabilitado y no puede ver nuestra pagina
+              </div>
+                
+           <a class="btn btn-lg btn-primary btn-block btn-signin" id="ingresar" href="/login" (click)="auth.signOut()">Area de Inicio de Sesión</a>
+            </form>
+          </div>	
+      </div>
+    </div>
+    </div>

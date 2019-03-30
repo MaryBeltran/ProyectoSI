@@ -3,9 +3,7 @@
   <div *ngFor="let producto of productos " class="card" style="width: 18rem;" >
         <img class="card-img-top row" src="{{producto.foto}}" alt="Card image cap" [routerLink]="['/productos/producto',producto.id]">
         <div class="card-body row">
-           <p class="card-text">{{producto.Nombre}}</p>
-           <p class="card-text">Precio: {{producto.Costo}}</p>
-           <p class="card-text">Descuento: {{producto.descuento}}%</p>
+           <p class="card-text">{{producto.Nombre}}<br>Precio: {{producto.Costo}}<br>Descuento: {{producto.descuento}}%</p>
 
         </div>
      </div>

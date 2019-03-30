@@ -7,7 +7,6 @@ import { Navbar2Component } from './navbar2/navbar2.component';
 import { AjustesComponent } from './ajustes/ajustes.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { RecomendadoComponent } from './recomendado/recomendado.component';
-import { FavoritosComponent } from './favoritos/favoritos.component';
 import { ProductoComponent } from './productos/producto/producto.component';
 import { ListaproductosComponent } from './productos/listaproductos/listaproductos.component';
 import { LoginComponent } from './login/login.component';
@@ -35,7 +34,6 @@ children:[
 {path: 'carrito',component: CarritoComponent,  canActivate: [AuthGuard]},
 {path: 'listadeseos',component: ListaDeseosComponent,  canActivate: [AuthGuard]},
 {path: 'recomendado',component: RecomendadoComponent,  canActivate: [AuthGuard]},
-{path: 'favoritos',component: FavoritosComponent,  canActivate: [AuthGuard]},
 {path: 'productos', children:[ 
       {path: 'producto/:id',component: ProductoComponent,  canActivate: [AuthGuard]},
       {path: 'listaproductos',component: ListaproductosComponent,  canActivate: [AuthGuard]},
