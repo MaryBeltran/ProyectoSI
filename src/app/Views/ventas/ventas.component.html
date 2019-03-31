@@ -5,9 +5,50 @@
 
 <app-b1-admin></app-b1-admin>
 <app-b2-admin></app-b2-admin>
+<br>
+<h2>
+Activacion de Filtros de Busqueda
+</h2>
+<br>
+<br>
+<div *ngFor="let f of f1">
+<div *ngIf="f.filtro1 == false">
+  <h5>Activacion de filtro de Precio</h5>
+    <button type="button" class="btn btn-success" (click)="Cambiarf1()" (click)="myClickFunction($event)">Activar Filtro de Precio</button>
+</div>
+<div *ngIf="f.filtro1 == true">
+    <h5>Desactivacion de filtro de Precio</h5>
+    <button type="button" class="btn btn-danger" (click)="Cambiarf11()" (click)="myClickFunction2($event)">Desactivar Filtro de Precio</button>
+</div>
+</div>
+<br>
+<br>
 
+<div *ngFor="let ff of f2">
+<div *ngIf="ff.filtro2 == false">
+    <h5>Activacion de filtro de Estrellas</h5>
+    <button type="button" class="btn btn-success" (click)="Cambiarf2()" (click)="myClickFunction($event)">Activar Filtro de Estrellas</button>
+</div>
+<div *ngIf="ff.filtro2 == true">
+    <h5>Desactivacion de filtro de Estrellas</h5>
+    <button type="button" class="btn btn-danger" (click)="Cambiarf21()" (click)="myClickFunction2($event)">Desactivar Filtro de Estrellas</button>
+</div>
+</div>
+<br>
+<br>
 
-<a> ACA HACER:Activacion Filtros + Búsqueda por Rangos Y PONER EN EL DESPLEGABLE SALTO A SECCIONES DE ACA</a>
+<div *ngFor="let fff of f3">
+<div *ngIf="fff.filtro3 == false">
+    <h5>Activacion de filtro de Departamentos</h5>
+    <button type="button" class="btn btn-success" (click)="Cambiarf3()" (click)="myClickFunction($event)">Activar Filtro de Departamentos</button>
+</div>
+<div *ngIf="fff.filtro3 == true">
+    <h5>Desactivacion de filtro de Departamentos</h5>
+    <button type="button" class="btn btn-danger" (click)="Cambiarf31()" (click)="myClickFunction2($event)">Desactivar filtro de Departamentos</button>
+</div>
+</div>
+<br>
+<br>
 
 <app-footer></app-footer>
 </div>

@@ -45,7 +45,19 @@ export class ListaproductosComponent implements OnInit {
 
    }
 
+   f1;
+  f2;
+  f3;
   ngOnInit() {
+    this.fs.getAllf1().subscribe(f1 =>{
+      this.f1 = f1
+    })
+    this.fs.getAllf2().subscribe(f2 =>{
+      this.f2 = f2
+    })
+    this.fs.getAllf3().subscribe(f3 =>{
+      this.f3 = f3
+    })
     
     this.fs.db.collection('/Productos').valueChanges()
     .subscribe(prods => {

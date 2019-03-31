@@ -8,6 +8,8 @@
 
 <div class="contenedor">
    <div class="filtros">
+      <div *ngFor="let f of f1">
+      <div *ngIf="f.filtro1 == true">
    <p>Precio desde:</p>
    <input type="number"
          [(ngModel)]="Costo"
@@ -19,6 +21,10 @@
         </button>
 
    <hr>
+</div>
+      </div>
+      <div *ngFor="let ff of f2">
+      <div *ngIf="ff.filtro2 == true">
    <p>Estrellas:</p>
    <select style="font-family: 'FontAwesome', 'Second Font name'" [(ngModel)]="Calificacion" (change)="filterGreater('Calificacion', Calificacion)">
    <option value="5" >
@@ -41,6 +47,11 @@
       X
    </button>
    <hr>
+   </div>
+      </div>
+      
+<div *ngFor="let fff of f3">
+      <div *ngIf="fff.filtro3 == true">
    <p>Departamentos:</p>
    <select [(ngModel)]="Departamento" (change)="filterExact('Departamento', Departamento)">
    <option *ngFor="let categoria of categorias">
@@ -51,7 +62,8 @@
           (click)="removeFilter('Departamento')">
             X
   </button>
-
+</div>
+</div>
 
    </div>
    <div class="container-fluid"> 

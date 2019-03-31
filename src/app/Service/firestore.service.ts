@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map, catchError } from "rxjs/operators";
-import {Usuario, Producto, Categoria, Favoritos, User, Carrito, Piloto} from 'src/app/Service/models/interfaces'
+import {Usuario, Producto, Categoria, Favoritos, User, Carrito, Piloto, Filtro1, Filtro2, Filtro3} from 'src/app/Service/models/interfaces'
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 
@@ -37,6 +37,15 @@ export class FirestoreService {
   pilotoColeccion: AngularFirestoreCollection<Piloto>;
   piloto: Observable<Piloto[]>;
   pilotoDoc: AngularFirestoreDocument<Piloto>;
+  f1Coleccion: AngularFirestoreCollection<Filtro1>;
+  f1: Observable<Filtro1[]>;
+  f1Doc: AngularFirestoreDocument<Filtro1>;
+  f2Coleccion: AngularFirestoreCollection<Filtro2>;
+  f2: Observable<Filtro2[]>;
+  f2Doc: AngularFirestoreDocument<Filtro2>;
+  f3Coleccion: AngularFirestoreCollection<Filtro3>;
+  f3: Observable<Filtro3[]>;
+  f3Doc: AngularFirestoreDocument<Filtro3>;
   idFavoritos= [];
   carritoColeccion: AngularFirestoreCollection<Carrito>;
   carrito: Observable<Carrito[]>;
@@ -95,6 +104,43 @@ export class FirestoreService {
       {Piloto:false},
       {merge:true});
   }
+  updatef1(){
+    this.usuariosDoc = this.db.doc(`Pagina/2`);
+    this.usuariosDoc.set(
+      {filtro1:true},
+      {merge:true});
+  }
+  updatef11(){
+    this.usuariosDoc = this.db.doc(`Pagina/2`);
+    this.usuariosDoc.set(
+      {filtro1:false},
+      {merge:true});
+  }
+  updatef2(){
+    this.usuariosDoc = this.db.doc(`Pagina/3`);
+    this.usuariosDoc.set(
+      {filtro2:true},
+      {merge:true});
+  }
+  updatef21(){
+    this.usuariosDoc = this.db.doc(`Pagina/3`);
+    this.usuariosDoc.set(
+      {filtro2:false},
+      {merge:true});
+  }
+  updatef3(){
+    this.usuariosDoc = this.db.doc(`Pagina/4`);
+    this.usuariosDoc.set(
+      {filtro3:true},
+      {merge:true});
+  }
+  updatef31(){
+    this.usuariosDoc = this.db.doc(`Pagina/4`);
+    this.usuariosDoc.set(
+      {filtro3:false},
+      {merge:true});
+  }
+  
  
 
   getAllUsuarios(){
@@ -114,13 +160,8 @@ export class FirestoreService {
     return this.users
   }
 
- 
- 
-
   getAllProductos(){
     this.productoColeccion=this.db.collection('Productos');
-   
-
     this.Productos = this.productoColeccion.snapshotChanges().pipe(map(actions => {
       return actions.map(a => {
         const data = a.payload.doc.data() as Producto;
@@ -129,7 +170,6 @@ export class FirestoreService {
         return data
       })
     }))
-  
     return this.Productos;
   }
 
@@ -144,7 +184,6 @@ export class FirestoreService {
         return data
       })
     }))
-
     return this.favoritos;
   }
   
@@ -158,9 +197,42 @@ export class FirestoreService {
         return data
       })
     }))
-
     return this.piloto;
   }
+  getAllf1(){
+    this.f1Coleccion = this.db.collection('Pagina');
+    this.f1 = this.f1Coleccion.snapshotChanges().pipe(map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as Filtro1;
+        console.log("dataaa", data);
+        return data
+      })
+    }))
+    return this.f1;
+  }
+  getAllf2(){
+    this.f2Coleccion = this.db.collection('Pagina');
+    this.f2 = this.f2Coleccion.snapshotChanges().pipe(map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as Filtro2;
+        console.log("dataaa", data);
+        return data
+      })
+    }))
+    return this.f2;
+  }
+  getAllf3(){
+    this.f3Coleccion = this.db.collection('Pagina');
+    this.f3 = this.f3Coleccion.snapshotChanges().pipe(map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as Filtro3;
+        console.log("dataaa", data);
+        return data
+      })
+    }))
+    return this.f3;
+  }
+  
 
   getAllCarrito(){
    
