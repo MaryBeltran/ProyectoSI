@@ -18,11 +18,11 @@
                   
             <label class="switch">
             <input type="checkbox">
-            <div>
-                <div *ngIf="pag == false">
+            <div *ngFor="let p  of piloto">
+              <div *ngIf="p.Piloto == false">
             <button type="button" class="btn btn-success" (click)="CambiarPiloto()" (click)="myClickFunction($event)">Activar</button>
             </div>
-            <div *ngIf="pag == true">
+            <div *ngIf="p.Piloto == true">
            <button type="button" class="btn btn-danger" (click)="CambiarPiloto2()" (click)="myClickFunction2($event)">Desactivar</button>
           </div>
           </div>

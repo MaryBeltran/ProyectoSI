@@ -1,7 +1,8 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
-    <div *ngIf="pag == false">
+<div *ngFor="let p  of piloto">
+<div *ngIf="p.Piloto == false">
 
 
 <div id="Contenedor">
@@ -57,7 +58,7 @@
       <!-- User logged in -->
       <ng-template #authenticated >
         <div *ngIf="auth.user$ | async as user">
-          <button (click)="auth.signOut()">Cerrar Sesion</button>
+        <button routerLink="/home">Inicio</button> 
       </div>
       </ng-template>
       </div>
@@ -65,7 +66,7 @@
     <div class="opcioncontra"><a>¿Tienes una cuenta? </a><a href="/login">Inicia Sesion</a></div>
     </div>
 </div>
-<div *ngIf="pag == true">
+<div *ngIf="p.Piloto == true">
     <div id="Contenedor2">
         <div class="icono">
           <img class="imagen" src="../assets/imagenes/mandarina-m.png" alt="">
@@ -84,3 +85,4 @@
         </div>
     
 </div>
+</div>   
