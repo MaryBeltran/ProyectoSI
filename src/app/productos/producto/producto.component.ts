@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ListaproductosComponent } from '../listaproductos/listaproductos.component';
 import { FirestoreService } from 'src/app/Service/firestore.service';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Favoritos } from 'src/app/Service/models/interfaces';
+import { Favoritos, Carrito } from 'src/app/Service/models/interfaces';
 import { AuthService } from 'src/app/auth.service';
+
 
 
 
@@ -15,16 +15,18 @@ import { AuthService } from 'src/app/auth.service';
 })
 export class ProductoComponent implements OnInit {
   
-  idProducto: any;
-  productos=[];
-  detalle = [];
+  idProducto;
+  productos: any[];
+  detalle=[];
   user ="";
   
   favoritos: Favoritos = {
     Usuario: '',
     productoID: '',
-    
-
+  }
+  carrito: Carrito = {
+    Usuario: '',
+    productoID: '',
   }
   
   
@@ -62,7 +64,8 @@ export class ProductoComponent implements OnInit {
 
     });
 
-
+   
+    
 
     function myFunction(imgs) {
       var expandImg = document.getElementById("expandedImg");
@@ -81,15 +84,20 @@ export class ProductoComponent implements OnInit {
     console.log(this.favoritos.productoID);
     this.fs.addFavorito(this.favoritos);
     this.fs.getAllFavoritos();
-
-    /*
-   
-    this.favoritos.Costo=cos;
-    this.favoritos.Departamento=dep;
-    this.favoritos.Foto=fot;
+    alert("Ha añadido el producto a Favoritos");
     
-
-  */
+  }
+  addCar(usu,ide){
+    console.log(usu);
+    console.log(ide);
+ 
+    this.carrito.Usuario=usu;
+    this.carrito.productoID=ide;
+    console.log(this.carrito.Usuario);
+    console.log(this.carrito.productoID);
+    this.fs.addCarrito(this.carrito);
+    this.fs.getAllCarrito();
+    alert("Ha añadido el producto al Carrito");
   }
   
  

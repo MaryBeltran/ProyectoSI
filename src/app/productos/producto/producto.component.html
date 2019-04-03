@@ -1,6 +1,9 @@
+<div *ngIf="auth.user$ | async as user">
+    <div *ngIf="user.habilitacion == true">
 <app-navbar></app-navbar>
   <app-navbar2></app-navbar2>
 
+          
   <div class="row">
       <div class="col-sm-6">
       <div class="preview-pic tab-content">
@@ -22,8 +25,9 @@
 <div class="col-sm-6">
  <div class="Nombre">
   {{detalle.Nombre}}
-  {{user.email}}
  
+
+
  </div>
 
 <span class="fa fa-star checked"></span>
@@ -35,27 +39,18 @@
 <div class="Precio">
    
   {{detalle.Costo}}
-  
+
      </div>
-     <div class="dropdown">
-        <button class="dropbtn">Tipos <i class="fa fa-caret-down" style="font-size:13px"></i></button>
-        <div class="dropdown-content">
-          <a>8GB RAM</a>
-          <a>16GB RAM</a>
-        </div>
-      </div>
+     
       <hr>
 <div>
   <input type="text" onfocus="this.value=''" value="1" style="width:157px;">
   </div>
   <div *ngIf="auth.user$ | async as user">
     <br>
-     <button class="btn">Añadir al Carrito <i class="fa fa-shopping-cart" style="font-size:20px"></i></button>
+     <button class="btn" type="submit" (click)="addCar(user.email,detalle.id)">Añadir al Carrito <i class="fa fa-shopping-cart" style="font-size:20px"></i></button>
     <a style="padding-left: 10px;" >
-     
-        <button class="btn" type="submit" (click)="addFav(user.email,detalle.id)"><i class="fas fa-heart" style="font-size:20px" ></i></button>
-       
-     
+     <button class="btn"><i class="fas fa-heart" style="font-size:20px" (click)="addFav(user.email,detalle.id)"></i></button>
     </a>
     </div>
   <div>
@@ -166,4 +161,23 @@
       </div>
      </div>
     </div> 
+  </div>
   <app-footer></app-footer>
+</div>
+  <div *ngIf="user.habilitacion == false">
+      <div id="Contenedor2">
+          <div class="icono">
+            <img class="imagen" src="../assets/imagenes/mandarina-m.png" alt="">
+             </div>
+        <div class="ContentForm">
+          <form name="FormEntrar">
+              <div id="alerta">
+                Usted se encuentra desabilitado y no puede ver nuestra pagina
+              </div>
+                
+           <a class="btn btn-lg btn-primary btn-block btn-signin" id="ingresar" href="/login" (click)="auth.signOut()">Area de Inicio de Sesión</a>
+            </form>
+          </div>	
+      </div>
+    </div>
+    </div>

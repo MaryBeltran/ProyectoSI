@@ -15,8 +15,12 @@ import { FirestoreService } from '../Service/firestore.service';
 })
 export class RegistroComponent implements OnInit {
  
-  
+
+  paginas = [];
+  pag;
   constructor( private router: Router, private fs: FirestoreService,public auth: AuthService) { 
+   
+   
 
   }
 //a
@@ -25,14 +29,26 @@ export class RegistroComponent implements OnInit {
   public name: string='';
 
   ngOnInit() {
+    this.fs.getAllPiloto().subscribe(items => {
+      
+      items.forEach(item => {
+          this.pag = item.Piloto;
+      });
+     }
+    
+
+    );
+
   }
 
  onAddUser(){
    this.auth.registerEmail(this.email, this.password, this.name)
    .then((res)=> {
      this.router.navigate(['/home']);
+     alert("Se ha registrado con exito");
    }).catch(err => console.log('err', err.message));
  }
 
 
+ 
 }

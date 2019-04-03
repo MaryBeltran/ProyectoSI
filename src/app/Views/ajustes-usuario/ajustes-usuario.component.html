@@ -1,27 +1,52 @@
+
+<<<<<<< HEAD
+=======
+<div *ngIf="auth.user$ | async as user">
+        <div *ngIf="user.habilitacion == true">
+        <div *ngIf="user.admin == true">
+
 <app-b1-admin></app-b1-admin>
 <app-b2-admin></app-b2-admin>
 
+
+>>>>>>> 2de5d0808cdd0e0c5d882a087e9aad8b0b3d08bb
 <div class="container">
         <div class="row">
-            <div class="col-6 cadm">
+            <div class="col-12 cadm">
                 <div class="row">
+<<<<<<< HEAD
                     <h3> .       Control Administradores</h3>
+=======
+                    <h3 style="display: block; margin: 0 auto; text-align: center;">Control Administradores</h3>
+>>>>>>> 2de5d0808cdd0e0c5d882a087e9aad8b0b3d08bb
                 </div>
-                <div class="row">
+                <div class="row" style="display: block; margin: auto; text-align: center; padding-left: 0%">
+                    
                     <div class="table responsive">
                         <div class="table table-hover">
                             <thead>
                                 <th>Nombre</th>
                                 <th>Correo</th>
                                 <th>Administrador</th>
+                                <th>Habilitacion</th>
                                 <th></th>
                             </thead>
                             <tbody>
+<<<<<<< HEAD
                                 <tr *ngFor="let usuario of usuarios">
                                 <td>{{usuario.Nombre}}</td>
                                 <td>{{usuario.Correo}}</td>
                                 <td>{{usuario.Admin}}</td>
                                 <td><button type="button" class="btn btn-outline-light btn-bg" Style="margin-left: 20px"  (click)="CambiarAdmin(usuario)">Cambiar</button></td>
+=======
+                                <tr *ngFor="let user of users">
+                                    <td>{{user.displayName}}</td>
+                                    <td>{{user.email}}</td>
+                                    <td>{{user.admin}}</td>
+                                <td>{{user.habilitacion}}</td>
+                                <td><button type="button" class="btn btn-outline-secondary" Style="margin-left: 50px; color: black; "(click)="CambiarAdmin(user)">Cambiar Administrador</button></td>
+                                <td><button type="button" class="btn btn-outline-secondary" Style="margin-left: 50px; color: black;"(click)="CambiarHab(user)">Cambiar Habilitacion</button></td>
+>>>>>>> 2de5d0808cdd0e0c5d882a087e9aad8b0b3d08bb
                                 </tr>
                             </tbody>
                         </div>
@@ -29,6 +54,7 @@
                 </div>
 
             </div>
+<<<<<<< HEAD
 
             <div class="col-5 cusuarios">
                 <div class="row">
@@ -55,9 +81,53 @@
                     </div>
                 </div>
             </div>
+=======
+>>>>>>> 2de5d0808cdd0e0c5d882a087e9aad8b0b3d08bb
         </div>
      
 </div>
 
+<<<<<<< HEAD
 
 <app-footer></app-footer>
+=======
+<app-footer></app-footer>
+</div>
+<div *ngIf="user.admin == false">
+        <div id="Contenedor2">
+            <div class="icono">
+              <img class="imagen" src="../assets/imagenes/mandarina-m.png" alt="">
+               </div>
+          <div class="ContentForm">
+            <form name="FormEntrar">
+                <div id="alerta">
+                  Usted no tiene permisos de administrador
+                </div>
+                <div id="alerta">
+                    Solo los usuarios con permisos de administrador podran visulalizar esta página.
+                  </div>
+                  
+             <a class="btn btn-lg btn-primary btn-block btn-signin" id="ingresar" href="/home">Inicio</a>
+              </form>
+            </div>	
+        </div>
+      </div>
+</div>
+      <div *ngIf="user.habilitacion == false">
+            <div id="Contenedor2">
+                <div class="icono">
+                  <img class="imagen" src="../assets/imagenes/mandarina-m.png" alt="">
+                   </div>
+              <div class="ContentForm">
+                <form name="FormEntrar">
+                    <div id="alerta">
+                      Usted se encuentra desabilitado y no puede ver nuestra pagina
+                    </div>
+                      
+                 <a class="btn btn-lg btn-primary btn-block btn-signin" id="ingresar" href="/login" (click)="auth.signOut()">Area de Inicio de Sesión</a>
+                  </form>
+                </div>	
+            </div>
+          </div>
+</div>
+>>>>>>> 2de5d0808cdd0e0c5d882a087e9aad8b0b3d08bb
