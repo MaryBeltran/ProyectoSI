@@ -36,6 +36,7 @@ export class ListaDeseosComponent implements OnInit {
 
   ngOnInit() {
     this.fs.getAllFavoritos().subscribe(items => {
+      // items is an array
       
       items.forEach(item => {
           this.idFavoritos.push(item.productoID);
@@ -76,30 +77,19 @@ export class ListaDeseosComponent implements OnInit {
   }
 
   
-  deleteFavorito(prod){
+  deleteFavorito(event, prod){
    
    
    
-    this.favo.forEach(item => {
+
+   this.favo.forEach(item => {
       if(prod==item.productoID){
-<<<<<<< HEAD
         this.fs.deletePreferidos(item.id);
        // this.route['/listadeseos']
         console.log(item);
-=======
-
-        if(confirm("¿Quiere remover este elemento de su lista de deseos?")==true){
-          this.fs.deletePreferidos(item.id);
-       
-          console.log(item);
-        }
-        
-
->>>>>>> 2de5d0808cdd0e0c5d882a087e9aad8b0b3d08bb
       }
    
   });
-
 
    
   };

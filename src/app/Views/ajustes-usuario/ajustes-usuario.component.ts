@@ -14,15 +14,11 @@ export class AjustesUsuarioComponent implements OnInit {
   UsertoEdit;
   users = [];
 
-<<<<<<< HEAD
-  constructor(private fs: FirestoreService) {
-=======
   user ="";
   constructor(private fs: FirestoreService,public auth: AuthService) {
    /* fs.getAllUsuarios().subscribe(usuarios =>{
       this.usuarios = usuarios
     })*/
->>>>>>> 2de5d0808cdd0e0c5d882a087e9aad8b0b3d08bb
     
    }
    ngOnInit() {
@@ -53,11 +49,7 @@ export class AjustesUsuarioComponent implements OnInit {
       this.UsertoEdit.habilitacion = true
     }
     console.log(this.UsertoEdit)
-<<<<<<< HEAD
-  }
-=======
     this.fs.updateUsers(this.UsertoEdit)
->>>>>>> 2de5d0808cdd0e0c5d882a087e9aad8b0b3d08bb
 
  }
 
