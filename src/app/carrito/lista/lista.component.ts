@@ -20,6 +20,10 @@ coID;
 
 //favoritos=[];
 usuario;
+values={
+  a:1
+}
+result = 0;  
   constructor(private fs: FirestoreService, public auth: AuthService, private router: Router) { 
     fs.getCarrito();
     console.log("usuarios");

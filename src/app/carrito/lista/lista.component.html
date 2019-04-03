@@ -11,12 +11,15 @@
                 <a [routerLink]="['/productos/producto',producto.id]" class=""> <img class="imagen" src="{{producto.foto}}" height="150" ></a>
                 
                           
-                 <input type="text" class="elemento incrementar">
+                <input type="text" class="elemento incrementar" #name [(ngModel)]="values.a" contenteditable="true">
                 <a  class="elemento">Subtotal:</a>
-                <a  class="elemento ">{{producto.Costo}}</a>   
+                <a  class="elemento ">{{producto.Costo * name.value}}</a>   
                 <br>
                 <hr>
                 <span>Condiciones de la entrega</span>
+            </div>
+            <div>
+
             </div>
         </div>
         
