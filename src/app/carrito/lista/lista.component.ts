@@ -33,10 +33,8 @@ usuario;
   }
 
   ngOnInit() {
-
     this.fs.getAllCarrito().subscribe(items => {
       // items is an array
-      
       items.forEach(item => {
           this.idCarrito.push(item.productoID);
           this.CorreoCarrito.push(item.Usuario);
