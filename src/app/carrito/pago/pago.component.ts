@@ -61,7 +61,7 @@ paypalConfig = {
           payment: {
               transactions: [
                   {
-                      amount: { total: this.PrecioPago , currency: 'USD' }
+                      amount: { total: this.precio , currency: 'USD' }
                   }
               ]
           }

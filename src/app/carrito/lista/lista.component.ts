@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { FirestoreService } from 'src/app/Service/firestore.service';
 import { AuthService } from 'src/app/auth.service';
 import { Router } from '@angular/router';
@@ -12,6 +12,8 @@ import { Carrito, Producto } from 'src/app/Service/models/interfaces';
 export class ListaComponent implements OnInit {
 
   cart: any;
+  @Output() ClickedEvent = new EventEmitter<boolean>();
+  clicked: boolean = true;
 
 //idProductos= [];
 idCarrito = [];
@@ -108,6 +110,7 @@ incrementar(producto, i){
   this.auth.user$.subscribe(user => {
     if(user){
         this.fs.incrementar(producto,user.uid, i)
+        this.ClickedEvent.emit(this.clicked)
     }
   })
 }
@@ -119,6 +122,7 @@ disminuir(producto, i){
           alert("No se puede disminuir mas la cantidad, si desea puede eliminar el producto en X")
         } else {
            this.fs.disminuir(producto,user.uid, i)
+           this.ClickedEvent.emit(this.clicked)
         }  
     }
   })
