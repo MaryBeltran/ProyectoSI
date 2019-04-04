@@ -44,12 +44,13 @@
      
       <hr>
 <div>
-  <input type="text" onfocus="this.value=''" value="1" style="width:157px;">
+  <input [(ngModel)] ="cantidad" #ctrl="ngModel" type="text" name="inputCantidad" id="idCantidad" style="width:157px;">
   </div>
   <div *ngIf="auth.user$ | async as user">
     <br>
-     <button class="btn" type="submit" (click)="addCar(user.email,detalle.id)">Añadir al Carrito <i class="fa fa-shopping-cart" style="font-size:20px"></i></button>
+     <button class="btn" type="submit" (click)="addCar(detalle,detalle.id)">Añadir al Carrito <i class="fa fa-shopping-cart" style="font-size:20px"></i></button>
     <a style="padding-left: 10px;" >
+      
      <button class="btn" type="submit" (click)="addFav(user.email,detalle.id)"><i class="fas fa-heart" style="font-size:20px" ></i></button>
     </a>
     </div>
