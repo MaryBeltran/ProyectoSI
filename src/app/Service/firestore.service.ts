@@ -6,6 +6,10 @@ import { map, catchError } from "rxjs/operators";
 import {Usuario, Producto, Categoria, Favoritos, User, Carrito, Piloto, Filtro1, Filtro2, Filtro3} from 'src/app/Service/models/interfaces'
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
+import { ConcatSource } from 'webpack-sources';
+import { totalmem } from 'os';
+import { isNullOrUndefined } from 'util';
 
 
 
@@ -55,7 +59,7 @@ export class FirestoreService {
   categoriasColeccion: AngularFirestoreCollection<Categoria>;
   Categorias: Observable<Categoria[]>;
 
-  constructor(public db: AngularFirestore, private http: HttpClient,  private router: Router) { 
+  constructor(public db: AngularFirestore, private http: HttpClient,  private router: Router, public auth:AuthService) { 
    
   this.getFavoritos().subscribe(data => {
     
@@ -273,16 +277,122 @@ export class FirestoreService {
 
  
   }
-  addCarrito(carrito){
-    this.db.collection('/Carrito').add(carrito).then(function(docRef){
-     console.log(docRef.id);
-     return this.db.collection('/Carrito').doc(docRef.id).set({
-       id: docRef.id
-     },{merge: docRef.id });
-   });
+  CrearCarrito(id){
+    this.db.collection('Carrito').doc(id).set(
+      {id: id, productos: []}
+    )
+  }
+  myCart(uid){
+    return this.db.doc<any>(`Carrito/${uid}`).snapshotChanges();
+  }
 
+  RefMiCarrito(uid){
+    return this.db.collection<any>('Carrito').doc(uid).ref;
+  }
+  
+  addCarrito(producto, cantidad, variaciones:[]){
+    return new Promise((resolve,reject) => {
+      this.auth.user$.subscribe(user => {
+        if(user){
+          const carritoRef = this.RefMiCarrito(user.uid)
+          var carrito;
+          var sub = this.myCart(user.uid).subscribe(element => {
+          carrito = element
+          sub.unsubscribe();
+          }).add( () => {
+            return console.log("Mi carrito", carrito)
 
+          if(carritoRef == undefined){
+            this.CrearCarrito(user.uid)
+          }else{
+            carritoRef.get().then(doc => {
+              let cartData = doc.data();
+              var total = this.getTotal(producto, cantidad);
+              let productosEnCarrito = cartData.productos;
+              if(variaciones == null){
+                //Prroducto sin variacion
+                const productoAlCarrito ={
+                  id: producto.id, 
+                  costo: producto.Costo,
+                  descuento: producto.Descuento,
+                  total: total,
+                  cantidad: cantidad,
+              }
+              const exist = this.findEqualProducts(productosEnCarrito, productoAlCarrito);
+                if(!exist){
+                  productosEnCarrito.push(productoAlCarrito);
+                  cartData.totalProducts += cantidad;
+                }else {
+                  exist.qty +=cantidad;
+                  cartData.totalProducts +=cantidad;
+                }
+            }else{
+              //Producto con variacion
+              const productoAlCarrito ={
+                id: producto.id, 
+                costo: producto.Costo,
+                descuento: producto.Descuento,
+                total: total,
+                cantidad: cantidad,
+                variaciones: variaciones
+            }
+            const exist = this.findEqualProducts(productosEnCarrito, productoAlCarrito);
+              if(!exist){
+                productosEnCarrito.push(productoAlCarrito);
+                cartData.totalProducts += cantidad;
+              }else {
+                exist.qty +=cantidad;
+                cartData.totalProducts +=cantidad;
+              }
+            }
+            return carritoRef.update(cartData).then(() => {
+              resolve(true);
+            }).catch((err) => {
+              reject(err);
+            })
+          })
+          }
+        }
+          )}
+      })
+    })
  }
+findEqualProducts(productosEnCarrito, product){
+  if(!isNullOrUndefined(productosEnCarrito)){
+    for (let i = 0; i < productosEnCarrito.length; i++) {
+      if(productosEnCarrito[i].id == product.id){
+        if(productosEnCarrito[i].variaciones.length == product.variaciones.length){
+          // Se tienen que poblar los nombres de las variaciones
+          let qty = productosEnCarrito[i].variaciones.length;
+          let match = 0;
+          for (let j = 0; j < productosEnCarrito[i].variaciones.length; j++) {
+            for (let k = 0; k < product.variaciones.length; k++) {
+              if(productosEnCarrito[i].variaciones[j] == product.variaciones[k]){
+                  match += 1;
+                }
+              } 
+            }
+          if(qty == match){
+            return productosEnCarrito[i];
+          }
+        }
+      }
+    }
+  }
+  return null;
+}
+actualizarNombreVariacion(nombreVariacion: any[], VariacionesNombre:[]){
+  VariacionesNombre.forEach(nombre => {
+    nombreVariacion.push(nombre);
+  });
+
+}
+ getTotal(producto,cantidad){
+   var precio= producto.Costo;
+   var total = (precio * cantidad) - (precio*producto.Descuento);
+   return total
+ }
+
  addProductos(producto){
   this.productoColeccion= this.db.collection('/Productos');
   this.productoColeccion.add(producto);

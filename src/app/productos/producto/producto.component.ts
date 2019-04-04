@@ -16,15 +16,14 @@ import { AuthService } from 'src/app/auth.service';
 export class ProductoComponent implements OnInit {
   
   idProducto;
+  producto;
+  cantidad = 200;
+  variaciones: [];
   productos: any[];
   detalle=[];
   user ="";
   
   favoritos: Favoritos = {
-    Usuario: '',
-    productoID: '',
-  }
-  carrito: Carrito = {
     Usuario: '',
     productoID: '',
   }
@@ -52,7 +51,9 @@ export class ProductoComponent implements OnInit {
       for (let index = 0; index < this.productos.length; index++) {
         console.log(this.productos[index]);
          if (this.idProducto == this.productos[index].id) {
-          this.detalle=this.productos[index];
+          this.detalle=this.productos[index]
+          this.producto = this.productos[index]
+          //This.detalle es un producto
          
           console.log("entraa");
          }
@@ -88,15 +89,16 @@ export class ProductoComponent implements OnInit {
     
   }
   addCar(usu,ide){
-    console.log(usu);
-    console.log(ide);
- 
-    this.carrito.Usuario=usu;
-    this.carrito.productoID=ide;
-    console.log(this.carrito.Usuario);
-    console.log(this.carrito.productoID);
-    this.fs.addCarrito(this.carrito);
-    this.fs.getAllCarrito();
+    console.log("NUEVO",this.producto.Calificacion)
+    console.log("NUEVO",this.cantidad)
+    console.log("NUEVO",this.variaciones)
+
+    if(this.variaciones == undefined){
+
+      this.fs.addCarrito(this.detalle, this.cantidad, null);
+    }else{
+      this.fs.addCarrito(this.detalle, this.cantidad, this.variaciones);
+    }
     alert("Ha añadido el producto al Carrito");
   }
   
