@@ -297,12 +297,10 @@ export class FirestoreService {
           const carritoRef = this.RefMiCarrito(user.uid)
           var carrito;
           var sub = this.myCart(user.uid).subscribe(element => {
-          carrito = element
+          carrito = element.payload.data();
           sub.unsubscribe();
           }).add( () => {
-            return console.log("Mi carrito", carrito)
-
-          if(carritoRef == undefined){
+          if(carrito == undefined){
             this.CrearCarrito(user.uid)
           }else{
             carritoRef.get().then(doc => {
@@ -310,6 +308,7 @@ export class FirestoreService {
               var total = this.getTotal(producto, cantidad);
               let productosEnCarrito = cartData.productos;
               if(variaciones == null){
+                alert("LLEGUE");
                 //Prroducto sin variacion
                 const productoAlCarrito ={
                   id: producto.id, 
@@ -318,15 +317,17 @@ export class FirestoreService {
                   total: total,
                   cantidad: cantidad,
               }
+              console.log(productoAlCarrito)
               const exist = this.findEqualProducts(productosEnCarrito, productoAlCarrito);
                 if(!exist){
                   productosEnCarrito.push(productoAlCarrito);
                   cartData.totalProducts += cantidad;
+                  alert("LLEGUE2");
                 }else {
                   exist.qty +=cantidad;
                   cartData.totalProducts +=cantidad;
                 }
-            }else{
+            }else if( variaciones != null ){
               //Producto con variacion
               const productoAlCarrito ={
                 id: producto.id, 
@@ -336,6 +337,7 @@ export class FirestoreService {
                 cantidad: cantidad,
                 variaciones: variaciones
             }
+            console.log(productoAlCarrito)
             const exist = this.findEqualProducts(productosEnCarrito, productoAlCarrito);
               if(!exist){
                 productosEnCarrito.push(productoAlCarrito);
