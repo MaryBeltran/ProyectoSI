@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from '../Service/firestore.service';
 import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Favoritos, Producto } from '../Service/models/interfaces';
 
 @Component({
@@ -27,7 +27,6 @@ export class ListaDeseosComponent implements OnInit {
      auth.user$.forEach(user=>{
      console.log(user.email);
      this.usuario=user.email;
-    
      });
 
    
@@ -52,9 +51,6 @@ export class ListaDeseosComponent implements OnInit {
     this.fs.getAllProductos().subscribe(elemento => {
      
       elemento.forEach(item => {
-        
-
-      
         for (let index = 0; index < this.idFavoritos.length; index++) {
           console.log("Entran");
           console.log(this.idFavoritos[index],item.id);
@@ -76,7 +72,7 @@ export class ListaDeseosComponent implements OnInit {
   }
 
   
-  deleteFavorito(event, prod){
+  deleteFavorito(prod){
    
    
    
@@ -85,8 +81,9 @@ export class ListaDeseosComponent implements OnInit {
 
         if(confirm("¿Quiere remover este elemento de su lista de deseos?")==true){
           this.fs.deletePreferidos(item.id);
-          this.router['/home'];
+       
           console.log(item);
+          
         }
         
 

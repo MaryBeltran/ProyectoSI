@@ -10,21 +10,24 @@ import { AuthService } from 'src/app/auth.service';
   styleUrls: ['./ajustes-usuario.component.css']
 })
 export class AjustesUsuarioComponent implements OnInit {
-  usuarios = [];
+//  usuarios = [];
   UsertoEdit;
   users = [];
 
   user ="";
   constructor(private fs: FirestoreService,public auth: AuthService) {
-    fs.getAllUsuarios().subscribe(usuarios =>{
+   /* fs.getAllUsuarios().subscribe(usuarios =>{
       this.usuarios = usuarios
-    })
-    fs.getAllUsers().subscribe(users =>{
+    })*/
+    
+   }
+   ngOnInit() {
+    this.fs.getAllUsers().subscribe(users =>{
       this.users = users
     })
     
-    this.user= fs.getUsuarioActual();
-   }
+    this.user= this.fs.getUsuarioActual();
+  }
 
    CambiarAdmin(item){
     this.UsertoEdit = item
@@ -51,7 +54,6 @@ export class AjustesUsuarioComponent implements OnInit {
 
  }
 
-  ngOnInit() {
-  }
+  
 
 }

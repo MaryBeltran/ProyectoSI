@@ -15,7 +15,6 @@ import { ProductoComponent } from './productos/producto/producto.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { AjustesComponent } from './ajustes/ajustes.component';
 import { RecomendadoComponent } from './recomendado/recomendado.component';
-import { FavoritosComponent } from './favoritos/favoritos.component';
 import { LoginComponent } from './login/login.component';
 import { AjustesUsuarioComponent } from './Views/ajustes-usuario/ajustes-usuario.component';
 import { AdminComponent } from './Views/admin/admin.component';
@@ -40,6 +39,8 @@ import { AuthGuard } from '../app/auth.guard';
 import { RegistroComponent } from './registro/registro.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { EditarComponent } from './Views/editar/editar.component';
+import { AcercaComponent } from './acerca/acerca.component';
 
 const config = {
   apiKey: "AIzaSyAq3MIfdMvBQNgk_4CCyAIRJsqWxmQ-VII",
@@ -64,7 +65,6 @@ const config = {
     CarritoComponent,
     AjustesComponent,
     RecomendadoComponent,
-    FavoritosComponent,
     LoginComponent,
     AjustesUsuarioComponent,
     AdminComponent,
@@ -81,6 +81,8 @@ const config = {
     ARecomendadosComponent,
     APromocionesComponent,
     RegistroComponent,
+    EditarComponent,
+    AcercaComponent,
 
    
   ],

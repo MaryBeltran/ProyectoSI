@@ -13,6 +13,7 @@ export class AdminComponent implements OnInit {
 
   AdminEdit;
   user ="";
+  piloto;
   
   constructor(private fs: FirestoreService,public auth: AuthService) {
     
@@ -20,6 +21,10 @@ export class AdminComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.fs.getAllPiloto().subscribe(piloto => {
+      this.piloto = piloto;
+ })
+    
   }
 
   CambiarPiloto(){
@@ -34,6 +39,13 @@ export class AdminComponent implements OnInit {
   
   
 }
-
+myClickFunction(event) { 
+  //just added console.log which will display the event details in browser on click of the button.
+  alert("Ha activado el modo piloto");
+}
+myClickFunction2(event) { 
+  //just added console.log which will display the event details in browser on click of the button.
+  alert("Ha desactivado el modo piloto");
+}
 
 }

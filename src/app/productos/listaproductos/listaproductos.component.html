@@ -1,3 +1,5 @@
+<div *ngIf="auth.user$ | async as user">
+            <div *ngIf="user.habilitacion == true">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet"/>
 
 <app-navbar></app-navbar>
@@ -6,6 +8,8 @@
 
 <div class="contenedor">
    <div class="filtros">
+      <div *ngFor="let f of f1">
+      <div *ngIf="f.filtro1 == true">
    <p>Precio desde:</p>
    <input type="number"
          [(ngModel)]="Costo"
@@ -17,6 +21,10 @@
         </button>
 
    <hr>
+</div>
+      </div>
+      <div *ngFor="let ff of f2">
+      <div *ngIf="ff.filtro2 == true">
    <p>Estrellas:</p>
    <select style="font-family: 'FontAwesome', 'Second Font name'" [(ngModel)]="Calificacion" (change)="filterGreater('Calificacion', Calificacion)">
    <option value="5" >
@@ -39,6 +47,11 @@
       X
    </button>
    <hr>
+   </div>
+      </div>
+      
+<div *ngFor="let fff of f3">
+      <div *ngIf="fff.filtro3 == true">
    <p>Departamentos:</p>
    <select [(ngModel)]="Departamento" (change)="filterExact('Departamento', Departamento)">
    <option *ngFor="let categoria of categorias">
@@ -49,7 +62,8 @@
           (click)="removeFilter('Departamento')">
             X
   </button>
-
+</div>
+</div>
 
    </div>
    <div class="container-fluid"> 
@@ -74,3 +88,21 @@
 
 
 <app-footer></app-footer>
+</div>
+<div *ngIf="user.habilitacion == false">
+            <div id="Contenedor2">
+                <div class="icono">
+                  <img class="imagen" src="../assets/imagenes/mandarina-m.png" alt="">
+                   </div>
+              <div class="ContentForm">
+                <form name="FormEntrar">
+                    <div id="alerta">
+                      Usted se encuentra desabilitado y no puede ver nuestra pagina
+                    </div>
+                      
+                 <a class="btn btn-lg btn-primary btn-block btn-signin" id="ingresar" href="/login" (click)="auth.signOut()">Area de Inicio de Sesión</a>
+                  </form>
+                </div>	
+            </div>
+          </div>
+</div>

@@ -1,7 +1,172 @@
+
+<div *ngIf="auth.user$ | async as user">
+    <div *ngIf="user.habilitacion == true">
+    <div *ngIf="user.admin == true">
+
 <app-b1-admin></app-b1-admin>
 <app-b2-admin></app-b2-admin>
 
+<h2>Registro de productos </h2>
+<div class="ContentForm contenido">
+        <form name="FormEntrar" >
+         <div class="row">
 
-<a> ACA HACER TODO EL CRUD DE PRODUCTOS Y PONER EN DESPLEGABLE SALTO A SECCIONES DE ACA</a>
+        
+          
+
+          <div class="input-group input-group-lg col-md-4">
+            
+           <input type="text" [(ngModel)]="productos.Nombre" name="Nombre" placeholder="Nombre del producto" class="form-control" aria-describedby="sizing-addon1" required>
+         </div>
+      
+         <div class="input-group input-group-lg col-md-4">
+             
+                <input type="number" [(ngModel)]="productos.Cantidad" name="Cantidad" placeholder="Cantidad" class="form-control" aria-describedby="sizing-addon1" required>
+          </div>
+     
+         <div class="input-group input-group-lg col-md-4">
+          
+                <input type="text" [(ngModel)]="productos.Departamento" name="Departamento" placeholder="Departamento" class="form-control" aria-describedby="sizing-addon1" required>
+              </div>
+      
+        
+
+       
+         <div class="input-group input-group-lg col-md-4">
+               
+                <input type="number" [(ngModel)]="productos.Costo" name="Costo" placeholder="Costo" class="form-control" aria-describedby="sizing-addon1" required>
+              </div>
+         <br>
+         <div class="input-group input-group-lg col-md-4">
+                
+                <input type="text" [(ngModel)]="productos.descuento" name="descuento" placeholder="Descuento" class="form-control" aria-describedby="sizing-addon1" required>
+              </div>
+     
+         <div class="input-group input-group-lg col-md-4">
+              
+                <input type="text" [(ngModel)]="productos.especificaciones" name="especificaciones" placeholder="Especificaciones" class="form-control" aria-describedby="sizing-addon1" required>
+              </div>
+              <div class="input-group input-group-lg col-md-4">
+             
+                  <input type="text" [(ngModel)]="productos.Descripcion"  name="Descripcion" placeholder="Descripcion" class="form-control" aria-describedby="sizing-addon1" required>
+                </div>
+       
+       
+        </div>
+    
+        <div class="row">
+       
+         <div class="input-group input-group-lg col-md-2">
+               
+                <input type="text" [(ngModel)]="productos.foto" name="foto" placeholder="Foto 1:"  class="form-control" aria-describedby="sizing-addon1" required>
+              </div>
+      
+         <div class="input-group input-group-lg col-md-2">
+               
+                <input type="text" [(ngModel)]="productos.foto1" name="foto1"  placeholder="Foto 2" class="form-control" aria-describedby="sizing-addon1" required>
+              </div>
+         
+         <div class="input-group input-group-lg col-md-2">
+               
+                <input type="text" [(ngModel)]="productos.foto2" name="foto2"  placeholder="Foto 3" class="form-control" aria-describedby="sizing-addon1" required>
+              </div>
+       
+         <div class="input-group input-group-lg col-md-2">
+               
+                <input type="text" [(ngModel)]="productos.foto3" name="foto3" placeholder="Foto 4" class="form-control" aria-describedby="sizing-addon1" required>
+              </div>
+      
+         <div class="input-group input-group-lg col-md-2">
+             
+                <input type="text" [(ngModel)]="productos.foto4" name="foto4" placeholder="Foto 5" class="form-control" aria-describedby="sizing-addon1" required>
+              </div>
+        
+        </div>
+      
+         
+         
+         <button class="btn btn-md btn-primary btn-block btn-signin" type="submit" (click)="registrar()"> Registrar</button>
+         
+         
+        </form>
+      </div>
+
+      <h2>Listado de productos: </h2>
+      <div>
+      <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Departamento</th>
+                  <th scope="col">Cantidad</th>
+                  <th scope="col">Costo</th>
+                  <th scope="col">Descuento</th>
+                  <th scope="col">Especificaciones</th>
+                  <th scope="col">Descripcion</th>
+                  <th scope="col">Editar</th>
+                  <th scope="col">Eliminar</th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let ListaProducto of ListaProductos">
+                <tr>
+                  
+                  <th scope="row">{{ListaProducto.Nombre}}</th>
+                  <td>{{ListaProducto.Departamento}}</td>
+                  <td>{{ListaProducto.Cantidad}}</td>
+                  <td>{{ListaProducto.Costo}}</td>
+                  <td>{{ListaProducto.descuento}}</td>
+                  <td>{{ListaProducto.especificaciones}}</td>
+                  <td>{{ListaProducto.Descripcion}}</td>
+                  <td><button class="btn btn-warning" [routerLink]="['/views/editar',ListaProducto.id]">Editar</button></td>
+                  <td><button class="btn btn-danger" (click)="eliminar(ListaProducto.cod)">Eliminar</button></td>
+                  
+                </tr>
+                <tr>
+            </tbody>
+          
+        </table>
+      </div>
+    </div>
+      
+      
 
 <app-footer></app-footer>
+</div>
+<div *ngIf="user.admin == false">
+    <div id="Contenedor2">
+        <div class="icono">
+          <img class="imagen" src="../assets/imagenes/mandarina-m.png" alt="">
+           </div>
+      <div class="ContentForm">
+        <form name="FormEntrar">
+            <div id="alerta">
+              Usted no tiene permisos de administrador
+            </div>
+            <div id="alerta">
+                Solo los usuarios con permisos de administrador podran visulalizar esta página.
+              </div>
+              
+         <a class="btn btn-lg btn-primary btn-block btn-signin" id="ingresar" href="/home">Inicio</a>
+          </form>
+        </div>	
+    </div>
+  </div>
+</div>
+<div *ngIf="user.habilitacion == false">
+    <div id="Contenedor2">
+        <div class="icono">
+          <img class="imagen" src="../assets/imagenes/mandarina-m.png" alt="">
+           </div>
+      <div class="ContentForm">
+        <form name="FormEntrar">
+            <div id="alerta">
+              Usted se encuentra desabilitado y no puede ver nuestra pagina
+            </div>
+              
+         <a class="btn btn-lg btn-primary btn-block btn-signin" id="ingresar" href="/login" (click)="auth.signOut()">Area de Inicio de Sesión</a>
+          </form>
+        </div>	
+    </div>
+  </div>
+</div>

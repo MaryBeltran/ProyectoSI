@@ -1,11 +1,10 @@
 
 <div *ngIf="auth.user$ | async as user">
-    <div *ngIf="user.admin == true">
+        <div *ngIf="user.habilitacion == true">
+        <div *ngIf="user.admin == true">
 
 <app-b1-admin></app-b1-admin>
 <app-b2-admin></app-b2-admin>
-
-
 
 
 <div class="container">
@@ -14,7 +13,7 @@
                 <div class="row">
                     <h3 style="display: block; margin: 0 auto; text-align: center;">Control Administradores</h3>
                 </div>
-                <div class="row" style="display: block; margin: auto; text-align: center; padding-left: 20%">
+                <div class="row" style="display: block; margin: auto; text-align: center; padding-left: 0%">
                     
                     <div class="table responsive">
                         <div class="table table-hover">
@@ -22,6 +21,7 @@
                                 <th>Nombre</th>
                                 <th>Correo</th>
                                 <th>Administrador</th>
+                                <th>Habilitacion</th>
                                 <th></th>
                             </thead>
                             <tbody>
@@ -29,49 +29,57 @@
                                     <td>{{user.displayName}}</td>
                                     <td>{{user.email}}</td>
                                     <td>{{user.admin}}</td>
-                                <td><button type="button" class="btn btn-outline-secondary" Style="margin-left: 50px; color: black; "(click)="CambiarAdmin(user)">Cambiar</button></td>
-                                </tr>
-                            </tbody>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-        </div>
-
-<div class="row">
-            <div class="col-12 cusuarios">
-                <div class="row">
-                    <h3 style="display: block; margin: 0 auto; text-align: center;">Control Usuarios</h3> 
-                </div>
-                <div class="row" style="display: block; margin: 0; text-align: center; padding-left: 20%">
-                    <div class="table responsive" >
-                        <div class="table table-hover">
-                            <thead>
-                                <th>Nombre</th>
-                                <th>Correo</th>
-                                <th>Estado del Usuario</th>
-                                <th></th>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let user of users">
-                                <td>{{user.displayName}}</td>
-                                <td>{{user.email}}</td>
                                 <td>{{user.habilitacion}}</td>
-                                <td><button type="button" class="btn btn-outline-secondary" Style="margin-left: 50px; color: black;"(click)="CambiarHab(user)">Cambiar</button></td>
+                                <td><button type="button" class="btn btn-outline-secondary" Style="margin-left: 50px; color: black; "(click)="CambiarAdmin(user)">Cambiar Administrador</button></td>
+                                <td><button type="button" class="btn btn-outline-secondary" Style="margin-left: 50px; color: black;"(click)="CambiarHab(user)">Cambiar Habilitacion</button></td>
                                 </tr>
                             </tbody>
                         </div>
                     </div>
                 </div>
+
+
             </div>
         </div>
      
 </div>
 
-
-
 <app-footer></app-footer>
 </div>
+<div *ngIf="user.admin == false">
+        <div id="Contenedor2">
+            <div class="icono">
+              <img class="imagen" src="../assets/imagenes/mandarina-m.png" alt="">
+               </div>
+          <div class="ContentForm">
+            <form name="FormEntrar">
+                <div id="alerta">
+                  Usted no tiene permisos de administrador
+                </div>
+                <div id="alerta">
+                    Solo los usuarios con permisos de administrador podran visulalizar esta página.
+                  </div>
+                  
+             <a class="btn btn-lg btn-primary btn-block btn-signin" id="ingresar" href="/home">Inicio</a>
+              </form>
+            </div>	
+        </div>
+      </div>
+</div>
+      <div *ngIf="user.habilitacion == false">
+            <div id="Contenedor2">
+                <div class="icono">
+                  <img class="imagen" src="../assets/imagenes/mandarina-m.png" alt="">
+                   </div>
+              <div class="ContentForm">
+                <form name="FormEntrar">
+                    <div id="alerta">
+                      Usted se encuentra desabilitado y no puede ver nuestra pagina
+                    </div>
+                      
+                 <a class="btn btn-lg btn-primary btn-block btn-signin" id="ingresar" href="/login" (click)="auth.signOut()">Area de Inicio de Sesión</a>
+                  </form>
+                </div>	
+            </div>
+          </div>
 </div>

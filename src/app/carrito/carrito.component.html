@@ -1,14 +1,36 @@
+<div *ngIf="auth.user$ | async as user">
+    <div *ngIf="user.habilitacion == true">
 <app-navbar></app-navbar>
 <app-navbar2></app-navbar2>
 
 <div class="general">
 
  <div class="lista">
-  <app-lista></app-lista>     
+  <app-lista (ClickedEvent) = "ReceivedMessage()"></app-lista>     
 </div>
  <div class="pago">
-        <app-pago></app-pago>   
+  <app-pago [precio] = precio></app-pago> 
      </div>
 </div>
 <app-footer></app-footer>
+
+
+</div>
+<div *ngIf="user.habilitacion == false">
+    <div id="Contenedor2">
+        <div class="icono">
+          <img class="imagen" src="../assets/imagenes/mandarina-m.png" alt="">
+           </div>
+      <div class="ContentForm">
+        <form name="FormEntrar">
+            <div id="alerta">
+              Usted se encuentra desabilitado y no puede ver nuestra pagina
+            </div>
+              
+         <a class="btn btn-lg btn-primary btn-block btn-signin" id="ingresar" href="/login" (click)="auth.signOut()">Area de Inicio de Sesión</a>
+          </form>
+        </div>	
+    </div>
+  </div>
+</div>
 

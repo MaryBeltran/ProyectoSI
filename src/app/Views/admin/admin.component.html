@@ -1,5 +1,6 @@
 
 <div *ngIf="auth.user$ | async as user">
+    <div *ngIf="user.habilitacion == true">
 <div *ngIf="user.admin == true">
 <app-b1-admin></app-b1-admin>
 <app-b2-admin></app-b2-admin>
@@ -17,9 +18,13 @@
                   
             <label class="switch">
             <input type="checkbox">
-            <div>
-            <button type="button" class="btn btn-success" (click)="CambiarPiloto()">Activar</button>
-           <button type="button" class="btn btn-danger" (click)="CambiarPiloto2()">Desactivar</button>
+            <div *ngFor="let p  of piloto">
+              <div *ngIf="p.Piloto == false">
+            <button type="button" class="btn btn-success" (click)="CambiarPiloto()" (click)="myClickFunction($event)">Activar</button>
+            </div>
+            <div *ngIf="p.Piloto == true">
+           <button type="button" class="btn btn-danger" (click)="CambiarPiloto2()" (click)="myClickFunction2($event)">Desactivar</button>
+          </div>
           </div>
             </label>
                 </div>
@@ -38,4 +43,40 @@
   
   
 </div>
+<div *ngIf="user.admin == false">
+  <div id="Contenedor2">
+      <div class="icono">
+        <img class="imagen" src="../assets/imagenes/mandarina-m.png" alt="">
+         </div>
+    <div class="ContentForm">
+      <form name="FormEntrar">
+          <div id="alerta">
+            Usted no tiene permisos de administrador
+          </div>
+          <div id="alerta">
+              Solo los usuarios con permisos de administrador podran visulalizar esta página.
+            </div>
+            
+       <a class="btn btn-lg btn-primary btn-block btn-signin" id="ingresar" href="/home">Inicio</a>
+        </form>
+      </div>	
+  </div>
+</div>
+</div>
+<div *ngIf="user.habilitacion == false">
+    <div id="Contenedor2">
+        <div class="icono">
+          <img class="imagen" src="../assets/imagenes/mandarina-m.png" alt="">
+           </div>
+      <div class="ContentForm">
+        <form name="FormEntrar">
+            <div id="alerta">
+              Usted se encuentra desabilitado y no puede ver nuestra pagina
+            </div>
+              
+         <a class="btn btn-lg btn-primary btn-block btn-signin" id="ingresar" href="/login" (click)="auth.signOut()">Area de Inicio de Sesión</a>
+          </form>
+        </div>	
+    </div>
+  </div>
 </div>

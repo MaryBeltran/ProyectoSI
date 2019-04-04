@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Favoritos, Carrito } from 'src/app/Service/models/interfaces';
 import { AuthService } from 'src/app/auth.service';
+import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
+
 
 
 
@@ -14,55 +16,65 @@ import { AuthService } from 'src/app/auth.service';
   styleUrls: ['./producto.component.css']
 })
 export class ProductoComponent implements OnInit {
+
+
+  idProducto;
+  idComentario;
+  CorreoComentario;
+  producto;
+  cantidad = 1;
+  variaciones: [];
   
-  idProducto: any;
-  productos=[];
+  productos: any[];
+  comentarios: any[];
   detalle=[];
   user ="";
-  
-  favoritos: Favoritos = {
-    Usuario: '',
-    productoID: '',
+  values={
+    a:1
   }
-  carrito: Carrito = {
+  favoritos: Favoritos = {
     Usuario: '',
     productoID: '',
   }
   
   
  
-  constructor(private fs: FirestoreService, private route: ActivatedRoute, public auth: AuthService) {
+  constructor(private fs: FirestoreService, private route: ActivatedRoute, public auth: AuthService,private afs: AngularFirestore) {
     this.user= auth.email;
-    
+    fs.getComentario();
 
    }
 
   ngOnInit() {
-   
-   
+  
+    this.fs.getAllComentarios().subscribe(comentarios => {
+      this.comentarios=comentarios;
+     }
+    );
 
+
+    
     
     this.idProducto=this.route.snapshot.paramMap.get('id');
 
+
+    
+
     this.fs.getAllProductos().subscribe(productos =>{
       this.productos = productos;
-      console.log(this.productos[0]+"0");
-      console.log(this.detalle[0]+"1");
 
       for (let index = 0; index < this.productos.length; index++) {
-        console.log(this.productos[index]);
          if (this.idProducto == this.productos[index].id) {
-          this.detalle=this.productos[index];
-         
-          console.log("entraa");
+          this.detalle=this.productos[index]
+          this.producto = this.productos[index]
+          //This.detalle es un producto
          }
-        
       }
-      console.log("cero");
-      console.log(this.productos[1]);
-
-
     });
+
+    this.fs.getAllComentarios().subscribe(comentarios =>{
+      this.comentarios = comentarios;
+    })
 
    
     
@@ -84,19 +96,21 @@ export class ProductoComponent implements OnInit {
     console.log(this.favoritos.productoID);
     this.fs.addFavorito(this.favoritos);
     this.fs.getAllFavoritos();
-
+    alert("Ha añadido el producto a Favoritos");
     
   }
   addCar(usu,ide){
-    console.log(usu);
-    console.log(ide);
- 
-    this.carrito.Usuario=usu;
-    this.carrito.productoID=ide;
-    console.log(this.carrito.Usuario);
-    console.log(this.carrito.productoID);
-    this.fs.addCarrito(this.carrito);
-    this.fs.getAllCarrito();
+    console.log("NUEVO",this.producto.Calificacion)
+    console.log("NUEVO",this.cantidad)
+    console.log("NUEVO",this.variaciones)
+
+    if(this.variaciones == undefined){
+
+      this.fs.addCarrito(this.detalle, this.cantidad, null);
+    }else{
+      this.fs.addCarrito(this.detalle, this.cantidad, this.variaciones);
+    }
+    alert("Ha añadido el producto al Carrito");
   }
   
  

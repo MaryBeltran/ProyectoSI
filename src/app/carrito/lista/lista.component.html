@@ -1,24 +1,26 @@
+<div *ngIf="auth.user$ | async as user">
 <div class="cuadro">
 	<div class="" >
 		
         <div class=" ">
 
-            <div class="lista" style="max-height:300px" *ngFor="let producto of productos ">
+            <div *ngFor="let producto of cart.productos; let i = index " class="lista" style="max-height:300px" >
                 <div class="row" style="padding-left:2%">
-                    <a href="#" class="elemento precio ">{{producto.Nombre}}</a></div>
-                <a class=" boton"><button type="button" class="btn btn-danger" (click)="deleteCar($event,producto.id)">X</button></a>
+                    <a href="#" class="elemento precio text-center ">{{producto.nombre}}</a></div>
+                <a class=" boton"><button type="button" class="btn btn-danger" (click)="deleteCar($event, producto, i)">X</button></a>
                 <a [routerLink]="['/productos/producto',producto.id]" class=""> <img class="imagen" src="{{producto.foto}}" height="150" ></a>
                 
                           
-                 <input type="text" class="elemento incrementar">
-                <a  class="elemento">Subtotal:</a>
-                <a  class="elemento ">{{producto.Costo}}</a>   
+                 <input type="text" class="elemento incrementar" value={{producto.cantidad}} readonly> 
+
+                <a  class="elemento">Subtotal: {{producto.total}} </a> 
                 <br>
+                <a class=" boton"><button type="button" class="btn btn-success" (click)="incrementar(producto, i)">+</button></a>
+                 <a class=" boton"><button type="button" class="btn btn-danger" (click)="disminuir(producto, i)">-</button></a>
                 <hr>
-                <span>Condiciones de la entrega</span>
             </div>
         </div>
-        
 
 	</div>
+</div>
 </div>

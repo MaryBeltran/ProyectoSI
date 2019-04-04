@@ -1,3 +1,4 @@
+import { Piloto } from './../Service/models/interfaces';
 import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from '../auth.service';
@@ -17,7 +18,7 @@ export class RegistroComponent implements OnInit {
  
 
   paginas = [];
-  pag;
+  piloto;
   constructor( private router: Router, private fs: FirestoreService,public auth: AuthService) { 
    
    
@@ -29,15 +30,9 @@ export class RegistroComponent implements OnInit {
   public name: string='';
 
   ngOnInit() {
-    this.fs.getAllPiloto().subscribe(items => {
-      
-      items.forEach(item => {
-          this.pag = item.Piloto;
-      });
-     }
-    
-
-    );
+    this.fs.getAllPiloto().subscribe(piloto => {
+          this.piloto = piloto;
+     })
 
   }
 
@@ -45,9 +40,9 @@ export class RegistroComponent implements OnInit {
    this.auth.registerEmail(this.email, this.password, this.name)
    .then((res)=> {
      this.router.navigate(['/home']);
+     alert("Se ha registrado con exito");
    }).catch(err => console.log('err', err.message));
  }
-
 
 
  

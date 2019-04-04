@@ -1,6 +1,8 @@
+<div *ngIf="auth.user$ | async as user">
+    <div *ngIf="user.habilitacion == true">
 <app-navbar></app-navbar>
 <app-navbar2></app-navbar2>
-<div *ngIf="auth.user$ | async as user">
+
   
 <div class="col-sm-12" >
     <br>
@@ -17,7 +19,7 @@
 <br>
 <br>
   <div class="entradas">
-<input type="text" value="{{user.displayName }}">
+<input type="text" #name [(ngModel)]="user.displayName">
 <!-- <input type="text" onfocus="this.value=''" value="Nombre de La persona"> -->
 </div>
 </div>
@@ -32,29 +34,13 @@
 <br>
 <br>
       <div class="entradas">
-    <input type="text" value="{{user.email }}">
+    <input  type="text" #em [(ngModel)]="user.email">
     <!-- <input type="text" onfocus="this.value=''" value="Nombre de La persona"> -->
     </div>
     </div>
     <br>
     <br>
     <br>
-
-    <div class="linea">
-        <h4 class="opciones">
-          Contraseña
-        </h4>
-        <br>
-    <br>
-    <br>
-          <div class="entradas">
-        <input type="password" value="Contrasena">
-        <!-- <input type="text" onfocus="this.value=''" value="Nombre de La persona"> -->
-        </div>
-        </div>
-        <br>
-        <br>
-        <br>
         <div class="linea">
             <h4 class="opciones">
                 Dirección
@@ -64,7 +50,7 @@
         <br>
         <br>
               <div class="entradas">
-            <input type="text" rows="2" cols="50" value="{{user.direccion}}">
+            <input type="text" #dir rows="2" cols="50" [(ngModel)]="user.direccion">
             <!-- <input type="text" onfocus="this.value=''" value="Nombre de La persona"> -->
             </div>
             </div>
@@ -73,7 +59,7 @@
             <br>
             <br>
             <div>
-                <button class="boton">Guardar Cambios</button>
+                <button class="boton" (click)="auth.updateUserData3(user.uid, name.value, dir.value, em.value)" (click)="myClickFunction($event)">Guardar Cambios</button>
                 </div>
                 <br>
                 
@@ -81,8 +67,27 @@
                 <br>
 
 </div>
-</div>
+
 <app-footer></app-footer>
+
+</div>
+<div *ngIf="user.habilitacion == false">
+    <div id="Contenedor2">
+        <div class="icono">
+          <img class="imagen" src="../assets/imagenes/mandarina-m.png" alt="">
+           </div>
+      <div class="ContentForm">
+        <form name="FormEntrar">
+            <div id="alerta">
+              Usted se encuentra desabilitado y no puede ver nuestra pagina
+            </div>
+              
+         <a class="btn btn-lg btn-primary btn-block btn-signin" id="ingresar" href="/login" (click)="auth.signOut()">Area de Inicio de Sesión</a>
+          </form>
+        </div>	
+    </div>
+  </div>
+</div>
 
 
 

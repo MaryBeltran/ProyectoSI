@@ -1,7 +1,91 @@
+
+<div *ngIf="auth.user$ | async as user">
+    <div *ngIf="user.habilitacion == true">
+        <div *ngIf="user.admin == true">
+
 <app-b1-admin></app-b1-admin>
 <app-b2-admin></app-b2-admin>
+<br>
+<h2>
+Activacion de Filtros de Busqueda
+</h2>
+<br>
+<br>
+<div *ngFor="let f of f1">
+<div *ngIf="f.filtro1 == false">
+  <h5>Activacion de filtro de Precio</h5>
+    <button type="button" class="btn btn-success" (click)="Cambiarf1()" (click)="myClickFunction($event)">Activar Filtro de Precio</button>
+</div>
+<div *ngIf="f.filtro1 == true">
+    <h5>Desactivacion de filtro de Precio</h5>
+    <button type="button" class="btn btn-danger" (click)="Cambiarf11()" (click)="myClickFunction2($event)">Desactivar Filtro de Precio</button>
+</div>
+</div>
+<br>
+<br>
 
+<div *ngFor="let ff of f2">
+<div *ngIf="ff.filtro2 == false">
+    <h5>Activacion de filtro de Estrellas</h5>
+    <button type="button" class="btn btn-success" (click)="Cambiarf2()" (click)="myClickFunction($event)">Activar Filtro de Estrellas</button>
+</div>
+<div *ngIf="ff.filtro2 == true">
+    <h5>Desactivacion de filtro de Estrellas</h5>
+    <button type="button" class="btn btn-danger" (click)="Cambiarf21()" (click)="myClickFunction2($event)">Desactivar Filtro de Estrellas</button>
+</div>
+</div>
+<br>
+<br>
 
-<a> ACA HACER:Activacion Filtros + Búsqueda por Rangos Y PONER EN EL DESPLEGABLE SALTO A SECCIONES DE ACA</a>
+<div *ngFor="let fff of f3">
+<div *ngIf="fff.filtro3 == false">
+    <h5>Activacion de filtro de Departamentos</h5>
+    <button type="button" class="btn btn-success" (click)="Cambiarf3()" (click)="myClickFunction($event)">Activar Filtro de Departamentos</button>
+</div>
+<div *ngIf="fff.filtro3 == true">
+    <h5>Desactivacion de filtro de Departamentos</h5>
+    <button type="button" class="btn btn-danger" (click)="Cambiarf31()" (click)="myClickFunction2($event)">Desactivar filtro de Departamentos</button>
+</div>
+</div>
+<br>
+<br>
 
 <app-footer></app-footer>
+</div>
+<div *ngIf="user.admin == false">
+        <div id="Contenedor2">
+            <div class="icono">
+              <img class="imagen" src="../assets/imagenes/mandarina-m.png" alt="">
+               </div>
+          <div class="ContentForm">
+            <form name="FormEntrar">
+                <div id="alerta">
+                  Usted no tiene permisos de administrador
+                </div>
+                <div id="alerta">
+                    Solo los usuarios con permisos de administrador podran visulalizar esta página.
+                  </div>
+                  
+             <a class="btn btn-lg btn-primary btn-block btn-signin" id="ingresar" href="/home">Inicio</a>
+              </form>
+            </div>	
+        </div>
+      </div>
+</div>
+<div *ngIf="user.habilitacion == false">
+    <div id="Contenedor2">
+        <div class="icono">
+          <img class="imagen" src="../assets/imagenes/mandarina-m.png" alt="">
+           </div>
+      <div class="ContentForm">
+        <form name="FormEntrar">
+            <div id="alerta">
+              Usted se encuentra desabilitado y no puede ver nuestra pagina
+            </div>
+              
+         <a class="btn btn-lg btn-primary btn-block btn-signin" id="ingresar" href="/login" (click)="auth.signOut()">Area de Inicio de Sesión</a>
+          </form>
+        </div>	
+    </div>
+  </div>
+</div>

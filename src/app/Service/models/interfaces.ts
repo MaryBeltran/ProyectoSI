@@ -1,3 +1,4 @@
+import { Usuario } from 'src/app/Service/models/interfaces';
 import { Observable } from 'rxjs';
 
 export interface Usuario { //interfaces utilizadas en todo el codigo
@@ -22,20 +23,31 @@ export interface User {
 export interface Piloto {
   Piloto?: boolean;
 }
+export interface Filtro1 {
+  filtro1?: boolean;
+}
+export interface Filtro2 {
+  filtro2?: boolean;
+}
+export interface Filtro3 {
+  filtro3?: boolean;
+}
 export interface Producto{
-    id?: number;
-    Nombre: String;
-    Foto: String;
-    Foto1: String;
-    Foto2: String;
-    Foto3: String;
-    Foto4: String;
-    espeficificaciones: String;
-    Costo: String;
-    Cantidad: String;
-    descuento: number;
-    Descripcion: String;
-    Departamento: String;
+  id?: number;
+  Nombre?: String;
+  foto?: String;
+  foto1?: String;
+  foto2?: String;
+  foto3?: String;
+  foto4?: String;
+  especificaciones?: String;
+  Costo?: String;
+  Cantidad?: String;
+  descuento?: number;
+  Descripcion?: String;
+  Departamento?: String;
+  Calificacion?: number;
+  cod?: String;
   }
   export interface Favoritos{
     id?: String;
@@ -48,7 +60,16 @@ export interface Producto{
     productoID?: String;
   }
 
-  
+
+  export interface Comentario{
+    Usuario?: String;
+    id?: String;
+    Titulo?: String;
+    Fecha?: String;
+    productoID?: String;
+    Comentario?: String;
+    Estrellas?: String;
+    }  
 
   export interface Categoria{
     id?: String;

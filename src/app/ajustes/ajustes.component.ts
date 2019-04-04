@@ -20,4 +20,11 @@ export class AjustesComponent implements OnInit {
   ngOnInit() {
   }
 
+  updateusuario(user, name: string, dir: string, corr: string){
+    this.auth.updateUserData3(user, name,dir,corr)
+  }
+  myClickFunction(event) { 
+    //just added console.log which will display the event details in browser on click of the button.
+    alert("Sus datos han sido guardados");
+  }
 }

@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from 'src/app/Service/firestore.service';
 import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
@@ -6,17 +7,11 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import * as firebase from 'firebase';
 import { Producto, Categoria } from 'src/app/Service/models/interfaces';
-import { AuthService } from 'src/app/auth.service';
 
-
-
-@Component({
-  selector: 'app-listaproductos',
-  templateUrl: './listaproductos.component.html',
-  styleUrls: ['./listaproductos.component.css']
+@Injectable({
+  providedIn: 'root'
 })
-export class ListaproductosComponent implements OnInit {
- 
+export class FiltroService {
   productos = [];
   categorias = [];
 
@@ -29,11 +24,8 @@ export class ListaproductosComponent implements OnInit {
   Costo: number;
 
   filters = {}
-  user=""
-  
-  constructor(private fs: FirestoreService,private db: AngularFireDatabaseModule, public auth: AuthService) {
-    this.user= fs.getUsuarioActual();
 
+  constructor(private fs: FirestoreService,private db: AngularFireDatabaseModule) {
     fs.getAllProductos().subscribe(productos =>{
       this.productos = productos;
     })
@@ -42,30 +34,8 @@ export class ListaproductosComponent implements OnInit {
       this.categorias = categorias;
     })
 
-
    }
-
-   f1;
-  f2;
-  f3;
-  ngOnInit() {
-    this.fs.getAllf1().subscribe(f1 =>{
-      this.f1 = f1
-    })
-    this.fs.getAllf2().subscribe(f2 =>{
-      this.f2 = f2
-    })
-    this.fs.getAllf3().subscribe(f3 =>{
-      this.f3 = f3
-    })
-    
-    this.fs.db.collection('/Productos').valueChanges()
-    .subscribe(prods => {
-      this.prods = prods;
-      this.applyFilters()
-  })
-  }
-
+   
   private applyFilters() {
     this.filteredProds = _.filter(this.prods, _.conforms(this.filters) )
   }
@@ -104,6 +74,4 @@ export class ListaproductosComponent implements OnInit {
     console.log(producto);
   }
  
-
-
 }
