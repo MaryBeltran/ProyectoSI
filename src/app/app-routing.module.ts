@@ -19,6 +19,7 @@ import { VentasComponent } from './Views/ventas/ventas.component';
 import { ARecomendadosComponent } from './Views/a-recomendados/a-recomendados.component';
 import { APromocionesComponent } from './Views/a-promociones/a-promociones.component';
 import { AuthGuard } from '../app/auth.guard';
+import { AcercaComponent } from './acerca/acerca.component';
 import { AdminGuard } from '../app/admin.guard';
 import { EditarComponent } from './Views/editar/editar.component';
 
@@ -28,6 +29,7 @@ const routes: Routes = [
 path:'',
 children:[
 {path: '',redirectTo:'/login',pathMatch: 'full'},
+{path: 'Acerca', component: AcercaComponent},
 {path: 'home',component: HomeComponent,  canActivate: [AuthGuard]},
 {path: 'promociones',component: PromocionesComponent,  canActivate: [AuthGuard]},
 {path: 'ajustes',component: AjustesComponent,  canActivate: [AuthGuard]},

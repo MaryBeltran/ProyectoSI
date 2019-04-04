@@ -1,0 +1,84 @@
+
+<div class="BarraNav" id="BarraNave">
+
+  <div class="ContenedorG">
+    <div *ngIf="auth.user$ | async; then authenticated else guest">
+    </div>
+    <!-- User NOT logged in -->
+    <ng-template #guest>
+        <a class="fa2" routerLink="/login">
+          Inicia Sesión
+          </a>
+    </ng-template>
+    <!-- User logged in -->
+    <ng-template #authenticated >
+      <div *ngIf="auth.user$ | async as user">
+          <a class="fa2" routerLink="/home">
+            Inicio
+            </a>
+    </div>
+    </ng-template>
+    </div>
+
+  
+  <img src="../assets/imagenes/mandarina-px.png" class="logo" routerLink="/home">
+  
+  
+
+ 
+
+</div>
+<br>
+<br>
+<div class="row">
+
+<div class="col-sm-12">
+  <h2>
+    Acerca de Nosotros
+  </h2>
+  <br>
+  La Mandarina C.A. es un proyecto de Sistemas de Información que se basa en una página 
+  <br>
+  de compras de una variedad de productos que van desde Moda hasta Tecnología. 
+ <br>
+  Los cuales puedes visualizar facilmente en nuestra web y adquirirlos facilmente.
+  <br>
+  Este trabajo fue realizado por los siguientes integrantes:
+  
+
+</div>
+
+
+
+</div>
+<br>
+<br>
+
+    <div class="row">
+        <div class="col-sm-4">
+          <h5>
+          Bladimir Aponte
+          </h5>
+          <img src="https://avatars1.githubusercontent.com/u/40173234?s=400&v=4" class="logo2" routerLink="/home">
+        </div>
+        <div class="col-sm-4">
+          <h5>
+          Mariangly Beltrán
+          </h5>
+  <img src="https://avatars1.githubusercontent.com/u/46547645?s=400&v=4" class="logo2" routerLink="/home">
+          </div>
+          <div class="col-sm-4">
+            <h5>
+            Ignacio Rodríguez
+            </h5>
+  <img src="https://scontent-amt2-1.cdninstagram.com/vp/be47133c0b348da7e8dd10f7cf7ceb11/5D42E473/t51.2885-19/s320x320/14272152_1654579418192712_811938133_a.jpg?_nc_ht=scontent-amt2-1.cdninstagram.com" class="logo2" routerLink="/home">
+            </div>
+
+  
+</div>
+<br>
+<br>
+
+
+
+<app-footer></app-footer>
