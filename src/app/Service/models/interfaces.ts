@@ -64,6 +64,8 @@ export interface Producto{
   export interface Comentario{
     Usuario?: String;
     id?: String;
+    Titulo?: String;
+    Fecha?: String;
     productoID?: String;
     Comentario?: String;
     Estrellas?: String;

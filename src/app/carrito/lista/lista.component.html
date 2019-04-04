@@ -14,7 +14,7 @@
                    <div style="float:right">      
                 <input type="text" class="elemento incrementar" #name [(ngModel)]="values.a" contenteditable="true">
                 <a  class="elemento">Subtotal:</a>
-                <a  class="elemento ">{{producto.Costo * name.value}}</a>  
+                <a  class="elemento ">{{(producto.Costo -(producto.Costo*producto.descuento/100))*name.value}}</a>  
             </div>  
                 <br>
                 <hr>

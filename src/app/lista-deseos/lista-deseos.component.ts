@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from '../Service/firestore.service';
 import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Favoritos, Producto } from '../Service/models/interfaces';
 
 @Component({
@@ -83,6 +83,7 @@ export class ListaDeseosComponent implements OnInit {
           this.fs.deletePreferidos(item.id);
        
           console.log(item);
+          
         }
         
 

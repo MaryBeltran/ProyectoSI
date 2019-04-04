@@ -30,7 +30,9 @@ export class ProductoComponent implements OnInit {
   comentarios: any[];
   detalle=[];
   user ="";
-  
+  values={
+    a:1
+  }
   favoritos: Favoritos = {
     Usuario: '',
     productoID: '',
@@ -45,13 +47,9 @@ export class ProductoComponent implements OnInit {
    }
 
   ngOnInit() {
-
-    this.fs.getAllComentarios().subscribe(items => {
-      items.forEach(item => {
-          this.idComentario.push(item.productoID);
-          this.CorreoComentario.push(item.Usuario);
-      });
-      this.comentario=items;
+  
+    this.fs.getAllComentarios().subscribe(comentarios => {
+      this.comentarios=comentarios;
      }
     );
 

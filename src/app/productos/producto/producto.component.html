@@ -44,11 +44,11 @@
      
       <hr>
 <div>
-  <input [(ngModel)] ="cantidad" #ctrl="ngModel" type="text" name="inputCantidad" id="idCantidad" style="width:157px;">
+  <input [(ngModel)]="values.a" #ctrl="ngModel" type="text" name="inputCantidad" id="idCantidad" style="width:157px;">
   </div>
   <div *ngIf="auth.user$ | async as user">
     <br>
-     <button class="btn" type="submit" (click)="addCar(detalle,detalle.id)">Añadir al Carrito <i class="fa fa-shopping-cart" style="font-size:20px"></i></button>
+     <button class="btn" type="submit" (click)="addCar(user.email,detalle.id)">Añadir al Carrito <i class="fa fa-shopping-cart" style="font-size:20px"></i></button>
     <a style="padding-left: 10px;" >
       
      <button class="btn" type="submit" (click)="addFav(user.email,detalle.id)"><i class="fas fa-heart" style="font-size:20px" ></i></button>
@@ -88,81 +88,51 @@
       </div>
     </div>
     <div class="tab-pane fade" id="com" role="tabpanel" aria-labelledby="com-tab">
-        <div *ngFor="let producto of comentario ">
-          {{producto.CorreoComentario}}
-          
-        </div>
       <div class="container">
         <div class="row pb-3">
           <div class="col-lf-12">
               <h5>Comentarios y Calificaciones de {{detalle.Nombre}}</h5>
           </div>
         </div>
+        <div *ngFor="let comentario of comentarios ">
+            <div *ngIf="comentario.ProductoId == detalle.id">
          <div class="one-review">
         <div class="row">
            <div class="col-lf-6">
-             <p>Ignacio Rodriguez</p>
+             <p>{{comentario.Usuario}}</p>
            </div>
            <div class="col-md-6 text-success">
-              <small>10 Febrero</small>
+              <small>{{comentario.Fecha}}</small>
            </div>
          </div>
          <div class="row">
             <div class="col-lf-12">
-               <i class="fa fa-star checked"></i><i class="fa fa-star checked"></i><i class="fa fa-star checked"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+              <div *ngIf="comentario.Estrellas == 1">
+               <i class="fa fa-star checked"></i><i class="fa fa-star" ></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
              </div>
-          </div>
-          <div class="row pt-2">
-             <div class="col-lf-12">
-               <h6 style="float:left">Buena Calidad</h6><br>
-               <p style="float:left">Me gusto El prod..... Posee un envio rapido,..... volveria a comprar este producto, pero vino una pieza rota.</p>
+             <div *ngIf="comentario.Estrellas == 2">
+                <i class="fa fa-star checked"></i><i class="fa fa-star checked"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
               </div>
+              <div *ngIf="comentario.Estrellas == 3">
+                  <i class="fa fa-star checked"></i><i class="fa fa-star checked"></i><i class="fa fa-star checked"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                </div>
+                <div *ngIf="comentario.Estrellas == 4">
+                    <i class="fa fa-star checked"></i><i class="fa fa-star checked"></i><i class="fa fa-star checked"></i><i class="fa fa-star checked"></i><i class="fa fa-star"></i>
+                  </div>
+                  <div *ngIf="comentario.Estrellas == 5">
+                      <i class="fa fa-star checked"></i><i class="fa fa-star checked"></i><i class="fa fa-star checked"></i><i class="fa fa-star checked"></i><i class="fa fa-star checked"></i>
+                    </div>
+          </div>
+             <div class="col-md-12">
+               <h6 style="float:left">{{comentario.Titulo}}</h6><br>
+               <p style="float:left">{{comentario.Comentario}}</p>
+              
               </div>  
             </div>       
          <hr>
-         <div class="one-review ">
-        <div class="row">
-          <div class="col-lf-6">
-            <p>Bladimir Aponte</p>
-              </div>
-               <div class="col-md-6 text-success">
-                <small>3 Enero</small>
-                 </div>
-            </div>
-          <div class="row">
-              <div class="col-lf-12">
-           <i class="fa fa-star checked"></i><i class="fa fa-star checked"></i><i class="fa fa-star checked"></i><i class="fa fa-star checked"></i><i class="fa fa-star checked"></i>
-          </div>
-           </div>
-          <div class="row pt-2">
-           <div class="col-lf-12">
-           <h6 style="float:left">La mejor computadora</h6><br>
-          <p style="float:left">Comprate ya la computadora es la mejor que encontraras......... no me arrepiento........ muy buena</p>
-              </div>
-          </div>
-          </div>
-         <hr>
-         <div class="one-review">
-        <div class="row">
-           <div class="col-lf-6">
-            <p>Mary Beltrán</p>
-             </div>
-            <div class="col-md-6 text-success">
-            <small>30 Diciembre</small>
         </div>
-      </div>
-          <div class="row">
-        <div class="col-lf-12">
-        <i class="fa fa-star checked"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-        </div>
-        </div>
-       <div class="row pt-2">
-       <div class="col-lf-12">
-      <h6 style="float:left">La peor computadora que existe</h6><br>
-      <p style="float:left">Me parece que fui estafada....... no volveria a comprar nada de esta marca........ al dia se daño..........</p>
-        </div>
-       </div>
-      </div>
+         
+     </div>
      </div>
     </div> 
   </div>
