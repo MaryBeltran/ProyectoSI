@@ -1,3 +1,4 @@
+import { Usuario } from 'src/app/Service/models/interfaces';
 import { Observable } from 'rxjs';
 
 export interface Usuario { //interfaces utilizadas en todo el codigo
@@ -59,7 +60,14 @@ export interface Producto{
     productoID?: String;
   }
 
-  
+
+  export interface Comentario{
+    Usuario?: String;
+    id?: String;
+    productoID?: String;
+    Comentario?: String;
+    Estrellas?: String;
+    }  
 
   export interface Categoria{
     id?: String;

@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Favoritos, Carrito } from 'src/app/Service/models/interfaces';
 import { AuthService } from 'src/app/auth.service';
+import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
+
 
 
 
@@ -14,12 +16,18 @@ import { AuthService } from 'src/app/auth.service';
   styleUrls: ['./producto.component.css']
 })
 export class ProductoComponent implements OnInit {
-  
+
+
   idProducto;
+  idComentario;
+  CorreoComentario;
   producto;
+  comentario;
   cantidad = 200;
   variaciones: [];
+  
   productos: any[];
+  comentarios: any[];
   detalle=[];
   user ="";
   
@@ -30,40 +38,46 @@ export class ProductoComponent implements OnInit {
   
   
  
-  constructor(private fs: FirestoreService, private route: ActivatedRoute, public auth: AuthService) {
+  constructor(private fs: FirestoreService, private route: ActivatedRoute, public auth: AuthService,private afs: AngularFirestore) {
     this.user= auth.email;
-    
+    fs.getComentario();
 
    }
 
   ngOnInit() {
-   
-   
 
+    this.fs.getAllComentarios().subscribe(items => {
+      items.forEach(item => {
+          this.idComentario.push(item.productoID);
+          this.CorreoComentario.push(item.Usuario);
+      });
+      this.comentario=items;
+     }
+    );
+
+
+    
     
     this.idProducto=this.route.snapshot.paramMap.get('id');
 
+
+    
+
     this.fs.getAllProductos().subscribe(productos =>{
       this.productos = productos;
-      console.log(this.productos[0]+"0");
-      console.log(this.detalle[0]+"1");
 
       for (let index = 0; index < this.productos.length; index++) {
-        console.log(this.productos[index]);
          if (this.idProducto == this.productos[index].id) {
           this.detalle=this.productos[index]
           this.producto = this.productos[index]
           //This.detalle es un producto
-         
-          console.log("entraa");
          }
-        
       }
-      console.log("cero");
-      console.log(this.productos[1]);
-
-
     });
+
+    this.fs.getAllComentarios().subscribe(comentarios =>{
+      this.comentarios = comentarios;
+    })
 
    
     

@@ -27,7 +27,6 @@ export class ListaDeseosComponent implements OnInit {
      auth.user$.forEach(user=>{
      console.log(user.email);
      this.usuario=user.email;
-    
      });
 
    
@@ -52,9 +51,6 @@ export class ListaDeseosComponent implements OnInit {
     this.fs.getAllProductos().subscribe(elemento => {
      
       elemento.forEach(item => {
-        
-
-      
         for (let index = 0; index < this.idFavoritos.length; index++) {
           console.log("Entran");
           console.log(this.idFavoritos[index],item.id);

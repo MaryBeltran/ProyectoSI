@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map, catchError } from "rxjs/operators";
-import {Usuario, Producto, Categoria, Favoritos, User, Carrito, Piloto, Filtro1, Filtro2, Filtro3} from 'src/app/Service/models/interfaces'
+import {Usuario, Producto, Categoria, Favoritos, User, Carrito, Piloto, Filtro1, Filtro2, Filtro3, Comentario} from 'src/app/Service/models/interfaces'
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
@@ -33,6 +33,10 @@ export class FirestoreService {
   productoColeccion: AngularFirestoreCollection<Producto>;
   Productos: Observable<Producto[]>;
   productosDoc: AngularFirestoreDocument<Producto>;
+
+  comentariosColeccion: AngularFirestoreCollection<Comentario>;
+  comentarios: Observable<Comentario[]>;
+  comentariosDoc: AngularFirestoreDocument<Comentario>;
 
 
   favoritosColeccion: AngularFirestoreCollection<Favoritos>;
@@ -155,6 +159,9 @@ export class FirestoreService {
   getFavoritos(){
     return this.db.collection('Favoritos').snapshotChanges();
   }
+  getComentario(){
+    return this.db.collection('Comentarios').snapshotChanges();
+  }
   getCarrito(){
     return this.db.collection('Carrito').snapshotChanges();
   }
@@ -189,6 +196,18 @@ export class FirestoreService {
       })
     }))
     return this.favoritos;
+  }
+  getAllComentarios(){
+   
+    this.comentariosColeccion = this.db.collection('Comentarios');
+    this.comentarios = this.comentariosColeccion.snapshotChanges().pipe(map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as Comentario;
+        data.id = a.payload.doc.id;
+        return data
+      })
+    }))
+    return this.comentarios;
   }
   
   getAllPiloto(){
