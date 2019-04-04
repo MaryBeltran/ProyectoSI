@@ -54,7 +54,7 @@ paypalConfig = {
       })
   },
 
-  // onAuthorize() is called when the buyer approves the payment
+
   onAuthorize:(data, actions) => {
 
       // Make a call to the REST api to execute the payment
@@ -66,8 +66,6 @@ paypalConfig = {
 };
 
 ngAfterViewChecked(): void {
-  //Called after every check of the component's view. Applies to components only.
-  //Add 'implements AfterViewChecked' to the class.
   if(!this.addScript) {
     this.addPaypalScript().then(() => {
       paypal.Button.render(this.paypalConfig, '#paypal-checkout-btn');

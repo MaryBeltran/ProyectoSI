@@ -89,15 +89,15 @@ export class ProductoComponent implements OnInit {
     
   }
   addCar(usu,ide){
-    console.log("NUEVO",this.producto)
+    console.log("NUEVO",this.producto.Calificacion)
     console.log("NUEVO",this.cantidad)
     console.log("NUEVO",this.variaciones)
 
     if(this.variaciones == undefined){
 
-      //this.fs.addCarrito(this.detalle, this.cantidad, null);
+      this.fs.addCarrito(this.detalle, this.cantidad, null);
     }else{
-      //this.fs.addCarrito(this.detalle, this.cantidad, this.variaciones);
+      this.fs.addCarrito(this.detalle, this.cantidad, this.variaciones);
     }
     alert("Ha añadido el producto al Carrito");
   }

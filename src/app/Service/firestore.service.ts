@@ -295,6 +295,13 @@ export class FirestoreService {
       this.auth.user$.subscribe(user => {
         if(user){
           const carritoRef = this.RefMiCarrito(user.uid)
+          var carrito;
+          var sub = this.myCart(user.uid).subscribe(element => {
+          carrito = element
+          sub.unsubscribe();
+          }).add( () => {
+            return console.log("Mi carrito", carrito)
+
           if(carritoRef == undefined){
             this.CrearCarrito(user.uid)
           }else{
@@ -346,6 +353,7 @@ export class FirestoreService {
           })
           }
         }
+          )}
       })
     })
  }
