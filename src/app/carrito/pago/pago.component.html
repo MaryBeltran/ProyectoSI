@@ -1,15 +1,23 @@
+<div *ngIf="auth.user$ | async as User">
+ 
 <div class="pago">
-  <span>Detalles de la compra:</span>
+  <h3>Detalles FACTURACIÓN:</h3>
   <br>
-  <span> Sub Total: </span>
-  <span> 1000 BsS </span>
+  <h4> Empresa: </h4>
+  <span> Mandarina C.A. - Ecommerce UNIMET - J-000000 </span>
   <br>
-  <span> Descuento: </span>
-  <span> 0 BsS </span>
+  <h4> Cliente: </h4>
+  <span> {{User.displayName}} </span>
+  <br>
+  <br>
+  <label for="address">Dirección envío mercancía</label>
+  <input [(ngModel)]="direccion" type="text" name="direccion" class="form-control" />
+  <br>
   <hr>
   <span>Total a Pagar</span>
-  <span> 1000 BsS </span>
+  <span> ${{PrecioPago}} </span>
   <br>
   <br>
       <div id="paypal-checkout-btn"></div>
+</div>
 </div>

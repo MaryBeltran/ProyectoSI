@@ -84,7 +84,13 @@ export class FirestoreService {
   }
   
   
-
+  totalPrice(carrito): number {
+    let total = 0;
+    for (let i = 0; i < carrito.productos.length; i++) {
+      total += (parseInt(carrito.productos[i]['total'])) ;
+    }
+    return total;
+  }
   
 
   
@@ -371,6 +377,79 @@ addCarrito(producto, cantidad, variaciones:[]): Promise<any> {
   }
 
 
+  incrementar(producto,uid, i){
+    return new Promise((resolve,reject)=> {
+      const ref = this.RefMiCarrito(uid);
+      ref.get().then(doc => {
+        let cartData = doc.data();
+        let productosEnCarrito = cartData.productos;
+        const exist = this.findEqualProducts(productosEnCarrito, producto)
+        if(exist){
+          exist.cantidad = exist.cantidad + 1;
+          var cantidadNumero = parseInt(exist.cantidad)
+          var total = this.getTotalCompra(exist, cantidadNumero);
+          exist.total = total;
+            cartData.totalProducts = parseInt(cartData.totalProducts) + 1;
+          return ref.update(cartData).then(() => {
+            resolve(true);
+          }).catch((err) => {
+            reject(err);
+          });
+        }
+      })
+    })
+  }
+
+
+  disminuir(producto,uid, i){
+    return new Promise((resolve,reject)=> {
+      const ref = this.RefMiCarrito(uid);
+      ref.get().then(doc => {
+        let cartData = doc.data();
+        let productosEnCarrito = cartData.productos;
+        const exist = this.findEqualProducts(productosEnCarrito, producto)
+        if(exist){
+            exist.cantidad = exist.cantidad - 1;
+            var cantidadNumero = parseInt(exist.cantidad)
+            var total = this.getTotalCompra(exist, cantidadNumero);
+            exist.total = total;
+            cartData.totalProducts = parseInt(cartData.totalProducts) - 1;
+          return ref.update(cartData).then(() => {
+            resolve(true);
+          }).catch((err) => {
+            reject(err);
+          });
+        }
+      })
+    })
+  }
+
+
+  removeProduct(product, uid, index): Promise<any> {
+    return new Promise((resolve, reject) => {
+      const ref = this.RefMiCarrito(uid);
+      ref.get().then(doc => {
+        let cartData = doc.data();
+        let productosEnCarrito = cartData.productos;
+        let totalQty = cartData.totalProducts;
+        cartData.totalProducts = parseInt(totalQty) - parseInt(product.cantidad);
+
+        cartData.productos = [
+          ...productosEnCarrito.slice(0, index),
+          ...productosEnCarrito.slice(index + 1)
+        ];
+        return ref.update(cartData).then(() => {
+          resolve(true);
+        }).catch((err) => {
+          reject(err);
+        })
+      })
+    })
+  }
+
+
+
+
 
 
 
@@ -415,6 +494,13 @@ actualizarNombreVariacion(nombreVariacion: any[], VariacionesNombre:[]){
    return total
  }
 
+ getTotalCompra(producto,cantidad){
+  var precio = parseInt(producto.costo);
+  var descuentoNumero = (parseInt(producto.descuento)/100)
+  var total = (precio * cantidad) - (precio * descuentoNumero);
+  return total
+}
+
  addProductos(producto){
   this.productoColeccion= this.db.collection('/Productos');
   this.productoColeccion.add(producto);
@@ -430,7 +516,6 @@ actualizarNombreVariacion(nombreVariacion: any[], VariacionesNombre:[]){
     this.router.navigate(['/views/crudproductos']);
 }
 deleteProductos(id){
-   
   this.productosDoc = this.db.doc(`Productos/${id}`);
   this.productosDoc.delete();
   //this.router['/home'];

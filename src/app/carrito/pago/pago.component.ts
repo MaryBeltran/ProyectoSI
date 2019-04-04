@@ -1,4 +1,6 @@
-import { Component, OnInit, AfterViewChecked } from '@angular/core';
+import { Component, OnInit, AfterViewChecked, Input } from '@angular/core';
+import { AuthService } from 'src/app/auth.service';
+import { FirestoreService } from 'src/app/Service/firestore.service';
 
 declare let paypal: any;
 
@@ -15,11 +17,28 @@ export class PagoComponent implements OnInit, AfterViewChecked {
   User_id: string;
   paypalLoad: boolean = true;
   addScript: boolean = false;
+  direccion; 
+  PrecioPago;
+  @Input() precio;
 
-  constructor() { }
+
+  constructor(public auth: AuthService, public fs: FirestoreService) {}
 
   ngOnInit() {
-  }
+    this.auth.user$.subscribe(usuario =>{ 
+      this.direccion = usuario.direccion   
+      if(usuario){
+      var sub = this.fs.myCart(usuario.uid).subscribe(Cart => {
+        this.cart = Cart.payload.data();
+        sub.unsubscribe()
+      }).add(()=>{
+        this.PrecioPago = this.fs.totalPrice(this.cart)
+      })
+    }
+  })
+}
+
+
 
 // Variable paypalConfig
 paypalConfig = {
@@ -42,7 +61,7 @@ paypalConfig = {
           payment: {
               transactions: [
                   {
-                      amount: { total:20 , currency: 'USD' }
+                      amount: { total: this.PrecioPago , currency: 'USD' }
                   }
               ]
           }

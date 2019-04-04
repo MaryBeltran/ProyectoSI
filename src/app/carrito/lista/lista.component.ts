@@ -86,20 +86,12 @@ usuario;
   }
 
   
-  deleteCar(event, prod){
-   
-   
-   
-
-   this.carri.forEach(item => {
-      if(prod==item.productoID){
-        this.fs.deleteCarros(item.id);
-        console.log(item);
+  deleteCar(event, prod, i){
+    this.auth.user$.subscribe(user => {
+      if(user){
+          this.fs.removeProduct(prod, user.uid, i)
       }
-   
-  });
-
-   
+    })
   };
   
   getCarrito(){
@@ -112,6 +104,27 @@ usuario;
     })
   }
 
+incrementar(producto, i){
+  this.auth.user$.subscribe(user => {
+    if(user){
+        this.fs.incrementar(producto,user.uid, i)
+    }
+  })
+}
+
+disminuir(producto, i){
+  this.auth.user$.subscribe(user => {
+    if(user){
+        if (producto.cantidad == 1){
+          alert("No se puede disminuir mas la cantidad, si desea puede eliminar el producto en X")
+        } else {
+           this.fs.disminuir(producto,user.uid, i)
+        }  
+    }
+  })
+
+
+}
 
 
 
