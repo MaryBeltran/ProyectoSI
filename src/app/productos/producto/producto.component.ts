@@ -22,8 +22,7 @@ export class ProductoComponent implements OnInit {
   idComentario;
   CorreoComentario;
   producto;
-  comentario;
-  cantidad = 200;
+  cantidad = 1;
   variaciones: [];
   
   productos: any[];

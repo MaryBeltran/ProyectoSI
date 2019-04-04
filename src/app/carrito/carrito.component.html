@@ -6,13 +6,14 @@
 <div class="general">
 
  <div class="lista">
-  <app-lista></app-lista>     
+  <app-lista (ClickedEvent) = "ReceivedMessage()"></app-lista>     
 </div>
  <div class="pago">
-        <app-pago></app-pago>   
+  <app-pago [precio] = precio></app-pago> 
      </div>
 </div>
 <app-footer></app-footer>
+
 
 </div>
 <div *ngIf="user.habilitacion == false">

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { FirestoreService } from 'src/app/Service/firestore.service';
 import { AuthService } from 'src/app/auth.service';
 import { Router } from '@angular/router';
@@ -10,6 +10,11 @@ import { Carrito, Producto } from 'src/app/Service/models/interfaces';
   styleUrls: ['./lista.component.css']
 })
 export class ListaComponent implements OnInit {
+
+  cart: any;
+  @Output() ClickedEvent = new EventEmitter<boolean>();
+  clicked: boolean = true;
+
 //idProductos= [];
 idCarrito = [];
 CorreoCarrito= [];
@@ -37,7 +42,7 @@ result = 0;
   }
 
   ngOnInit() {
-    this.fs.getAllCarrito().subscribe(items => {
+   /* this.fs.getAllCarrito().subscribe(items => {
       // items is an array
       items.forEach(item => {
           this.idCarrito.push(item.productoID);
@@ -47,7 +52,16 @@ result = 0;
      }
     
 
-    );
+    );*/
+
+  
+    this.auth.user$.subscribe(user => {
+      if(user){
+          this.fs.myCart(user.uid).subscribe(Cart => {
+            this.cart = Cart.payload.data();
+          })
+      }
+    })
 
   
     
@@ -78,22 +92,50 @@ result = 0;
   }
 
   
-  deleteCar(event, prod){
-   
-   
-   
-
-   this.carri.forEach(item => {
-      if(prod==item.productoID){
-        this.fs.deleteCarros(item.id);
-        console.log(item);
+  deleteCar(event, prod, i){
+    this.auth.user$.subscribe(user => {
+      if(user){
+          this.fs.removeProduct(prod, user.uid, i)
       }
-   
-  });
-
-   
+    })
   };
   
+  getCarrito(){
+    this.auth.user$.subscribe(user => {
+      if(user){
+          this.fs.myCart(user.uid).subscribe(Cart => {
+            this.cart = Cart.payload.data();
+          })
+      }
+    })
+  }
+
+incrementar(producto, i){
+  this.auth.user$.subscribe(user => {
+    if(user){
+        this.fs.incrementar(producto,user.uid, i)
+        this.ClickedEvent.emit(this.clicked)
+    }
+  })
+}
+
+disminuir(producto, i){
+  this.auth.user$.subscribe(user => {
+    if(user){
+        if (producto.cantidad == 1){
+          alert("No se puede disminuir mas la cantidad, si desea puede eliminar el producto en X")
+        } else {
+           this.fs.disminuir(producto,user.uid, i)
+           this.ClickedEvent.emit(this.clicked)
+        }  
+    }
+  })
+
+
+}
+
+
+
 
 
   }

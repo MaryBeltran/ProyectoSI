@@ -88,7 +88,13 @@ export class FirestoreService {
   }
   
   
-
+  totalPrice(carrito): number {
+    let total = 0;
+    for (let i = 0; i < carrito.productos.length; i++) {
+      total += (parseInt(carrito.productos[i]['total'])) ;
+    }
+    return total;
+  }
   
 
   
@@ -286,6 +292,7 @@ export class FirestoreService {
   }
 
 
+
   addFavorito(favorito){
      this.db.collection('/Favoritos').add(favorito).then(function(docRef){
       console.log(docRef.id);
@@ -298,7 +305,7 @@ export class FirestoreService {
   }
   CrearCarrito(id){
     this.db.collection('Carrito').doc(id).set(
-      {id: id, productos: []}
+      {id: id, productos: [], totalProducts: 0}
     )
   }
   myCart(uid){
@@ -309,97 +316,190 @@ export class FirestoreService {
     return this.db.collection<any>('Carrito').doc(uid).ref;
   }
   
-  addCarrito(producto, cantidad, variaciones:[]){
-    return new Promise((resolve,reject) => {
+
+ 
+
+addCarrito(producto, cantidad, variaciones:[]): Promise<any> {
+    return new Promise((resolve, reject) => {
       this.auth.user$.subscribe(user => {
         if(user){
+          var cantidadNumero;
+          cantidadNumero = parseInt(cantidad)
           const carritoRef = this.RefMiCarrito(user.uid)
           var carrito;
           var sub = this.myCart(user.uid).subscribe(element => {
-          carrito = element
+          carrito = element.payload.data();
           sub.unsubscribe();
-          }).add( () => {
-            return console.log("Mi carrito", carrito)
-
-          if(carritoRef == undefined){
-            this.CrearCarrito(user.uid)
-          }else{
-            carritoRef.get().then(doc => {
-              let cartData = doc.data();
-              var total = this.getTotal(producto, cantidad);
-              let productosEnCarrito = cartData.productos;
-              if(variaciones == null){
-                //Prroducto sin variacion
+          }).add(() => {
+            if(carrito == undefined){
+              this.CrearCarrito(user.uid)
+            }else{
+           carritoRef.get().then(doc => {
+                let cartData = doc.data();
+                var Total = this.getTotal(producto, cantidadNumero);
+                let productosEnCarrito = cartData.productos;
+                if(variaciones == null){
+                  const productoAlCarrito ={
+                    id: producto.id, 
+                    nombre: producto.Nombre,
+                    foto: producto.foto,
+                    costo: producto.Costo,
+                    descuento: producto.descuento,
+                    cantidad: cantidadNumero,
+                    total: Total
+                }
+               // console.log(productoAlCarrito)
+                const exist = this.findEqualProducts(productosEnCarrito, productoAlCarrito);
+                  if(!exist){
+                    productosEnCarrito.push(productoAlCarrito);
+                    cartData.totalProducts += cantidadNumero;
+                    //alert("LLEGUE2");
+                  }else {
+                    exist.cantidad +=cantidadNumero;
+                    exist.total = this.getTotal(exist, exist.cantidad)
+                    cartData.totalProducts +=cantidadNumero;
+                  }
+              }else if( variaciones != null ){
+                //Producto con variacion
                 const productoAlCarrito ={
                   id: producto.id, 
+                  nombre: producto.Nombre,
+                  foto: producto.foto,
                   costo: producto.Costo,
-                  descuento: producto.Descuento,
-                  total: total,
-                  cantidad: cantidad,
+                  descuento: producto.descuento,
+                  cantidad: cantidadNumero,
+                  variaciones: variaciones,
+                  total: Total
               }
+              //console.log(productoAlCarrito)
               const exist = this.findEqualProducts(productosEnCarrito, productoAlCarrito);
                 if(!exist){
                   productosEnCarrito.push(productoAlCarrito);
-                  cartData.totalProducts += cantidad;
+                  cartData.totalProducts += cantidadNumero;
                 }else {
-                  exist.qty +=cantidad;
-                  cartData.totalProducts +=cantidad;
+                  exist.cantidad +=cantidadNumero;
+                  exist.total = this.getTotal(exist, exist.cantidad)
+                  cartData.totalProducts +=cantidadNumero;
                 }
-            }else{
-              //Producto con variacion
-              const productoAlCarrito ={
-                id: producto.id, 
-                costo: producto.Costo,
-                descuento: producto.Descuento,
-                total: total,
-                cantidad: cantidad,
-                variaciones: variaciones
-            }
-            const exist = this.findEqualProducts(productosEnCarrito, productoAlCarrito);
-              if(!exist){
-                productosEnCarrito.push(productoAlCarrito);
-                cartData.totalProducts += cantidad;
-              }else {
-                exist.qty +=cantidad;
-                cartData.totalProducts +=cantidad;
               }
-            }
+              console.log("DIST", cartData)
             return carritoRef.update(cartData).then(() => {
               resolve(true);
             }).catch((err) => {
               reject(err);
+            });
             })
-          })
-          }
+          }})//Despues de esta } cierra el .add
         }
-          )}
       })
     })
- }
+  }
+
+
+  incrementar(producto,uid, i){
+    return new Promise((resolve,reject)=> {
+      const ref = this.RefMiCarrito(uid);
+      ref.get().then(doc => {
+        let cartData = doc.data();
+        let productosEnCarrito = cartData.productos;
+        const exist = this.findEqualProducts(productosEnCarrito, producto)
+        if(exist){
+          exist.cantidad = exist.cantidad + 1;
+          var cantidadNumero = parseInt(exist.cantidad)
+          var total = this.getTotalCompra(exist, cantidadNumero);
+          exist.total = total;
+            cartData.totalProducts = parseInt(cartData.totalProducts) + 1;
+          return ref.update(cartData).then(() => {
+            resolve(true);
+          }).catch((err) => {
+            reject(err);
+          });
+        }
+      })
+    })
+  }
+
+
+  disminuir(producto,uid, i){
+    return new Promise((resolve,reject)=> {
+      const ref = this.RefMiCarrito(uid);
+      ref.get().then(doc => {
+        let cartData = doc.data();
+        let productosEnCarrito = cartData.productos;
+        const exist = this.findEqualProducts(productosEnCarrito, producto)
+        if(exist){
+            exist.cantidad = exist.cantidad - 1;
+            var cantidadNumero = parseInt(exist.cantidad)
+            var total = this.getTotalCompra(exist, cantidadNumero);
+            exist.total = total;
+            cartData.totalProducts = parseInt(cartData.totalProducts) - 1;
+          return ref.update(cartData).then(() => {
+            resolve(true);
+          }).catch((err) => {
+            reject(err);
+          });
+        }
+      })
+    })
+  }
+
+
+  removeProduct(product, uid, index): Promise<any> {
+    return new Promise((resolve, reject) => {
+      const ref = this.RefMiCarrito(uid);
+      ref.get().then(doc => {
+        let cartData = doc.data();
+        let productosEnCarrito = cartData.productos;
+        let totalQty = cartData.totalProducts;
+        cartData.totalProducts = parseInt(totalQty) - parseInt(product.cantidad);
+
+        cartData.productos = [
+          ...productosEnCarrito.slice(0, index),
+          ...productosEnCarrito.slice(index + 1)
+        ];
+        return ref.update(cartData).then(() => {
+          resolve(true);
+        }).catch((err) => {
+          reject(err);
+        })
+      })
+    })
+  }
+
+
+
+
+
+
+
+
+
 findEqualProducts(productosEnCarrito, product){
-  if(!isNullOrUndefined(productosEnCarrito)){
+  if(productosEnCarrito.length > 0){
     for (let i = 0; i < productosEnCarrito.length; i++) {
       if(productosEnCarrito[i].id == product.id){
-        if(productosEnCarrito[i].variaciones.length == product.variaciones.length){
-          // Se tienen que poblar los nombres de las variaciones
-          let qty = productosEnCarrito[i].variaciones.length;
-          let match = 0;
-          for (let j = 0; j < productosEnCarrito[i].variaciones.length; j++) {
-            for (let k = 0; k < product.variaciones.length; k++) {
-              if(productosEnCarrito[i].variaciones[j] == product.variaciones[k]){
-                  match += 1;
-                }
-              } 
+        if(productosEnCarrito[i].variaciones == undefined && product.variaciones == undefined){
+          return productosEnCarrito[i] }
+         if(productosEnCarrito[i].variaciones.length == product.variaciones.length){
+            // Se tienen que poblar los nombres de las variaciones
+            let qty = productosEnCarrito[i].variaciones.length;
+            let match = 0;
+            for (let j = 0; j < productosEnCarrito[i].variaciones.length; j++) {
+              for (let k = 0; k < product.variaciones.length; k++) {
+                if(productosEnCarrito[i].variaciones[j] == product.variaciones[k]){
+                    match += 1;
+                  }
+                } 
+              }
+            if(qty == match){
+              return productosEnCarrito[i];
             }
-          if(qty == match){
-            return productosEnCarrito[i];
           }
         }
       }
     }
+    return null;
   }
-  return null;
-}
 actualizarNombreVariacion(nombreVariacion: any[], VariacionesNombre:[]){
   VariacionesNombre.forEach(nombre => {
     nombreVariacion.push(nombre);
@@ -407,10 +507,18 @@ actualizarNombreVariacion(nombreVariacion: any[], VariacionesNombre:[]){
 
 }
  getTotal(producto,cantidad){
-   var precio= producto.Costo;
-   var total = (precio * cantidad) - (precio*producto.Descuento);
+   var precio = parseInt(producto.Costo);
+   var descuentoNumero = (parseInt(producto.descuento)/100)
+   var total = (precio * cantidad) - (precio * descuentoNumero);
    return total
  }
+
+ getTotalCompra(producto,cantidad){
+  var precio = parseInt(producto.costo);
+  var descuentoNumero = (parseInt(producto.descuento)/100)
+  var total = (precio * cantidad) - (precio * descuentoNumero);
+  return total
+}
 
  addProductos(producto){
   this.productoColeccion= this.db.collection('/Productos');
@@ -427,7 +535,6 @@ actualizarNombreVariacion(nombreVariacion: any[], VariacionesNombre:[]){
     this.router.navigate(['/views/crudproductos']);
 }
 deleteProductos(id){
-   
   this.productosDoc = this.db.doc(`Productos/${id}`);
   this.productosDoc.delete();
   //this.router['/home'];
