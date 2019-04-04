@@ -10,6 +10,9 @@ import { Carrito, Producto } from 'src/app/Service/models/interfaces';
   styleUrls: ['./lista.component.css']
 })
 export class ListaComponent implements OnInit {
+
+  cart: any;
+
 //idProductos= [];
 idCarrito = [];
 CorreoCarrito= [];
@@ -33,7 +36,7 @@ usuario;
   }
 
   ngOnInit() {
-    this.fs.getAllCarrito().subscribe(items => {
+   /* this.fs.getAllCarrito().subscribe(items => {
       // items is an array
       items.forEach(item => {
           this.idCarrito.push(item.productoID);
@@ -43,7 +46,16 @@ usuario;
      }
     
 
-    );
+    );*/
+
+  
+    this.auth.user$.subscribe(user => {
+      if(user){
+          this.fs.myCart(user.uid).subscribe(Cart => {
+            this.cart = Cart.payload.data();
+          })
+      }
+    })
 
   
     
@@ -90,6 +102,19 @@ usuario;
    
   };
   
+  getCarrito(){
+    this.auth.user$.subscribe(user => {
+      if(user){
+          this.fs.myCart(user.uid).subscribe(Cart => {
+            this.cart = Cart.payload.data();
+          })
+      }
+    })
+  }
+
+
+
+
 
 
   }

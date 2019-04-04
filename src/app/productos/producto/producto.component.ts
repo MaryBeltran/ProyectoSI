@@ -17,7 +17,7 @@ export class ProductoComponent implements OnInit {
   
   idProducto;
   producto;
-  cantidad = 200;
+  cantidad = 1;
   variaciones: [];
   productos: any[];
   detalle=[];
